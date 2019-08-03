@@ -14,7 +14,7 @@ namespace WeaponThread
         {
             MountPoint(subTypeId: "MCRNRailGunLB", subPartId: "MissileTurretBarrels"),
         },
-        Barrels = Names("muzzle_railbeam_001")
+        Barrels = Names("muzzle_missile_001")
     },
     Ui = new UiDefinition
     {
@@ -42,6 +42,7 @@ namespace WeaponThread
         {
             RateOfFire = 60,
             BarrelsPerShot = 1,
+			FakeBarrels = true,
             TrajectilesPerBarrel = 1,
             SkipBarrels = 0,
             ReloadTime = 300,
