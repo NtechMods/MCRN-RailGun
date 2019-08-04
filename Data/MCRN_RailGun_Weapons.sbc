@@ -13,7 +13,7 @@
       <NoAmmoSoundName>WepShipGatlingNoAmmo</NoAmmoSoundName>
       <SecondarySoundName>WepShipGatlingRotation</SecondarySoundName>
       <AmmoMagazines>
-        <AmmoMagazine Subtype="RailGunAmmo" />
+        <AmmoMagazine Subtype="RailGunAmmoMag" />
       </AmmoMagazines>
       <ReloadTime>0</ReloadTime>
     </Weapon>
@@ -22,16 +22,16 @@
    <Blueprint>
       <Id>
         <TypeId>BlueprintDefinition</TypeId>
-        <SubtypeId>Blank</SubtypeId>
+        <SubtypeId>RailgunAmmoMag</SubtypeId>
       </Id>
-      <DisplayName>Blank Ammo for Lasers</DisplayName>
+      <DisplayName>Blank Ammo for RailGun</DisplayName>
       <Icon>Textures\GUI\Icons\ammo\DeURounds.dds</Icon>
       <Prerequisites>
         <Item Amount="1" TypeId="Ingot" SubtypeId="Magnesium" />
 		<Item Amount="1" TypeId="Ingot" SubtypeId="Nickel" />
 		<Item Amount="1" TypeId="Ingot" SubtypeId="Uranium" />
       </Prerequisites>
-      <Result Amount="1" TypeId="AmmoMagazine" SubtypeId="Blank" />
+      <Result Amount="1" TypeId="AmmoMagazine" SubtypeId="RailGunAmmoMag" />
       <BaseProductionTimeInSeconds>60</BaseProductionTimeInSeconds>
     </Blueprint>
   </Blueprints>
@@ -40,7 +40,7 @@
  	<AmmoMagazine>
       <Id>
         <TypeId>AmmoMagazine</TypeId>
-        <SubtypeId>RailGunAmmo</SubtypeId>
+        <SubtypeId>RailGunAmmoMag</SubtypeId>
       </Id>
       <DisplayName>Rail Slug Charge</DisplayName>
       <Icon>Textures\GUI\Icons\ammo\DeURounds.dds</Icon>

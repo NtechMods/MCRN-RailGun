@@ -126,6 +126,7 @@ namespace WeaponThread
             [ProtoMember(11)] internal int ShotsInBurst;
             [ProtoMember(12)] internal int DelayAfterBurst;
             [ProtoMember(13)] internal bool DegradeROF;
+            [ProtoMember(14)] internal FakeBarrels FakeBarrels;
         }
 
         [ProtoContract]
@@ -133,6 +134,13 @@ namespace WeaponThread
         {
             [ProtoMember(1)] internal string SubtypeId;
             [ProtoMember(2)] internal string SubpartId;
+        }
+
+        [ProtoContract]
+        public struct FakeBarrels
+        {
+            [ProtoMember(1)] internal bool Enable;
+            [ProtoMember(2)] internal bool Converge;
         }
 
         [ProtoContract]
@@ -190,7 +198,7 @@ namespace WeaponThread
                 Radiant,
             }
 
-            [ProtoMember(1)] internal float AreaEffectRadius;
+            [ProtoMember(1)] internal double AreaEffectRadius;
             [ProtoMember(2)] internal float AreaEffectDamage;
             [ProtoMember(3)] internal AreaEffectType AreaEffect;
             [ProtoMember(4)] internal Detonate Detonation;
