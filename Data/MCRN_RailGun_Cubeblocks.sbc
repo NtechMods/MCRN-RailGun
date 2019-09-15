@@ -15,14 +15,14 @@
       <Model>Models\Cubes\MCRNRailGunBase.mwm</Model>
       <UseModelIntersection>true</UseModelIntersection>
       <Components>
-        <Component Subtype="SteelPlate" Count="30" />
-        <Component Subtype="Construction" Count="10" />
-        <Component Subtype="LargeTube" Count="3" />
-		<Component Subtype="MetalGrid" Count="4" />
-        <Component Subtype="Motor" Count="8" />
+        <Component Subtype="SteelPlate" Count="300" />
+        <Component Subtype="Construction" Count="100" />
+        <Component Subtype="LargeTube" Count="60" />
+		<Component Subtype="MetalGrid" Count="45" />
+        <Component Subtype="Motor" Count="32" />
         <Component Subtype="Computer" Count="300" />
-        <Component Subtype="Construction" Count="10" />
-        <Component Subtype="SteelPlate" Count="10" />
+        <Component Subtype="Construction" Count="100" />
+        <Component Subtype="SteelPlate" Count="100" />
       </Components>
       <CriticalComponent Subtype="Computer" Index="0" />
       <MountPoints>
@@ -46,6 +46,7 @@
       <RotationSpeed>0.002</RotationSpeed>
       <ElevationSpeed>0.002</ElevationSpeed>
       <IdleRotation>false</IdleRotation>
+	  <AiEnabled>false</AiEnabled>
 	  <MaxRangeMeters>5000</MaxRangeMeters>
       <IdlePower>0.0002</IdlePower>
 	  <UsePower>6</UsePower>
@@ -58,6 +59,6 @@
   </CubeBlocks>
   <BlueprintClassEntries>
    
-    <Entry Class="LargeBlocks" BlueprintSubtypeId="GazerBeamsLB" />
+    <Entry Class="LargeBlocks" BlueprintSubtypeId="MCRNRailGunLB" />
   </BlueprintClassEntries>
 </Definitions>

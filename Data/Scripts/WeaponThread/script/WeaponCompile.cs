@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using VRageMath;
 using static WeaponThread.Session.ShieldDefinition;
+using static WeaponThread.Session.EventTriggers;
 
 namespace WeaponThread
 {
@@ -60,17 +61,37 @@ namespace WeaponThread
             return new Session.GridSizeDefinition { Large = largeGridModifier, Small = smallGridModifier };
         }
 
-        internal Session.FakeBarrels Options(bool enable, bool converge)
-        {
-            return new Session.FakeBarrels { Enable = enable, Converge = converge };
-        }
-
         internal Session.ObjectsHit Options(int maxObjectsHit, bool countBlocks)
         {
             return new Session.ObjectsHit { MaxObjectsHit = maxObjectsHit, CountBlocks = countBlocks };
         }
 
-        internal Session.CustomScalesDefinition Options(bool ignoreOthers, params Session.CustomBlocksDefinition[] customDefScale)
+        internal Session.Shrapnel Options(float baseDamage, int fragments, float maxTrajectory, bool noAudioVisual, bool noGuidance, Session.Shrapnel.ShrapnelShape shape)
+        {
+            return new Session.Shrapnel { BaseDamage = baseDamage, Fragments = fragments, MaxTrajectory = maxTrajectory, NoAudioVisual = noAudioVisual, NoGuidance = noGuidance, Shape = shape};
+        }
+
+        internal Session.HeatingEmissive Options(bool enable)
+        {
+            return new Session.HeatingEmissive { Enable = enable};
+        }
+
+        internal Session.FiringEmissive Options(bool enable, int stages, Vector4 color)
+        {
+            return new Session.FiringEmissive { Enable = enable, Color = color };
+        }
+
+        internal Session.TrackingEmissive Options(bool enable, Vector4 color)
+        {
+            return new Session.TrackingEmissive { Enable = enable, Color = color };
+        }
+
+        internal Session.ReloadingEmissive Options(bool enable, Vector4 color, bool pulse)
+        {
+            return new Session.ReloadingEmissive { Enable = enable, Color = color };
+        }
+
+        internal Session.CustomScalesDefinition SubTypeIds(bool ignoreOthers, params Session.CustomBlocksDefinition[] customDefScale)
         {
             return new Session.CustomScalesDefinition {IgnoreAllOthers = ignoreOthers, Types = customDefScale};
         }
@@ -80,9 +101,34 @@ namespace WeaponThread
             return new Session.ArmorDefinition { Armor = armor, Light = light, Heavy = heavy, NonArmor = nonArmor };
         }
 
+        internal Session.OffsetEffect Options(double maxOffset, double minLength, double maxLength)
+        {
+            return new Session.OffsetEffect { MaxOffset = maxOffset, MinLength = minLength, MaxLength = maxLength};
+        }
+
         internal Session.ShieldDefinition Options(float modifier, ShieldType type)
         {
             return new Session.ShieldDefinition { Modifier = modifier, Type = type };
+        }
+
+        internal Session.ShapeDefinition Options(Session.ShapeDefinition.Shapes shape, double diameter)
+        {
+            return new Session.ShapeDefinition { Shape = shape, Diameter = diameter };
+        }
+
+        internal Session.Pulse Options(int interval, int pulseChance)
+        {
+            return new Session.Pulse { Interval = interval, PulseChance = pulseChance };
+        }
+
+        internal Session.EwarFields Options(int duration, bool stackDuration, bool depletable)
+        {
+            return new Session.EwarFields { Duration = duration, StackDuration = stackDuration, Depletable = depletable};
+        }
+
+        internal Session.TrailDefinition Options(bool enable, string material, int decayTime, Vector4 color)
+        {
+            return new Session.TrailDefinition { Enable = enable, Material = material, DecayTime = decayTime, Color = color };
         }
 
         internal Session.CustomBlocksDefinition Block(string subTypeId, float modifier)
@@ -90,14 +136,29 @@ namespace WeaponThread
             return new Session.CustomBlocksDefinition { SubTypeId = subTypeId, Modifier = modifier };
         }
 
-        internal Session.SubSystemDefinition.BlockTypes[] Priority(params Session.SubSystemDefinition.BlockTypes[] systems)
+        internal Session.TracerBaseDefinition Base(bool enable, float length, float width, Vector4 color)
+        {
+            return new Session.TracerBaseDefinition { Enable = enable, Length = length, Width = width, Color = color};
+        }
+
+        internal Session.AimControlDefinition AimControl(bool trackTargets, bool turretAttached, bool turretController, float rotateRate, float elevateRate)
+        {
+            return new Session.AimControlDefinition { TrackTargets = trackTargets, TurretAttached = turretAttached, TurretController = turretController, RotateRate = rotateRate, ElevateRate = elevateRate };
+        }
+
+        internal Session.UiDefinition Display(bool rateOfFire, bool damageModifier, bool toggleGuidance, bool enableOverload)
+        {
+            return new Session.UiDefinition { RateOfFire = rateOfFire, DamageModifier = damageModifier, ToggleGuidance = toggleGuidance, EnableOverload = enableOverload };
+        }
+
+        internal Session.TargetingDefinition.BlockTypes[] Priority(params Session.TargetingDefinition.BlockTypes[] systems)
         {
             return systems;
         }
 
-        internal Session.Slider Slider(bool enable, double min, double max)
+        internal Session.TargetingDefinition.Threat[] Valid(params Session.TargetingDefinition.Threat[] threats)
         {
-            return new Session.Slider { Enable = enable, Min = min, Max = max };
+            return threats;
         }
 
         internal Session.Randomize Random(float start, float end)
@@ -115,9 +176,36 @@ namespace WeaponThread
             return new Vector3D(x, y, z);
         }
 
-        internal Session.MountPoint MountPoint(string subTypeId, string subPartId)
+        internal Session.MountPoint MountPoint(string subTypeId, string aimPartId, string muzzlePartId)
         {
-            return new Session.MountPoint { SubtypeId = subTypeId, SubpartId = subPartId };
+            return new Session.MountPoint { SubtypeId = subTypeId, AimPartId = aimPartId, MuzzlePartId = muzzlePartId};
+        }
+
+        internal Session.EventTriggers[] Events(params Session.EventTriggers[] events)
+        {
+            return events;
+        }
+
+        internal Session.XYZ Transformation(double X, double Y, double Z)
+        {
+            return new Session.XYZ { x = X, y = Y, z = Z };
+        }
+
+        internal Dictionary<Session.EventTriggers, uint> Delays(uint FiringDelay = 0, uint ReloadingDelay = 0, uint OverheatedDelay = 0, uint TrackingDelay = 0, uint LockedDelay =0, uint OnDelay = 0, uint OffDelay = 0, uint BurstReloadDelay = 0, uint OutOfAmmoDelay = 0, uint PreFireDelay = 0)
+        {
+            return new Dictionary<Session.EventTriggers, uint>
+            {
+                [Firing] = FiringDelay,
+                [Reloading] = ReloadingDelay,
+                [Overheated] = OverheatedDelay,
+                [Tracking] = TrackingDelay,
+                [TurnOn] = OnDelay,
+                [TurnOff] = OffDelay,
+                [BurstReload] = BurstReloadDelay,
+                [OutOfAmmo] = OutOfAmmoDelay,
+                [PreFire] = PreFireDelay,
+                [EmptyOnGameLoad] = 0,
+            };
         }
 
         internal string[] Names(params string[] names)
