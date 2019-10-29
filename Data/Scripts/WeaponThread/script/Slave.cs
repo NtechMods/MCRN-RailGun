@@ -5,6 +5,7 @@ using ProtoBuf;
 using Sandbox.ModAPI;
 using VRage.Game.Components;
 using VRageMath;
+using VRageMath;
 
 namespace WeaponThread
 {
@@ -88,6 +89,7 @@ namespace WeaponThread
         {
             [ProtoMember(1)] internal MountPoint[] MountPoints;
             [ProtoMember(2)] internal string[] Barrels;
+            [ProtoMember(3)] internal bool EnableSubPartPhysics;
         }
 
         [ProtoContract]
@@ -134,6 +136,15 @@ namespace WeaponThread
             [ProtoMember(3)] internal bool TurretController;
             [ProtoMember(4)] internal float RotateRate;
             [ProtoMember(5)] internal float ElevateRate;
+            [ProtoMember(6)] internal Vector3D Offset;
+            [ProtoMember(7)] internal bool FixedOffset;
+            [ProtoMember(8)] internal bool Debug;
+            [ProtoMember(9)] internal int MaxAzimuth;
+            [ProtoMember(10)] internal int MinAzimuth;
+            [ProtoMember(11)] internal int MaxElevation;
+            [ProtoMember(12)] internal int MinElevation;
+            [ProtoMember(13)] internal bool PrimaryTracking;
+            [ProtoMember(14)] internal float InventorySize;
         }
 
         [ProtoContract]
@@ -151,7 +162,7 @@ namespace WeaponThread
             [ProtoMember(10)] internal int DelayUntilFire;
             [ProtoMember(11)] internal int ShotsInBurst;
             [ProtoMember(12)] internal int DelayAfterBurst;
-            [ProtoMember(13)] internal bool DegradeROF;
+            [ProtoMember(13)] internal bool DegradeRof;
         }
 
         [ProtoContract]
@@ -160,6 +171,8 @@ namespace WeaponThread
             [ProtoMember(1)] internal string SubtypeId;
             [ProtoMember(2)] internal string AimPartId;
             [ProtoMember(3)] internal string MuzzlePartId;
+            [ProtoMember(4)] internal string AzimuthPartId;
+            [ProtoMember(5)] internal string ElevationPartId;
         }
 
         [ProtoContract]
@@ -179,10 +192,12 @@ namespace WeaponThread
             {
                 Any,
                 Offense,
-                Defense,
+                Utility,
                 Power,
                 Production,
-                Navigation
+                Thrust,
+                Jumping,
+                Steering
             }
 
             [ProtoMember(1)] internal int TopTargets;
@@ -255,6 +270,7 @@ namespace WeaponThread
                 EmpField,
                 OffenseField,
                 NavField,
+                DotField,
             }
 
             [ProtoMember(1)] internal double AreaEffectRadius;
@@ -309,7 +325,9 @@ namespace WeaponThread
                 Remote,
                 TravelTo,
                 Smart,
-                PulseDetect
+                DetectTravelTo,
+                DetectSmart,
+                DetectFixed,
             }
 
             [ProtoMember(1)] internal float MaxTrajectory;
@@ -317,11 +335,12 @@ namespace WeaponThread
             [ProtoMember(3)] internal float DesiredSpeed;
             [ProtoMember(4)] internal float TargetLossDegree;
             [ProtoMember(5)] internal int TargetLossTime;
-            [ProtoMember(6)] internal int RestTime;
+            [ProtoMember(6)] internal int FieldTime;
             [ProtoMember(7)] internal Randomize SpeedVariance;
             [ProtoMember(8)] internal Randomize RangeVariance;
             [ProtoMember(9)] internal GuidanceType Guidance;
             [ProtoMember(10)] internal Smarts Smarts;
+            [ProtoMember(11)] internal Mines Mines;
         }
 
         [ProtoContract]
@@ -333,6 +352,16 @@ namespace WeaponThread
             [ProtoMember(4)] internal double TrackingDelay;
             [ProtoMember(5)] internal int MaxChaseTime;
             [ProtoMember(6)] internal bool OverideTarget;
+        }
+
+        [ProtoContract]
+        public struct Mines
+        {
+            [ProtoMember(1)] internal double DetectRadius;
+            [ProtoMember(2)] internal double DeCloakRadius;
+            [ProtoMember(3)] internal int FieldTime;
+            [ProtoMember(4)] internal bool Cloak;
+            [ProtoMember(5)] internal bool Persist;
         }
 
         [ProtoContract]
@@ -361,7 +390,6 @@ namespace WeaponThread
             [ProtoMember(3)] internal string ModelName;
             [ProtoMember(4)] internal ParticleDefinition Particles;
             [ProtoMember(5)] internal LineDefinition Line;
-            [ProtoMember(6)] internal EmissiveDefinition Emissive;
         }
 
         [ProtoContract]
@@ -380,6 +408,7 @@ namespace WeaponThread
             [ProtoMember(2)] internal Vector4 Color;
             [ProtoMember(3)] internal Vector3D Offset;
             [ProtoMember(4)] internal ParticleOptions Extras;
+            [ProtoMember(5)] internal bool ApplyToShield;
         }
 
         [ProtoContract]
@@ -390,6 +419,7 @@ namespace WeaponThread
             [ProtoMember(3)] internal float MaxDuration;
             [ProtoMember(4)] internal bool Loop;
             [ProtoMember(5)] internal bool Restart;
+            [ProtoMember(6)] internal float HitPlayChance;
         }
 
         [ProtoContract]
@@ -430,40 +460,14 @@ namespace WeaponThread
         }
 
         [ProtoContract]
-        public struct EmissiveDefinition
+        public struct WeaponEmissive
         {
-            [ProtoMember(1)] internal HeatingEmissive Heating;
-            [ProtoMember(2)] internal TrackingEmissive Tracking;
-            [ProtoMember(3)] internal FiringEmissive Firing;
-            [ProtoMember(4)] internal ReloadingEmissive Reloading;
-        }
-
-        [ProtoContract]
-        public struct HeatingEmissive
-        {
-            [ProtoMember(1)] internal bool Enable;
-        }
-
-        [ProtoContract]
-        public struct TrackingEmissive
-        {
-            [ProtoMember(1)] internal bool Enable;
-            [ProtoMember(2)] internal Vector4 Color;
-        }
-
-        [ProtoContract]
-        public struct FiringEmissive
-        {
-            [ProtoMember(1)] internal bool Enable;
-            [ProtoMember(2)] internal int Stages;
-            [ProtoMember(3)] internal Vector4 Color;
-        }
-
-        [ProtoContract]
-        public struct ReloadingEmissive
-        {
-            [ProtoMember(1)] internal bool Enable;
-            [ProtoMember(2)] internal Vector4 Color;
+            [ProtoMember(1)] internal string EmissiveName;
+            [ProtoMember(2)] internal string[] EmissivePartNames;
+            [ProtoMember(3)] internal bool CycleEmissivesParts;
+            [ProtoMember(4)] internal bool LeavePreviousOn;
+            [ProtoMember(5)] internal Vector4[] Colors;
+            [ProtoMember(6)] internal float[] IntensityRange;
         }
 
         [ProtoContract]
@@ -485,6 +489,8 @@ namespace WeaponThread
         {
             [ProtoMember(1)] internal string TravelSound;
             [ProtoMember(2)] internal string HitSound;
+            [ProtoMember(3)] internal float HitPlayChance;
+            [ProtoMember(4)] internal bool HitPlayShield;
         }
 
         [ProtoContract]
@@ -546,6 +552,7 @@ namespace WeaponThread
         {
             internal enum ShieldType
             {
+                Heal,
                 Bypass,
                 Emp,
                 Energy,
@@ -560,6 +567,7 @@ namespace WeaponThread
         public struct AnimationDefinition
         {
             [ProtoMember(1)] internal PartAnimationSetDef[] WeaponAnimationSets;
+            [ProtoMember(2)] internal WeaponEmissive[] Emissives;
         }
 
         [ProtoContract(IgnoreListHandling = true)]
@@ -595,6 +603,7 @@ namespace WeaponThread
             [ProtoMember(5)] internal uint TicksToMove;
             [ProtoMember(6)] internal string CenterEmpty;
             [ProtoMember(7)] internal bool Fade;
+            [ProtoMember(8)] internal string EmissiveName;
         }
 
         [ProtoContract]

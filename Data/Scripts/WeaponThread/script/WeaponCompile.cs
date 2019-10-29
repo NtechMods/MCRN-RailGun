@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using VRageMath;
 using static WeaponThread.Session.ShieldDefinition;
 using static WeaponThread.Session.EventTriggers;
@@ -21,7 +22,7 @@ namespace WeaponThread
             return weaponDefinitions;
         }
 
-        internal Session.ParticleOptions Options(bool loop, bool restart, float distance, float duration, float scale)
+        internal Session.ParticleOptions Options(bool loop, bool restart, float distance, float duration, float scale, float hitPlayChance = 1f)
         {
             return new Session.ParticleOptions
             {
@@ -29,7 +30,8 @@ namespace WeaponThread
                 Restart = restart,
                 MaxDistance = distance,
                 MaxDuration = duration,
-                Scale = scale, 
+                Scale = scale,
+                HitPlayChance = hitPlayChance,
             };
         }
 
@@ -69,26 +71,6 @@ namespace WeaponThread
         internal Session.Shrapnel Options(float baseDamage, int fragments, float maxTrajectory, bool noAudioVisual, bool noGuidance, Session.Shrapnel.ShrapnelShape shape)
         {
             return new Session.Shrapnel { BaseDamage = baseDamage, Fragments = fragments, MaxTrajectory = maxTrajectory, NoAudioVisual = noAudioVisual, NoGuidance = noGuidance, Shape = shape};
-        }
-
-        internal Session.HeatingEmissive Options(bool enable)
-        {
-            return new Session.HeatingEmissive { Enable = enable};
-        }
-
-        internal Session.FiringEmissive Options(bool enable, int stages, Vector4 color)
-        {
-            return new Session.FiringEmissive { Enable = enable, Color = color };
-        }
-
-        internal Session.TrackingEmissive Options(bool enable, Vector4 color)
-        {
-            return new Session.TrackingEmissive { Enable = enable, Color = color };
-        }
-
-        internal Session.ReloadingEmissive Options(bool enable, Vector4 color, bool pulse)
-        {
-            return new Session.ReloadingEmissive { Enable = enable, Color = color };
         }
 
         internal Session.CustomScalesDefinition SubTypeIds(bool ignoreOthers, params Session.CustomBlocksDefinition[] customDefScale)
@@ -131,6 +113,11 @@ namespace WeaponThread
             return new Session.TrailDefinition { Enable = enable, Material = material, DecayTime = decayTime, Color = color };
         }
 
+        internal Session.Mines Options(double detectRadius, double deCloakRadius, int fieldTime, bool cloak, bool persist)
+        {
+            return new Session.Mines {  DetectRadius = detectRadius, DeCloakRadius = deCloakRadius, FieldTime = fieldTime, Cloak = cloak, Persist = persist};
+        }
+
         internal Session.CustomBlocksDefinition Block(string subTypeId, float modifier)
         {
             return new Session.CustomBlocksDefinition { SubTypeId = subTypeId, Modifier = modifier };
@@ -141,9 +128,9 @@ namespace WeaponThread
             return new Session.TracerBaseDefinition { Enable = enable, Length = length, Width = width, Color = color};
         }
 
-        internal Session.AimControlDefinition AimControl(bool trackTargets, bool turretAttached, bool turretController, float rotateRate, float elevateRate)
+        internal Session.AimControlDefinition AimControl(bool trackTargets, bool turretAttached, bool turretController, float rotateRate, float elevateRate, Vector3D offset, bool primaryTracking = false, int minAzimuth = 0, int maxAzimuth = 0, int minElevation = 0, int maxElevation = 0, bool fixedOffset = false, float inventorySize = .384f, bool debug = false)
         {
-            return new Session.AimControlDefinition { TrackTargets = trackTargets, TurretAttached = turretAttached, TurretController = turretController, RotateRate = rotateRate, ElevateRate = elevateRate };
+            return new Session.AimControlDefinition { TrackTargets = trackTargets, TurretAttached = turretAttached, TurretController = turretController, RotateRate = rotateRate, ElevateRate = elevateRate, Offset = offset, Debug = debug, MinAzimuth = minAzimuth, MaxAzimuth = maxAzimuth, MinElevation = minElevation, MaxElevation = maxElevation, FixedOffset = fixedOffset, InventorySize = inventorySize, PrimaryTracking = primaryTracking };
         }
 
         internal Session.UiDefinition Display(bool rateOfFire, bool damageModifier, bool toggleGuidance, bool enableOverload)
@@ -176,9 +163,9 @@ namespace WeaponThread
             return new Vector3D(x, y, z);
         }
 
-        internal Session.MountPoint MountPoint(string subTypeId, string aimPartId, string muzzlePartId)
+        internal Session.MountPoint MountPoint(string subTypeId, string aimPartId, string muzzlePartId, string azimuthPartId = "", string elevationPartId = "")
         {
-            return new Session.MountPoint { SubtypeId = subTypeId, AimPartId = aimPartId, MuzzlePartId = muzzlePartId};
+            return new Session.MountPoint { SubtypeId = subTypeId, AimPartId = aimPartId, MuzzlePartId = muzzlePartId, AzimuthPartId = azimuthPartId, ElevationPartId = elevationPartId };
         }
 
         internal Session.EventTriggers[] Events(params Session.EventTriggers[] events)
@@ -205,6 +192,19 @@ namespace WeaponThread
                 [OutOfAmmo] = OutOfAmmoDelay,
                 [PreFire] = PreFireDelay,
                 [EmptyOnGameLoad] = 0,
+            };
+        }
+
+        internal Session.WeaponEmissive Emissive(string EmissiveName, bool CycleEmissiveParts, bool LeavePreviousOn, Vector4[] Colors, float IntensityFrom, float IntensityTo, string[] EmissivePartNames)
+        {
+            return new Session.WeaponEmissive()
+            {
+                EmissiveName = EmissiveName,
+                Colors = Colors,
+                CycleEmissivesParts = CycleEmissiveParts,
+                LeavePreviousOn = LeavePreviousOn,
+                EmissivePartNames = EmissivePartNames,
+                IntensityRange = new[]{ IntensityFrom, IntensityTo }
             };
         }
 

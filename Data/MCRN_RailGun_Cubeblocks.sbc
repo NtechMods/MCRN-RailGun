@@ -39,12 +39,6 @@
       <BuildTimeSeconds>30</BuildTimeSeconds>
       <WeaponDefinitionId Subtype="MCRNRails" />
       <InventoryMaxVolume>0.384</InventoryMaxVolume>
-      <MinElevationDegrees>0</MinElevationDegrees>
-      <MaxElevationDegrees>75</MaxElevationDegrees>
-      <MinAzimuthDegrees>-90</MinAzimuthDegrees>
-      <MaxAzimuthDegrees>90</MaxAzimuthDegrees>
-      <RotationSpeed>0.002</RotationSpeed>
-      <ElevationSpeed>0.002</ElevationSpeed>
       <IdleRotation>false</IdleRotation>
 	  <AiEnabled>false</AiEnabled>
 	  <MaxRangeMeters>5000</MaxRangeMeters>
