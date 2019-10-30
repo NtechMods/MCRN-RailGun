@@ -15,11 +15,11 @@ namespace WeaponThread
                     EmissiveName: "MCRNEmissive", 
                     Colors: new []
                     {
-                        Color(red:255, green: 0, blue:0, alpha: 1),//will transitions form one color to the next if more than one
-                        Color(red:0, green: 255, blue:0, alpha: 1),
+                        Color(red:0, green: 0, blue:0, alpha: 1),//will transitions form one color to the next if more than one
+                        Color(red:0, green: 0, blue:127, alpha: 1),
                         Color(red:0, green: 0, blue:255, alpha: 1),
                     }, 
-                    IntensityFrom:1, //starting intensity, can be 0.0-1.0 or 1.0-0.0, setting both from and to, to the same value will stay at that value
+                    IntensityFrom:0, //starting intensity, can be 0.0-1.0 or 1.0-0.0, setting both from and to, to the same value will stay at that value
                     IntensityTo:1, 
                     CycleEmissiveParts: false,//whether to cycle from one part to the next, while also following the Intensity Range, or set all parts at the same time to the same value
                     LeavePreviousOn: true,//true will leave last part at the last setting until end of animation, used with cycleEmissiveParts
@@ -46,7 +46,7 @@ namespace WeaponThread
                                 new RelMove
                                 {
                                     CenterEmpty = "",//Specifiy an empty on the subpart to rotate around
-                                    TicksToMove = 25, //number of ticks to complete motion, 60 = 1 second
+                                    TicksToMove = 1, //number of ticks to complete motion, 60 = 1 second
                                     MovementType = ExpoDecay,
                                     EmissiveName = "MCRNEmissive",//name of defined emissive 
                                     LinearPoints = new[]
@@ -55,18 +55,6 @@ namespace WeaponThread
                                     },
                                     Rotation = Transformation(0, 0, 0), //degrees
                                     RotAroundCenter = Transformation(0, 0, 0), //degrees, rotates around CenterEmpty
-                                },
-                                new RelMove
-                                {
-                                    CenterEmpty = "",
-                                    TicksToMove = 40, //number of ticks to complete motion, 60 = 1 second
-                                    MovementType = Linear,
-                                    LinearPoints = new[]
-                                    {
-                                        Transformation(0, 0, 0), //linear movement
-                                    },
-                                    Rotation = Transformation(0, 0, 0), //degrees
-                                    RotAroundCenter = Transformation(0, 0, 0), //degrees
                                 },
                             },
                     }
