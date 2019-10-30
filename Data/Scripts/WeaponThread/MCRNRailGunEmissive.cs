@@ -46,27 +46,8 @@ namespace WeaponThread
                                 new RelMove
                                 {
                                     CenterEmpty = "",//Specifiy an empty on the subpart to rotate around
-                                    TicksToMove = 25, //number of ticks to complete motion, 60 = 1 second
-                                    MovementType = ExpoDecay,
+                                    TicksToMove = 1, //number of ticks to complete motion, 60 = 1 second
                                     EmissiveName = "MCRNEmissive",//name of defined emissive 
-                                    LinearPoints = new[]
-                                    {
-                                        Transformation(0, 0, 0), //linear movement
-                                    },
-                                    Rotation = Transformation(0, 0, 0), //degrees
-                                    RotAroundCenter = Transformation(0, 0, 0), //degrees, rotates around CenterEmpty
-                                },
-                                new RelMove
-                                {
-                                    CenterEmpty = "",
-                                    TicksToMove = 40, //number of ticks to complete motion, 60 = 1 second
-                                    MovementType = Linear,
-                                    LinearPoints = new[]
-                                    {
-                                        Transformation(0, 0, 0), //linear movement
-                                    },
-                                    Rotation = Transformation(0, 0, 0), //degrees
-                                    RotAroundCenter = Transformation(0, 0, 0), //degrees
                                 },
                             },
                     }
