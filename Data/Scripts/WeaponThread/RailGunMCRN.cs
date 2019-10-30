@@ -128,7 +128,7 @@ namespace WeaponThread
         },
     },
 	
-	Animations = MCRNRailGunEmissive, //link to animation config
+	// Animations = MCRNRailGunEmissive, //link to animation config
 	
     Graphics = new GraphicDefinition
     {
@@ -168,7 +168,7 @@ namespace WeaponThread
 		},
         Line = new LineDefinition
         {
-            Tracer = Base(enable: true, length: 1f, width: 0.05f, color: Color(red: 2, green: 2, blue: 30, alpha: 1)),
+            Tracer = Base(enable: true, length: 2f, width: 0.15f, color: Color(red: 2, green: 2, blue: 30, alpha: 1)),
             TracerMaterial = "ProjectileTrailLine", // WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
             ColorVariance = Random(start: 0.75f, end: 2f), // multiply the color by random values within range.
             WidthVariance = Random(start: 0f, end: 0.15f), // adds random value to default width (negatives shrinks width)
@@ -190,8 +190,8 @@ namespace WeaponThread
 
         Ammo = new AudioAmmoDefinition
         {
-            TravelSound = "",
-            HitSound = "",
+            TravelSound = "ParticleReactor",
+            HitSound = "WepSmallWarheadExpl",
         }, // Don't edit below this line
     },
 };}}
