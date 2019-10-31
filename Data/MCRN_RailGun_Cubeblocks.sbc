@@ -7,7 +7,7 @@
         <SubtypeId>MCRNRailGunLB</SubtypeId>
       </Id>
       <DisplayName>MCRN Rail Gun</DisplayName>
-      <Icon>Textures\GUI\Icons\Cubes\PDC_turret.dds</Icon>
+      <Icon>Textures\GUI\Icons\Cubes\MCRNRailgun.dds</Icon>
       <CubeSize>Large</CubeSize>
       <BlockTopology>TriangleMesh</BlockTopology>
       <Size x="3" y="2" z="5" />

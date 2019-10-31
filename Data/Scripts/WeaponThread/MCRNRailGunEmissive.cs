@@ -56,9 +56,6 @@ namespace WeaponThread
                                     },
                                     Rotation = Transformation(0, 0, 0), //degrees
                                     RotAroundCenter = Transformation(0, 0, 0), //degrees, rotates around CenterEmpty
-
-                                    EmissiveName = "MCRNEmissive",//name of defined emissive 
-
                                 },
                             },
                     }
