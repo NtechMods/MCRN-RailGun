@@ -18,7 +18,7 @@ namespace WeaponThread
             MountPoint(subTypeId: "MCRNRailGunLB", aimPartId: "MissileTurretBarrels", muzzlePartId: "MissileTurretBarrels"),
         },
         Barrels = Names("muzzle_missile_001"),
-        EnableSubPartPhysics = false
+        EnableSubPartPhysics = true
     },
     HardPoint = new HardPointDefinition
     {
@@ -27,28 +27,28 @@ namespace WeaponThread
         Block = AimControl(trackTargets: true, turretAttached: true, turretController: true, primaryTracking: true, rotateRate: 0.008f, elevateRate: 0.008f, minAzimuth: -90, maxAzimuth: 90, minElevation: 0, maxElevation: 75, offset: Vector(x: 0, y: 0, z: 0), fixedOffset: false, debug: false),
         DeviateShotAngle = 0f,
         AimingTolerance = 4f, // 0 - 180 firing angle
-        EnergyCost = 0.1f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
+        EnergyCost = 0.8f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
         RotateBarrelAxis = 0, // 0 = off, 1 = xAxis, 2 = yAxis, 3 = zAxis
         AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
         DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-        GridWeaponCap = 2,// 0 = unlimited, the smallest weapon cap assigned to a subTypeId takes priority.
+        GridWeaponCap = 1,// 0 = unlimited, the smallest weapon cap assigned to a subTypeId takes priority.
         Ui = Display(rateOfFire: true, damageModifier: true, toggleGuidance: false, enableOverload: true),
 
         Loading = new AmmoLoading
         {
-            RateOfFire = 15,
+            RateOfFire = 3,
             BarrelsPerShot = 1,
             TrajectilesPerBarrel = 1, // Number of Projectiles per barrel per fire event.
             SkipBarrels = 0,
             ReloadTime = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
             DelayUntilFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-            HeatPerShot = 1, //heat generated per shot
+            HeatPerShot = 6000, //heat generated per shot
             MaxHeat = 18000, //max heat before weapon enters cooldown (70% of max heat)
             Cooldown = .95f, //percent of max heat to be under to start firing again after overheat accepts .2-.95
             HeatSinkRate = 200, //amount of heat lost per second
             DegradeRof = true, // progressively lower rate of fire after 80% heat threshold (80% of max heat)
             ShotsInBurst = 3,
-            DelayAfterBurst = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+            DelayAfterBurst = 600, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
         },
     },
     Targeting = new TargetingDefinition
@@ -56,11 +56,11 @@ namespace WeaponThread
         Threats = Valid(Characters, Projectiles, Grids),
         SubSystems = Priority(Offense, Thrust, Utility, Power, Production, Any), //define block type targeting order
         ClosestFirst = true, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
-        MinimumDiameter = 10, // 0 = unlimited, Minimum radius of threat to engage.
+        MinimumDiameter = 100, // 0 = unlimited, Minimum radius of threat to engage.
         MaximumDiameter = 0, // 0 = unlimited, Maximum radius of threat to engage.
         TopTargets = 4, // 0 = unlimited, max number of top targets to randomize between.
         TopBlocks = 4, // 0 = unlimited, max number of blocks to randomize between
-        StopTrackingSpeed = 70, // do not track target threats traveling faster than this speed
+        StopTrackingSpeed = 30, // do not track target threats traveling faster than this speed
     },
     DamageScales = new DamageScaleDefinition
     {
@@ -79,10 +79,10 @@ namespace WeaponThread
     },
     Ammo = new AmmoDefinition
     {
-        BaseDamage = 1000f,
-        Mass = 1.1f, // in kilograms
+        BaseDamage = 10000f,
+        Mass = 10.1f, // in kilograms
         Health = 0, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
-        BackKickForce = 0f,
+        BackKickForce = 10f,
         Shape = Options(shape: Line, diameter: 2), //defines the collision shape of projectile, defaults line and visual Line Length if set to 0
         ObjectsHit = Options(maxObjectsHit: 32, countBlocks: false), // 0 = disabled, value determines max objects (and/or blocks) penetrated per hit
         Shrapnel = Options(baseDamage: 1, fragments: 0, maxTrajectory: 100, noAudioVisual: true, noGuidance: true, shape: HalfMoon),
@@ -90,7 +90,7 @@ namespace WeaponThread
         AreaEffect = new AreaDamage
         {
             AreaEffect = Radiant, // Disabled = do not use area effect at all, Explosive is keens, Radiant is not.
-            AreaEffectDamage = 10f, // 0 = use spillover from BaseDamage, otherwise use this value.
+            AreaEffectDamage = 100f, // 0 = use spillover from BaseDamage, otherwise use this value.
             AreaEffectRadius = 100f,
             Explosions = Options(noVisuals: false, noSound: false, scale: 1, customParticle: "", customSound: ""),
             Detonation = Options(detonateOnEnd: false, armOnlyOnHit: false, detonationDamage: 0, detonationRadius: 0),
@@ -111,7 +111,7 @@ namespace WeaponThread
             TargetLossTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
             AccelPerSec = 10000f,
             DesiredSpeed = 1600f,
-            MaxTrajectory = 3000f,
+            MaxTrajectory = 5000f,
             FieldTime = 0, // 0 is disabled, a value causes the projectile to come to rest, spawn a field and remain for a time (Measured in game ticks, 60 = 1 second)
             SpeedVariance = Random(start: 0, end: 0), // subtracts value from DesiredSpeed
             RangeVariance = Random(start: 0, end: 0), // subtracts value from MaxTrajectory
@@ -146,34 +146,34 @@ namespace WeaponThread
             },
             Hit = new Particle
             {
-                Name = "EnergyBlast",
-                Color = Color(red: 1, green: 1, blue: 1, alpha: 1),
+                Name = "RailgunEnergyParticle",
+                Color = Color(red: 8, green: 8, blue: 64, alpha: 8),
                 Offset = Vector(x: 0, y: 0, z: 0),
-                Extras = Options(loop: false, restart: false, distance: 5000, duration: 3, scale: 2.6f),
+                Extras = Options(loop: true, restart: false, distance: 5000, duration: 5, scale: 7.6f),
             },
             Barrel1 = new Particle
             {
                 Name = "", // Smoke_LargeGunShot
-                Color = Color(red: 1, green: 1, blue: 1, alpha: 1),
+                Color = Color(red: 8, green: 8, blue: 64, alpha: 8),
                 Offset = Vector(x: 0, y: -1, z: 0),
                 Extras = Options(loop: true, restart: false, distance: 200, duration: 1, scale: 1f),
             },
             Barrel2 = new Particle
             {
                 Name = "RailgunEnergyParticle",//Muzzle_Flash_Large
-                Color = Color(red: 1, green: 1, blue: 1, alpha: 1),
+                Color = Color(red: 8, green: 8, blue: 64, alpha: 8),
                 Offset = Vector(x: 0, y: -1, z: 0),
                 Extras = Options(loop: true, restart: false, distance: 200, duration: 1, scale: 1f),
 			},
 		},
         Line = new LineDefinition
         {
-            Tracer = Base(enable: true, length: 2f, width: 0.15f, color: Color(red: 2, green: 2, blue: 30, alpha: 1)),
+            Tracer = Base(enable: true, length: 8f, width: 0.55f, color: Color(red: 2, green: 2, blue: 30, alpha: 1)),
             TracerMaterial = "ProjectileTrailLine", // WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
             ColorVariance = Random(start: 0.75f, end: 4f), // multiply the color by random values within range.
             WidthVariance = Random(start: 0f, end: 0.25f), // adds random value to default width (negatives shrinks width)
             Trail = Options(enable: true, material: "WeaponLaser", decayTime: 60, color: Color(red: 8, green: 8, blue: 64, alpha: 8)),
-            OffsetEffect = Options(maxOffset: 0, minLength: 5, maxLength: 7), // 0 offset value disables this effect
+            OffsetEffect = Options(maxOffset: 0, minLength: 8, maxLength: 10), // 0 offset value disables this effect
         },
     },
     Audio = new AudioDefinition
