@@ -36,18 +36,18 @@ namespace WeaponThread
 
         Loading = new AmmoLoading
         {
-            RateOfFire = 3,
+            RateOfFire = 12,
             BarrelsPerShot = 1,
             TrajectilesPerBarrel = 1, // Number of Projectiles per barrel per fire event.
             SkipBarrels = 0,
             ReloadTime = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
             DelayUntilFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-            HeatPerShot = 6000, //heat generated per shot
+            HeatPerShot = 1000, //heat generated per shot
             MaxHeat = 18000, //max heat before weapon enters cooldown (70% of max heat)
             Cooldown = .95f, //percent of max heat to be under to start firing again after overheat accepts .2-.95
             HeatSinkRate = 200, //amount of heat lost per second
             DegradeRof = true, // progressively lower rate of fire after 80% heat threshold (80% of max heat)
-            ShotsInBurst = 3,
+            ShotsInBurst = 12,
             DelayAfterBurst = 600, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
         },
     },
@@ -163,7 +163,7 @@ namespace WeaponThread
                 Name = "RailgunEnergyParticle",//Muzzle_Flash_Large
                 Color = Color(red: 8, green: 8, blue: 64, alpha: 8),
                 Offset = Vector(x: 0, y: -1, z: 0),
-                Extras = Options(loop: true, restart: false, distance: 200, duration: 1, scale: 1f),
+                Extras = Options(loop: true, restart: false, distance: 200, duration: 1, scale: 0.1f),
 			},
 		},
         Line = new LineDefinition
