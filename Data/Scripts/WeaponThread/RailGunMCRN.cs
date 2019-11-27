@@ -26,7 +26,7 @@ namespace WeaponThread
         AmmoMagazineId = "Blank",
         Block = AimControl(trackTargets: true, turretAttached: true, turretController: true, primaryTracking: true, rotateRate: 0.008f, elevateRate: 0.008f, minAzimuth: -90, maxAzimuth: 90, minElevation: 0, maxElevation: 75, offset: Vector(x: 0, y: 0, z: 0), fixedOffset: false, debug: false),
         DeviateShotAngle = 0f,
-        AimingTolerance = 4f, // 0 - 180 firing angle
+        AimingTolerance = 90f, // 0 - 180 firing angle
         EnergyCost = 0.8f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
         RotateBarrelAxis = 0, // 0 = off, 1 = xAxis, 2 = yAxis, 3 = zAxis
         AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
@@ -40,8 +40,8 @@ namespace WeaponThread
             BarrelsPerShot = 1,
             TrajectilesPerBarrel = 1, // Number of Projectiles per barrel per fire event.
             SkipBarrels = 0,
-            ReloadTime = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-            DelayUntilFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+            ReloadTime = 180, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+            DelayUntilFire = 300, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
             HeatPerShot = 1000, //heat generated per shot
             MaxHeat = 18000, //max heat before weapon enters cooldown (70% of max heat)
             Cooldown = .95f, //percent of max heat to be under to start firing again after overheat accepts .2-.95
@@ -53,10 +53,10 @@ namespace WeaponThread
     },
     Targeting = new TargetingDefinition
     {
-        Threats = Valid(Characters, Projectiles, Grids),
-        SubSystems = Priority(Offense, Thrust, Utility, Power, Production, Any), //define block type targeting order
+        Threats = Valid(Grids),
+        SubSystems = Priority(Power, Thrust, Offense, Utility, Production, Any), //define block type targeting order
         ClosestFirst = true, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
-        MinimumDiameter = 100, // 0 = unlimited, Minimum radius of threat to engage.
+        MinimumDiameter = 30, // 0 = unlimited, Minimum radius of threat to engage.
         MaximumDiameter = 0, // 0 = unlimited, Maximum radius of threat to engage.
         TopTargets = 4, // 0 = unlimited, max number of top targets to randomize between.
         TopBlocks = 4, // 0 = unlimited, max number of blocks to randomize between
@@ -72,7 +72,7 @@ namespace WeaponThread
         Characters = -1f,
         Grids = Options(largeGridModifier: -1f, smallGridModifier: -1f),
         Armor = Options(armor: -1f, light: -1f, heavy: -1f, nonArmor: -1f), 
-        Shields = Options(modifier: -1f, type: Energy), // Types: Kinetic, Energy, Emp or Bypass
+        Shields = Options(modifier: -1f, type: Bypass), // Types: Kinetic, Energy, Emp or Bypass
 
         // ignoreOthers will cause projectiles to pass through all blocks that do not match the custom subtypeIds.
         Custom = SubTypeIds(false),
@@ -81,11 +81,11 @@ namespace WeaponThread
     {
         BaseDamage = 10000f,
         Mass = 10.1f, // in kilograms
-        Health = 0, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
+        Health = 1000, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
         BackKickForce = 10f,
-        Shape = Options(shape: Line, diameter: 2), //defines the collision shape of projectile, defaults line and visual Line Length if set to 0
-        ObjectsHit = Options(maxObjectsHit: 32, countBlocks: false), // 0 = disabled, value determines max objects (and/or blocks) penetrated per hit
-        Shrapnel = Options(baseDamage: 1, fragments: 0, maxTrajectory: 100, noAudioVisual: true, noGuidance: true, shape: HalfMoon),
+        Shape = Options(shape: Sphere, diameter: 2), //defines the collision shape of projectile, defaults line and visual Line Length if set to 0
+        ObjectsHit = Options(maxObjectsHit: 200, countBlocks: true), // 0 = disabled, value determines max objects (and/or blocks) penetrated per hit
+        Shrapnel = Options(baseDamage: 400, fragments: 10, maxTrajectory: 100, noAudioVisual: true, noGuidance: true, shape: HalfMoon),
 
         AreaEffect = new AreaDamage
         {
@@ -109,7 +109,7 @@ namespace WeaponThread
             Guidance = None,
             TargetLossDegree = 80f,
             TargetLossTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-            AccelPerSec = 10000f,
+            AccelPerSec = 2000f,
             DesiredSpeed = 1600f,
             MaxTrajectory = 5000f,
             FieldTime = 0, // 0 is disabled, a value causes the projectile to come to rest, spawn a field and remain for a time (Measured in game ticks, 60 = 1 second)
@@ -142,25 +142,25 @@ namespace WeaponThread
                 Name = "LaserImpactParticle",
                 Color = Color(red: 8, green: 8, blue: 64, alpha: 32),
                 Offset = Vector(x: 0, y: 0, z: 0),
-                Extras = Options(loop: true, restart: false, distance: 5000, duration: 1, scale: 0.5f)
+                Extras = Options(loop: true, restart: false, distance: 5000, duration: 5, scale: 2.5f)
             },
             Hit = new Particle
             {
                 Name = "RailgunEnergyParticle",
-                Color = Color(red: 8, green: 8, blue: 64, alpha: 8),
+                Color = Color(red: 8, green: 8, blue: 64, alpha: 0.5f),
                 Offset = Vector(x: 0, y: 0, z: 0),
-                Extras = Options(loop: true, restart: false, distance: 5000, duration: 5, scale: 7.6f),
+                Extras = Options(loop: true, restart: false, distance: 5000, duration: 5, scale: 3.6f),
             },
             Barrel1 = new Particle
             {
-                Name = "", // Smoke_LargeGunShot
+                Name = "RailgunEnergyParticle", // Smoke_LargeGunShot
                 Color = Color(red: 8, green: 8, blue: 64, alpha: 8),
                 Offset = Vector(x: 0, y: -1, z: 0),
                 Extras = Options(loop: true, restart: false, distance: 200, duration: 1, scale: 1f),
             },
             Barrel2 = new Particle
             {
-                Name = "RailgunEnergyParticle",//Muzzle_Flash_Large
+                Name = "",//Muzzle_Flash_Large
                 Color = Color(red: 8, green: 8, blue: 64, alpha: 8),
                 Offset = Vector(x: 0, y: -1, z: 0),
                 Extras = Options(loop: true, restart: false, distance: 200, duration: 1, scale: 0.1f),
@@ -172,15 +172,15 @@ namespace WeaponThread
             TracerMaterial = "ProjectileTrailLine", // WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
             ColorVariance = Random(start: 0.75f, end: 4f), // multiply the color by random values within range.
             WidthVariance = Random(start: 0f, end: 0.25f), // adds random value to default width (negatives shrinks width)
-            Trail = Options(enable: true, material: "WeaponLaser", decayTime: 60, color: Color(red: 8, green: 8, blue: 64, alpha: 8)),
-            OffsetEffect = Options(maxOffset: 0, minLength: 8, maxLength: 10), // 0 offset value disables this effect
+            Trail = Options(enable: true, material: "ProjectileTrailLine", decayTime: 50, color: Color(red: 8, green: 8, blue: 64, alpha: 8)),
+            OffsetEffect = Options(maxOffset: 0, minLength: 12, maxLength: 12), // 0 offset value disables this effect
         },
     },
     Audio = new AudioDefinition
     {
         HardPoint = new AudioHardPointDefinition
         {
-            FiringSound = "", // WepShipGatlingShot
+            FiringSound = "RailCharge", // WepShipGatlingShot
             FiringSoundPerShot = true,
             ReloadSound = "",
             NoAmmoSound = "",

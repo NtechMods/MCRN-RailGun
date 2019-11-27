@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Sounds>
+    <Sound>
+      <Id>
+        <TypeId>AudioDefinition</TypeId>
+        <SubtypeId>RailCharge</SubtypeId>
+      </Id>
+      <Category>WEP_TURR</Category>
+      <MaxDistance>200</MaxDistance>
+      <PitchVariation>50</PitchVariation>
+      <VolumeVariation>0.2</VolumeVariation>
+      <Volume>0.9</Volume>
+	  <Loopable>false</Loopable>
+      <Waves>
+        <Wave Type="D2">
+          <Start>Audio\WEP\ChargeFire_S.wav</Start>
+          <Loop>Audio\WEP\ChargeFire_S.wav</Loop>
+          <End>Audio\WEP\ChargeFire_S.wav</End>
+        </Wave>
+        <Wave Type="D3">
+          <Start>Audio\WEP\ChargeFire_M.wav</Start>
+          <Loop>Audio\WEP\ChargeFire_M.wav</Loop>
+          <End>Audio\WEP\ChargeFire_M.wav</End>
+        </Wave>
+      </Waves>
+    </Sound>
+  </Sounds>
+</Definitions>

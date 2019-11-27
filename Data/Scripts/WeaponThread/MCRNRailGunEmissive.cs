@@ -22,10 +22,10 @@ namespace WeaponThread
                     IntensityFrom:0, //starting intensity, can be 0.0-1.0 or 1.0-0.0, setting both from and to, to the same value will stay at that value
                     IntensityTo:1, 
                     CycleEmissiveParts: false,//whether to cycle from one part to the next, while also following the Intensity Range, or set all parts at the same time to the same value
-                    LeavePreviousOn: false,//true will leave last part at the last setting until end of animation, used with cycleEmissiveParts
+                    LeavePreviousOn: true,//true will leave last part at the last setting until end of animation, used with cycleEmissiveParts
                     EmissivePartNames: new []
                     {
-                        "Emissive"
+                        "MCRNRailGunBarrels"
                     }),
             },
             WeaponAnimationSets = new[]
