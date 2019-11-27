@@ -27,7 +27,7 @@ namespace WeaponThread
         Block = AimControl(trackTargets: true, turretAttached: true, turretController: true, primaryTracking: true, rotateRate: 0.008f, elevateRate: 0.008f, minAzimuth: -90, maxAzimuth: 90, minElevation: 0, maxElevation: 75, offset: Vector(x: 0, y: 0, z: 0), fixedOffset: false, debug: false),
         DeviateShotAngle = 0f,
         AimingTolerance = 90f, // 0 - 180 firing angle
-        EnergyCost = 0.8f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
+        EnergyCost = 0.008f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
         RotateBarrelAxis = 0, // 0 = off, 1 = xAxis, 2 = yAxis, 3 = zAxis
         AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
         DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
