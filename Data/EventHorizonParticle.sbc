@@ -11,7 +11,7 @@
         <SubtypeId>PlanetShield</SubtypeId>
       </Id>
       <Version>0</Version>
-      <ParticleId>512</ParticleId> <!-- Must be unique if custom effect -->
+      <ParticleId>1512</ParticleId> <!-- Must be unique if custom effect -->
       <Length>6</Length> <!-- Length of the effect -->
       <DurationMin>1</DurationMin> <!-- minimum duration of effect -->
       <DurationMax>3</DurationMax> <!-- maximum duration of effect -->

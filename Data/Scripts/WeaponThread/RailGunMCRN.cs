@@ -36,7 +36,7 @@ namespace WeaponThread
 
         Loading = new AmmoLoading
         {
-            RateOfFire = 12,
+            RateOfFire = 240,
             BarrelsPerShot = 1,
             TrajectilesPerBarrel = 1, // Number of Projectiles per barrel per fire event.
             SkipBarrels = 0,
@@ -132,24 +132,24 @@ namespace WeaponThread
 	
     Graphics = new GraphicDefinition
     {
-        ModelName = "",
+        ModelName = "\\Models\\Ammo\\AmmoOrb.mwm",
         VisualProbability = 1f,
         ShieldHitDraw = true,
         Particles = new ParticleDefinition
         {
             Ammo = new Particle
             {
-                Name = "RailgunEnergyParticle",
+                Name = "EnergyBubble",
                 Color = Color(red: 8, green: 8, blue: 64, alpha: 32),
                 Offset = Vector(x: 0, y: 0, z: 0),
-                Extras = Options(loop: true, restart: false, distance: 5000, duration: 5, scale: 1.5f)
+                Extras = Options(loop: true, restart: false, distance: 5000, duration: 1, scale: 3.0f)
             },
             Hit = new Particle
             {
                 Name = "RailgunEnergyParticle",
-                Color = Color(red: 8, green: 8, blue: 64, alpha: 0.5f),
+                Color = Color(red: 8, green: 8, blue: 64, alpha: 1.5f),
                 Offset = Vector(x: 0, y: 0, z: 0),
-                Extras = Options(loop: true, restart: false, distance: 5000, duration: 5, scale: 3.6f),
+                Extras = Options(loop: true, restart: false, distance: 5000, duration: 5, scale: 2.6f),
             },
             Barrel1 = new Particle
             {
@@ -168,12 +168,12 @@ namespace WeaponThread
 		},
         Line = new LineDefinition
         {
-            Tracer = Base(enable: false, length: 8f, width: 0.55f, color: Color(red: 2, green: 2, blue: 30, alpha: 1)),
+            Tracer = Base(enable: true, length: 12f, width: 0.55f, color: Color(red: 2, green: 2, blue: 30, alpha: 1)),
             TracerMaterial = "ProjectileTrailLine", // WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
             ColorVariance = Random(start: 0.75f, end: 4f), // multiply the color by random values within range.
             WidthVariance = Random(start: 0f, end: 0.25f), // adds random value to default width (negatives shrinks width)
-            Trail = Options(enable: true, material: "ProjectileTrailLine", decayTime: 50, color: Color(red: 8, green: 8, blue: 64, alpha: 8)),
-            OffsetEffect = Options(maxOffset: 0, minLength: 12, maxLength: 12), // 0 offset value disables this effect
+            Trail = Options(enable: false, material: "ProjectileTrailLine", decayTime: 10, color: Color(red: 8, green: 8, blue: 64, alpha: 1)),
+            OffsetEffect = Options(maxOffset: 0, minLength: 2, maxLength: 2), // 0 offset value disables this effect
         },
     },
     Audio = new AudioDefinition
@@ -190,7 +190,7 @@ namespace WeaponThread
 
         Ammo = new AudioAmmoDefinition
         {
-            TravelSound = "ParticleReactor",
+            TravelSound = "RealToolLrgGrindMetal",
             HitSound = "WepSmallWarheadExpl",
         }, // Don't edit below this line
     },
