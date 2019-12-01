@@ -12,7 +12,7 @@ namespace WeaponThread
             Emissives = new []
             {
                 Emissive(
-                    EmissiveName: "MCRNEmissive", 
+                    EmissiveName: "Emissive", 
                     Colors: new []
                     {
                         Color(red:0, green: 0, blue:0, alpha: 1),//will transitions form one color to the next if more than one
@@ -48,8 +48,8 @@ namespace WeaponThread
                                     CenterEmpty = "",//Specifiy an empty on the subpart to rotate around
                                     TicksToMove = 1, //number of ticks to complete motion, 60 = 1 second
 
-                                    MovementType = ExpoDecay,
-                                    EmissiveName = "MCRNEmissive",//name of defined emissive 
+                                    MovementType = Delay, // ExpoGrowth,  ExpoDecay, Linear, Delay, Show, Hide
+                                    EmissiveName = "Emissive",//name of defined emissive 
                                     LinearPoints = new[]
                                     {
                                         Transformation(0, 0, 0), //linear movement
@@ -66,8 +66,8 @@ namespace WeaponThread
                                     CenterEmpty = "",//Specifiy an empty on the subpart to rotate around
                                     TicksToMove = 1, //number of ticks to complete motion, 60 = 1 second
 
-                                    MovementType = ExpoDecay,
-                                    EmissiveName = "MCRNEmissive",//name of defined emissive 
+                                    MovementType = Delay,
+                                    EmissiveName = "Emissive",//name of defined emissive 
                                     LinearPoints = new[]
                                     {
                                         Transformation(0, 0, 0), //linear movement
