@@ -3,12 +3,12 @@
 	<Parameter Name="RescaleFactor">0.01</Parameter>
 	<Parameter Name="RescaleToLengthInMeters">false</Parameter>
 	<Parameter Name="Centered">false</Parameter>
-	<Material Name="Decals">
-		<Parameter Name="Technique">DECAL_CUTOUT</Parameter>
-		<Parameter Name="ColorMetalTexture">Textures\Models\Cubes\Decals_Atlas_A_01_cm.dds</Parameter>
-		<Parameter Name="NormalGlossTexture">Textures\Models\Cubes\Decals_Atlas_A_01_ng.dds</Parameter>
-		<Parameter Name="AddMapsTexture">Textures\Models\Cubes\Decals_Atlas_A_01_add.dds</Parameter>
-		<Parameter Name="AlphamaskTexture">Textures\Models\Cubes\Decals_Atlas_A_01_alphamask.dds</Parameter>
+	<Material Name="Emissive">
+		<Parameter Name="Technique">MESH</Parameter>
+		<Parameter Name="ColorMetalTexture">Textures\Models\Cubes\EmissiveAtlas_cm.dds</Parameter>
+		<Parameter Name="NormalGlossTexture">Textures\Models\Cubes\EmissiveAtlas_ng.dds</Parameter>
+		<Parameter Name="AddMapsTexture">Textures\Models\Cubes\EmissiveAtlas0_add.dds</Parameter>
+		<!--material has no AlphamaskTexture-->
 	</Material>
 	<Material Name="Conveyor">
 		<Parameter Name="Technique">MESH</Parameter>
@@ -16,23 +16,17 @@
 		<Parameter Name="NormalGlossTexture">Textures\Models\Cubes\Conveyor_ng.dds</Parameter>
 		<Parameter Name="AddMapsTexture">Textures\Models\Cubes\Conveyor_add.dds</Parameter>
 	</Material>
-	<Material Name="PaintedMetal_Colorable">
-		<Parameter Name="Technique">MESH</Parameter>
-		<Parameter Name="ColorMetalTexture">Textures\Models\Cubes\PaintedMetalColorable_cm.dds</Parameter>
-		<Parameter Name="NormalGlossTexture">Textures\Models\Cubes\PaintedMetalColorable_ng.dds</Parameter>
-		<Parameter Name="AddMapsTexture">Textures\Models\Cubes\PaintedMetalColorable_add.dds</Parameter>
-	</Material>
 	<Material Name="PaintedMetal_Darker">
 		<Parameter Name="Technique">MESH</Parameter>
 		<Parameter Name="ColorMetalTexture">Textures\Models\Cubes\PaintedMetalDarker_cm.dds</Parameter>
 		<Parameter Name="NormalGlossTexture">Textures\Models\Cubes\PaintedMetalColorable_ng.dds</Parameter>
 		<!--material has no AddMapsTexture-->
 	</Material>
-	<Material Name="Rubber">
+	<Material Name="PaintedMetal_Colorable">
 		<Parameter Name="Technique">MESH</Parameter>
-		<Parameter Name="ColorMetalTexture">Textures\Models\Cubes\Rubber_cm.dds</Parameter>
-		<Parameter Name="NormalGlossTexture">Textures\Models\Cubes\Rubber_ng.dds</Parameter>
-		<!--material has no AddMapsTexture-->
+		<Parameter Name="ColorMetalTexture">Textures\Models\Cubes\PaintedMetalColorable_cm.dds</Parameter>
+		<Parameter Name="NormalGlossTexture">Textures\Models\Cubes\PaintedMetalColorable_ng.dds</Parameter>
+		<Parameter Name="AddMapsTexture">Textures\Models\Cubes\PaintedMetalColorable_add.dds</Parameter>
 	</Material>
 	<Material Name="Chrome">
 		<Parameter Name="Technique">MESH</Parameter>
@@ -40,11 +34,18 @@
 		<Parameter Name="NormalGlossTexture">Textures\Models\Cubes\Chrome_ng.dds</Parameter>
 		<!--material has no AddMapsTexture-->
 	</Material>
-	<Material Name="Emissive">
+	<Material Name="Decals">
+		<Parameter Name="Technique">DECAL_NOPREMULT</Parameter>
+		<Parameter Name="ColorMetalTexture">Textures\Models\Cubes\Decals_Atlas_A_01_cm.dds</Parameter>
+		<Parameter Name="NormalGlossTexture">Textures\Models\Cubes\Decals_Atlas_A_01_ng.dds</Parameter>
+		<Parameter Name="AddMapsTexture">Textures\Models\Cubes\Decals_Atlas_A_01_add.dds</Parameter>
+		<Parameter Name="AlphamaskTexture">Textures\Models\Cubes\Decals_Atlas_A_01_alphamask.dds</Parameter>
+	</Material>
+	<Material Name="Rubber">
 		<Parameter Name="Technique">MESH</Parameter>
-		<Parameter Name="ColorMetalTexture">Textures\Models\Cubes\EmissiveAtlas_cm.dds</Parameter>
-		<Parameter Name="NormalGlossTexture">Textures\Models\Cubes\EmissiveAtlas_ng.dds</Parameter>
-		<Parameter Name="AddMapsTexture">Textures\Models\Cubes\EmissiveAtlas0_add.dds</Parameter>
+		<Parameter Name="ColorMetalTexture">Textures\Models\Cubes\Rubber_cm.dds</Parameter>
+		<Parameter Name="NormalGlossTexture">Textures\Models\Cubes\Rubber_ng.dds</Parameter>
+		<!--material has no AddMapsTexture-->
 	</Material>
 	<LOD Distance="60">
 		<Model>..\..\..\AppData\Roaming\SpaceEngineers\Mods\MCRN-RailGun\Models\Cubes\MCRNRailGunBarrels_LOD1</Model>

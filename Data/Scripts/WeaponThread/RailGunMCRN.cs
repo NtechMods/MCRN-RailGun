@@ -36,18 +36,18 @@ namespace WeaponThread
 
         Loading = new AmmoLoading
         {
-            RateOfFire = 240,
+            RateOfFire = 30,
             BarrelsPerShot = 1,
             TrajectilesPerBarrel = 1, // Number of Projectiles per barrel per fire event.
             SkipBarrels = 0,
             ReloadTime = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). ReloadTime = 180
-            DelayUntilFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). DelayUntilFire = 120
-            HeatPerShot = 100, //heat generated per shot
+            DelayUntilFire = 120, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). DelayUntilFire = 120
+            HeatPerShot = 300, //heat generated per shot
             MaxHeat = 18000, //max heat before weapon enters cooldown (70% of max heat)
             Cooldown = .95f, //percent of max heat to be under to start firing again after overheat accepts .2-.95
             HeatSinkRate = 200, //amount of heat lost per second
             DegradeRof = true, // progressively lower rate of fire after 80% heat threshold (80% of max heat)
-            ShotsInBurst = 12,
+            ShotsInBurst = 30,
             DelayAfterBurst = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). DelayAfterBurst = 600
         },
     },
@@ -132,7 +132,7 @@ namespace WeaponThread
 	
     Graphics = new GraphicDefinition
     {
-        ModelName = "\\Models\\Ammo\\AmmoOrb.mwm",
+        ModelName = "", // \\Models\\Ammo\\AmmoOrb.mwm
         VisualProbability = 1f,
         ShieldHitDraw = true,
         Particles = new ParticleDefinition
@@ -149,7 +149,7 @@ namespace WeaponThread
                 Name = "RailgunEnergyParticle",
                 Color = Color(red: 8, green: 8, blue: 64, alpha: 1.5f),
                 Offset = Vector(x: 0, y: 0, z: 0),
-                Extras = Options(loop: true, restart: false, distance: 5000, duration: 5, scale: 2.6f),
+                Extras = Options(loop: true, restart: false, distance: 5000, duration: 3, scale: 2.6f),
             },
             Barrel1 = new Particle
             {
@@ -168,7 +168,7 @@ namespace WeaponThread
 		},
         Line = new LineDefinition
         {
-            Tracer = Base(enable: true, length: 12f, width: 0.55f, color: Color(red: 2, green: 2, blue: 30, alpha: 1)),
+            Tracer = Base(enable: true, length: 24f, width: 0.55f, color: Color(red: 2, green: 2, blue: 30, alpha: 1)),
             TracerMaterial = "ProjectileTrailLine", // WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
             ColorVariance = Random(start: 0.75f, end: 4f), // multiply the color by random values within range.
             WidthVariance = Random(start: 0f, end: 0.25f), // adds random value to default width (negatives shrinks width)
