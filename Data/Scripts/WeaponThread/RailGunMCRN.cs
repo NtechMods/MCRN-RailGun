@@ -36,18 +36,18 @@ namespace WeaponThread
 
         Loading = new AmmoLoading
         {
-            RateOfFire = 30,
+            RateOfFire = 10,
             BarrelsPerShot = 1,
             TrajectilesPerBarrel = 1, // Number of Projectiles per barrel per fire event.
             SkipBarrels = 0,
             ReloadTime = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). ReloadTime = 180
-            DelayUntilFire = 120, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). DelayUntilFire = 120
-            HeatPerShot = 300, //heat generated per shot
+            DelayUntilFire = 220, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). DelayUntilFire = 120
+            HeatPerShot = 3000, //heat generated per shot
             MaxHeat = 18000, //max heat before weapon enters cooldown (70% of max heat)
             Cooldown = .95f, //percent of max heat to be under to start firing again after overheat accepts .2-.95
             HeatSinkRate = 200, //amount of heat lost per second
             DegradeRof = true, // progressively lower rate of fire after 80% heat threshold (80% of max heat)
-            ShotsInBurst = 30,
+            ShotsInBurst = 1,
             DelayAfterBurst = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). DelayAfterBurst = 600
         },
     },
@@ -109,9 +109,9 @@ namespace WeaponThread
             Guidance = None,
             TargetLossDegree = 80f,
             TargetLossTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-            AccelPerSec = 2000f,
-            DesiredSpeed = 1600f,
-            MaxTrajectory = 5000f,
+            AccelPerSec = 10000f,
+            DesiredSpeed = 10000f,
+            MaxTrajectory = 10000f,
             FieldTime = 0, // 0 is disabled, a value causes the projectile to come to rest, spawn a field and remain for a time (Measured in game ticks, 60 = 1 second)
             SpeedVariance = Random(start: 0, end: 0), // subtracts value from DesiredSpeed
             RangeVariance = Random(start: 0, end: 0), // subtracts value from MaxTrajectory
@@ -172,7 +172,7 @@ namespace WeaponThread
             TracerMaterial = "ProjectileTrailLine", // WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
             ColorVariance = Random(start: 0.75f, end: 4f), // multiply the color by random values within range.
             WidthVariance = Random(start: 0f, end: 0.25f), // adds random value to default width (negatives shrinks width)
-            Trail = Options(enable: false, material: "ProjectileTrailLine", decayTime: 10, color: Color(red: 8, green: 8, blue: 64, alpha: 1)),
+            Trail = Options(enable: true, material: "ProjectileTrailLine", decayTime: 10, color: Color(red: 10, green: 0, blue: 25.5f, alpha: 1)),
             OffsetEffect = Options(maxOffset: 0, minLength: 2, maxLength: 2), // 0 offset value disables this effect
         },
     },
@@ -184,8 +184,8 @@ namespace WeaponThread
             FiringSoundPerShot = true,
             ReloadSound = "",
             NoAmmoSound = "",
-            HardPointRotationSound = "WepTurretGatlingRotate",
-            BarrelRotationSound = "WepShipGatlingRotation",
+            HardPointRotationSound = "",
+            BarrelRotationSound = "",
         },
 
         Ammo = new AudioAmmoDefinition
