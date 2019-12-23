@@ -41,14 +41,14 @@ namespace WeaponThread
             TrajectilesPerBarrel = 1, // Number of Projectiles per barrel per fire event.
             SkipBarrels = 0,
             ReloadTime = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). ReloadTime = 180
-            DelayUntilFire = 220, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). DelayUntilFire = 120
-            HeatPerShot = 3000, //heat generated per shot
+            DelayUntilFire = 620, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). DelayUntilFire = 120
+            HeatPerShot = 1000, //heat generated per shot
             MaxHeat = 18000, //max heat before weapon enters cooldown (70% of max heat)
             Cooldown = .95f, //percent of max heat to be under to start firing again after overheat accepts .2-.95
-            HeatSinkRate = 200, //amount of heat lost per second
+            HeatSinkRate = 500, //amount of heat lost per second
             DegradeRof = true, // progressively lower rate of fire after 80% heat threshold (80% of max heat)
             ShotsInBurst = 1,
-            DelayAfterBurst = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). DelayAfterBurst = 600
+            DelayAfterBurst = 200, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). DelayAfterBurst = 600
         },
     },
     Targeting = new TargetingDefinition
@@ -140,39 +140,39 @@ namespace WeaponThread
             Ammo = new Particle
             {
                 Name = "EnergyBubble",
-                Color = Color(red: 8, green: 8, blue: 64, alpha: 32),
+                Color = Color(red:0.4f, green: 0.0f, blue:0.8f, alpha: 1),
                 Offset = Vector(x: 0, y: 0, z: 0),
                 Extras = Options(loop: true, restart: false, distance: 5000, duration: 1, scale: 3.0f)
             },
             Hit = new Particle
             {
                 Name = "RailgunEnergyParticle",
-                Color = Color(red: 8, green: 8, blue: 64, alpha: 1.5f),
+                Color = Color(red:0.4f, green: 0.0f, blue:0.8f, alpha: 1),
                 Offset = Vector(x: 0, y: 0, z: 0),
                 Extras = Options(loop: true, restart: false, distance: 5000, duration: 3, scale: 2.6f),
             },
             Barrel1 = new Particle
             {
                 Name = "", // Smoke_LargeGunShot
-                Color = Color(red: 8, green: 8, blue: 64, alpha: 8),
+                Color = Color(red:0.4f, green: 0.0f, blue:0.8f, alpha: 1),
                 Offset = Vector(x: 0, y: -1, z: 0),
                 Extras = Options(loop: true, restart: false, distance: 200, duration: 1, scale: 1f),
             },
             Barrel2 = new Particle
             {
                 Name = "",//Muzzle_Flash_Large
-                Color = Color(red: 8, green: 8, blue: 64, alpha: 8),
+                Color = Color(red:0.4f, green: 0.0f, blue:0.8f, alpha: 1),
                 Offset = Vector(x: 0, y: -1, z: 0),
                 Extras = Options(loop: true, restart: false, distance: 200, duration: 1, scale: 0.1f),
 			},
 		},
         Line = new LineDefinition
         {
-            Tracer = Base(enable: true, length: 24f, width: 0.55f, color: Color(red: 2, green: 2, blue: 30, alpha: 1)),
-            TracerMaterial = "ProjectileTrailLine", // WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
+            Tracer = Base(enable: true, length: 240f, width: 0.55f, color: Color(red:0.4f, green: 0.0f, blue:0.8f, alpha: 1)),
+            TracerMaterial = "WeaponLaser", // WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
             ColorVariance = Random(start: 0.75f, end: 4f), // multiply the color by random values within range.
             WidthVariance = Random(start: 0f, end: 0.25f), // adds random value to default width (negatives shrinks width)
-            Trail = Options(enable: true, material: "ProjectileTrailLine", decayTime: 10, color: Color(red: 10, green: 0, blue: 25.5f, alpha: 1)),
+            Trail = Options(enable: true, material: "WeaponLaser", decayTime: 10, color: Color(red:0.4f, green: 0.0f, blue:0.8f, alpha: 1)),
             OffsetEffect = Options(maxOffset: 0, minLength: 2, maxLength: 2), // 0 offset value disables this effect
         },
     },
