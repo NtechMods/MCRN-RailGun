@@ -29,9 +29,11 @@
         <MountPoint Side="Bottom" StartX="0" StartY="0" EndX="3" EndY="5" />
       </MountPoints>
       <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\MCRNRailgunBase_Constr1.mwm" />
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\MCRNRailgunBase_Constr2.mwm" />
       </BuildProgressModels>
       <BlockPairName>MCRNRailGun</BlockPairName>
-      <Description>Experimental Rail Cannon Prototype.</Description>
+      <Description>A replica of the MCRN Railguns found on larger military ships.</Description>
       <MirroringY>Z</MirroringY>
       <MirroringZ>Y</MirroringZ>
       <EdgeType>Light</EdgeType>

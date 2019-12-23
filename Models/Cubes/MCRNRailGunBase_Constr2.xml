@@ -3,12 +3,11 @@
 	<Parameter Name="RescaleFactor">0.01</Parameter>
 	<Parameter Name="RescaleToLengthInMeters">false</Parameter>
 	<Parameter Name="Centered">false</Parameter>
-	<Material Name="Emissive">
+	<Material Name="PaintedMetal_Colorable">
 		<Parameter Name="Technique">MESH</Parameter>
-		<Parameter Name="ColorMetalTexture">Textures\Models\Cubes\EmissiveAtlas_cm.dds</Parameter>
-		<Parameter Name="NormalGlossTexture">Textures\Models\Cubes\EmissiveAtlas_ng.dds</Parameter>
-		<Parameter Name="AddMapsTexture">Textures\Models\Cubes\EmissiveAtlas0_add.dds</Parameter>
-		<!--material has no AlphamaskTexture-->
+		<Parameter Name="ColorMetalTexture">Textures\Models\Cubes\PaintedMetalColorable_cm.dds</Parameter>
+		<Parameter Name="NormalGlossTexture">Textures\Models\Cubes\PaintedMetalColorable_ng.dds</Parameter>
+		<Parameter Name="AddMapsTexture">Textures\Models\Cubes\PaintedMetalColorable_add.dds</Parameter>
 	</Material>
 	<Material Name="Chrome">
 		<Parameter Name="Technique">MESH</Parameter>
@@ -16,11 +15,12 @@
 		<Parameter Name="NormalGlossTexture">Textures\Models\Cubes\Chrome_ng.dds</Parameter>
 		<!--material has no AddMapsTexture-->
 	</Material>
-	<Material Name="PaintedMetal_Colorable">
+	<Material Name="Emissive">
 		<Parameter Name="Technique">MESH</Parameter>
-		<Parameter Name="ColorMetalTexture">Textures\Models\Cubes\PaintedMetalColorable_cm.dds</Parameter>
-		<Parameter Name="NormalGlossTexture">Textures\Models\Cubes\PaintedMetalColorable_ng.dds</Parameter>
-		<Parameter Name="AddMapsTexture">Textures\Models\Cubes\PaintedMetalColorable_add.dds</Parameter>
+		<Parameter Name="ColorMetalTexture">Textures\Models\Cubes\EmissiveAtlas_cm.dds</Parameter>
+		<Parameter Name="NormalGlossTexture">Textures\Models\Cubes\EmissiveAtlas_ng.dds</Parameter>
+		<Parameter Name="AddMapsTexture">Textures\Models\Cubes\EmissiveAtlas0_add.dds</Parameter>
+		<!--material has no AlphamaskTexture-->
 	</Material>
 	<Material Name="PaintedMetal_Darker">
 		<Parameter Name="Technique">MESH</Parameter>
