@@ -6,7 +6,7 @@
         <TypeId>LargeMissileTurret</TypeId>
         <SubtypeId>MCRNRailGunLB</SubtypeId>
       </Id>
-      <DisplayName>MCRN Rail Gun</DisplayName>
+      <DisplayName>MCRN Railgun (VX-12 Foehammer)</DisplayName>
       <Icon>Textures\GUI\Icons\Cubes\MCRNRailgun.dds</Icon>
       <CubeSize>Large</CubeSize>
       <BlockTopology>TriangleMesh</BlockTopology>
@@ -33,7 +33,7 @@
         <Model BuildPercentUpperBound="0.66" File="Models\Cubes\MCRNRailgunBase_Constr2.mwm" />
       </BuildProgressModels>
       <BlockPairName>MCRNRailGun</BlockPairName>
-      <Description>A replica of the MCRN Railguns found on larger military ships.</Description>
+      <Description>VX-12 Foehammer Turreted Ultra-Heavy railgun. This weapon has an azimuth of -90 to +90 and elevation of 0 to +70 with a max range of 5km.</Description>
       <MirroringY>Z</MirroringY>
       <MirroringZ>Y</MirroringZ>
       <EdgeType>Light</EdgeType>

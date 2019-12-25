@@ -22,13 +22,6 @@
 		<Parameter Name="NormalGlossTexture">Textures\Models\Cubes\Chrome_ng.dds</Parameter>
 		<!--material has no AddMapsTexture-->
 	</Material>
-	<Material Name="Emissive2">
-		<Parameter Name="Technique">AUTO</Parameter>
-		<Parameter Name="ColorMetalTexture">Textures\Models\Cubes\EmissiveAtlas_cm.dds</Parameter>
-		<Parameter Name="NormalGlossTexture">Textures\Models\Cubes\EmissiveAtlas_ng.dds</Parameter>
-		<Parameter Name="AddMapsTexture">Textures\Models\Cubes\EmissiveAtlas0_add.dds</Parameter>
-		<!--material has no AlphamaskTexture-->
-	</Material>
 	<Material Name="PaintedMetal_Colorable">
 		<Parameter Name="Technique">MESH</Parameter>
 		<Parameter Name="ColorMetalTexture">Textures\Models\Cubes\PaintedMetalColorable_cm.dds</Parameter>
@@ -42,11 +35,17 @@
 		<Parameter Name="AddMapsTexture">Textures\Models\Cubes\Decals_Atlas_A_01_add.dds</Parameter>
 		<Parameter Name="AlphamaskTexture">Textures\Models\Cubes\Decals_Atlas_A_01_alphamask.dds</Parameter>
 	</Material>
-	<Material Name="Emissive">
+	<Material Name="Rubber">
 		<Parameter Name="Technique">MESH</Parameter>
-		<Parameter Name="ColorMetalTexture">Textures\Models\Cubes\EmissiveAtlas_cm.dds</Parameter>
-		<Parameter Name="NormalGlossTexture">Textures\Models\Cubes\EmissiveAtlas_ng.dds</Parameter>
-		<Parameter Name="AddMapsTexture">Textures\Models\Cubes\EmissiveAtlas0_add.dds</Parameter>
+		<Parameter Name="ColorMetalTexture">Textures\Models\Cubes\Rubber_cm.dds</Parameter>
+		<Parameter Name="NormalGlossTexture">Textures\Models\Cubes\Rubber_ng.dds</Parameter>
+		<!--material has no AddMapsTexture-->
+	</Material>
+	<Material Name="Metal_Shiny">
+		<Parameter Name="Technique">AUTO</Parameter>
+		<Parameter Name="ColorMetalTexture">Textures\Models\Cubes\Aluminium_cm.dds</Parameter>
+		<Parameter Name="NormalGlossTexture">Textures\Models\Cubes\AluminiumGlossy_ng.dds</Parameter>
+		<!--material has no AddMapsTexture-->
 		<!--material has no AlphamaskTexture-->
 	</Material>
 	<Material Name="Emissive3">
@@ -62,20 +61,28 @@
 		<Parameter Name="NormalGlossTexture">Textures\Models\Cubes\PaintedMetalColorable_ng.dds</Parameter>
 		<!--material has no AddMapsTexture-->
 	</Material>
-	<Material Name="Emissive0">
+	<Material Name="Emissive2">
 		<Parameter Name="Technique">AUTO</Parameter>
 		<Parameter Name="ColorMetalTexture">Textures\Models\Cubes\EmissiveAtlas_cm.dds</Parameter>
 		<Parameter Name="NormalGlossTexture">Textures\Models\Cubes\EmissiveAtlas_ng.dds</Parameter>
 		<Parameter Name="AddMapsTexture">Textures\Models\Cubes\EmissiveAtlas0_add.dds</Parameter>
 		<!--material has no AlphamaskTexture-->
 	</Material>
-	<Material Name="Rubber">
+	<Material Name="Emissive">
 		<Parameter Name="Technique">MESH</Parameter>
-		<Parameter Name="ColorMetalTexture">Textures\Models\Cubes\Rubber_cm.dds</Parameter>
-		<Parameter Name="NormalGlossTexture">Textures\Models\Cubes\Rubber_ng.dds</Parameter>
-		<!--material has no AddMapsTexture-->
+		<Parameter Name="ColorMetalTexture">Textures\Models\Cubes\EmissiveAtlas_cm.dds</Parameter>
+		<Parameter Name="NormalGlossTexture">Textures\Models\Cubes\EmissiveAtlas_ng.dds</Parameter>
+		<Parameter Name="AddMapsTexture">Textures\Models\Cubes\EmissiveAtlas0_add.dds</Parameter>
+		<!--material has no AlphamaskTexture-->
 	</Material>
 	<Material Name="Emissive1">
+		<Parameter Name="Technique">AUTO</Parameter>
+		<Parameter Name="ColorMetalTexture">Textures\Models\Cubes\EmissiveAtlas_cm.dds</Parameter>
+		<Parameter Name="NormalGlossTexture">Textures\Models\Cubes\EmissiveAtlas_ng.dds</Parameter>
+		<Parameter Name="AddMapsTexture">Textures\Models\Cubes\EmissiveAtlas0_add.dds</Parameter>
+		<!--material has no AlphamaskTexture-->
+	</Material>
+	<Material Name="Emissive0">
 		<Parameter Name="Technique">AUTO</Parameter>
 		<Parameter Name="ColorMetalTexture">Textures\Models\Cubes\EmissiveAtlas_cm.dds</Parameter>
 		<Parameter Name="NormalGlossTexture">Textures\Models\Cubes\EmissiveAtlas_ng.dds</Parameter>
@@ -87,6 +94,13 @@
 		<Parameter Name="ColorMetalTexture">Textures\Models\Cubes\Conveyor_cm.dds</Parameter>
 		<Parameter Name="NormalGlossTexture">Textures\Models\Cubes\Conveyor_ng.dds</Parameter>
 		<Parameter Name="AddMapsTexture">Textures\Models\Cubes\Conveyor_add.dds</Parameter>
+	</Material>
+	<Material Name="AtlasDecal">
+		<Parameter Name="Technique">DECAL_NOPREMULT</Parameter>
+		<Parameter Name="ColorMetalTexture">Textures\Models\Cubes\Atlas1_cm.dds</Parameter>
+		<Parameter Name="NormalGlossTexture">Textures\Models\Cubes\Atlas1_ng.dds</Parameter>
+		<Parameter Name="AddMapsTexture">Textures\Models\Cubes\Atlas1_add.dds</Parameter>
+		<Parameter Name="AlphamaskTexture">Textures\Models\Cubes\Atlas1_alphamask.dds</Parameter>
 	</Material>
 	<Material Name="Emissive5">
 		<Parameter Name="Technique">MESH</Parameter>

@@ -27,22 +27,22 @@ namespace WeaponThread
         Block = AimControl(trackTargets: true, turretAttached: true, turretController: true, primaryTracking: true, rotateRate: 0.008f, elevateRate: 0.008f, minAzimuth: -90, maxAzimuth: 90, minElevation: 0, maxElevation: 75, offset: Vector(x: 0, y: 0, z: 0), fixedOffset: false, debug: false),
         DeviateShotAngle = 0f,
         AimingTolerance = 90f, // 0 - 180 firing angle
-        EnergyCost = 0.008f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
+        EnergyCost = 0.01f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
         RotateBarrelAxis = 0, // 0 = off, 1 = xAxis, 2 = yAxis, 3 = zAxis
         AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
         DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-        GridWeaponCap = 1,// 0 = unlimited, the smallest weapon cap assigned to a subTypeId takes priority.
+        GridWeaponCap = 2,// 0 = unlimited, the smallest weapon cap assigned to a subTypeId takes priority.
         Ui = Display(rateOfFire: true, damageModifier: true, toggleGuidance: false, enableOverload: true),
 
         Loading = new AmmoLoading
         {
-            RateOfFire = 10,
+            RateOfFire = 2,
             BarrelsPerShot = 1,
             TrajectilesPerBarrel = 1, // Number of Projectiles per barrel per fire event.
             SkipBarrels = 0,
             ReloadTime = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). ReloadTime = 180
             DelayUntilFire = 620, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). DelayUntilFire = 120
-            HeatPerShot = 1000, //heat generated per shot
+            HeatPerShot = 10000, //heat generated per shot
             MaxHeat = 18000, //max heat before weapon enters cooldown (70% of max heat)
             Cooldown = .95f, //percent of max heat to be under to start firing again after overheat accepts .2-.95
             HeatSinkRate = 500, //amount of heat lost per second
@@ -79,17 +79,17 @@ namespace WeaponThread
     },
     Ammo = new AmmoDefinition
     {
-        BaseDamage = 10000f,
+        BaseDamage = 300000f,
         Mass = 10.1f, // in kilograms
-        Health = 1000, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
+        Health = 150000, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
         BackKickForce = 10f,
         Shape = Options(shape: Sphere, diameter: 2), //defines the collision shape of projectile, defaults line and visual Line Length if set to 0
-        ObjectsHit = Options(maxObjectsHit: 200, countBlocks: true), // 0 = disabled, value determines max objects (and/or blocks) penetrated per hit
-        Shrapnel = Options(baseDamage: 400, fragments: 10, maxTrajectory: 100, noAudioVisual: true, noGuidance: true, shape: HalfMoon),
+        ObjectsHit = Options(maxObjectsHit: 100000, countBlocks: true), // 0 = disabled, value determines max objects (and/or blocks) penetrated per hit
+        Shrapnel = Options(baseDamage: 0, fragments: 10, maxTrajectory: 100, noAudioVisual: true, noGuidance: true, shape: HalfMoon),
 
         AreaEffect = new AreaDamage
         {
-            AreaEffect = Radiant, // Disabled = do not use area effect at all, Explosive is keens, Radiant is not.
+            AreaEffect = Disabled, // Disabled = do not use area effect at all, Explosive is keens, Radiant is not.
             AreaEffectDamage = 100f, // 0 = use spillover from BaseDamage, otherwise use this value.
             AreaEffectRadius = 100f,
             Explosions = Options(noVisuals: false, noSound: false, scale: 1, customParticle: "", customSound: ""),
@@ -107,8 +107,8 @@ namespace WeaponThread
         Trajectory = new AmmoTrajectory
         {
             Guidance = None,
-            TargetLossDegree = 80f,
-            TargetLossTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+            TargetLossDegree = 50f,
+            TargetLossTime = 120, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
             AccelPerSec = 10000f,
             DesiredSpeed = 10000f,
             MaxTrajectory = 10000f,
