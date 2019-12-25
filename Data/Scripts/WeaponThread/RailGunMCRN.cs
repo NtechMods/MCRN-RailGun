@@ -36,27 +36,27 @@ namespace WeaponThread
 
         Loading = new AmmoLoading
         {
-            RateOfFire = 2,
+            RateOfFire = 3,
             BarrelsPerShot = 1,
             TrajectilesPerBarrel = 1, // Number of Projectiles per barrel per fire event.
             SkipBarrels = 0,
-            ReloadTime = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). ReloadTime = 180
-            DelayUntilFire = 620, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). DelayUntilFire = 120
-            HeatPerShot = 10000, //heat generated per shot
+            ReloadTime = 240, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). ReloadTime = 180
+            DelayUntilFire = 500, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). DelayUntilFire = 120
+            HeatPerShot = 6000, //heat generated per shot
             MaxHeat = 18000, //max heat before weapon enters cooldown (70% of max heat)
             Cooldown = .95f, //percent of max heat to be under to start firing again after overheat accepts .2-.95
             HeatSinkRate = 500, //amount of heat lost per second
             DegradeRof = true, // progressively lower rate of fire after 80% heat threshold (80% of max heat)
             ShotsInBurst = 1,
-            DelayAfterBurst = 200, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). DelayAfterBurst = 600
+            DelayAfterBurst = 500, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). DelayAfterBurst = 600
         },
     },
     Targeting = new TargetingDefinition
     {
         Threats = Valid(Grids),
-        SubSystems = Priority(Power, Thrust, Offense, Utility, Production, Any), //define block type targeting order
+        SubSystems = Priority(Power, Offense), //define block type targeting order
         ClosestFirst = true, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
-        MinimumDiameter = 30, // 0 = unlimited, Minimum radius of threat to engage.
+        MinimumDiameter = 20, // 0 = unlimited, Minimum radius of threat to engage.
         MaximumDiameter = 0, // 0 = unlimited, Maximum radius of threat to engage.
         TopTargets = 4, // 0 = unlimited, max number of top targets to randomize between.
         TopBlocks = 4, // 0 = unlimited, max number of blocks to randomize between
@@ -79,7 +79,7 @@ namespace WeaponThread
     },
     Ammo = new AmmoDefinition
     {
-        BaseDamage = 300000f,
+        BaseDamage = 100000f,
         Mass = 10.1f, // in kilograms
         Health = 150000, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
         BackKickForce = 10f,

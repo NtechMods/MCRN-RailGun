@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Model Name="Base1">
-	<Parameter Name="RescaleFactor">0.01</Parameter>
-	<Parameter Name="RescaleToLengthInMeters">false</Parameter>
-	<Parameter Name="Centered">false</Parameter>
-	<MaterialRef Name="Chrome" />
-	<MaterialRef Name="PaintedMetal_Colorable" />
-	<MaterialRef Name="PaintedMetal_Darker" />
-</Model>
