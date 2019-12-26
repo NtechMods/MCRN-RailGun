@@ -163,7 +163,8 @@ namespace WeaponThread
                     {
                         
 						[PreFire] =
-                            new[] //Firing, Reloading, Overheated, Tracking, On, Off, BurstReload, OutOfAmmo, PreFire define a new[] for each
+                            new[] //Reloading, Firing, Tracking, Overheated, TurnOn, TurnOff, BurstReload, OutOfAmmo, PreFire, EmptyOnGameLoad, StopFiring, StopTracking
+								  //define a new[] for each animation section
                             {
                                 new RelMove
                                 {
@@ -280,7 +281,8 @@ namespace WeaponThread
                             },
 						
 						[TurnOff] =
-                            new[] //Firing, Reloading, Overheated, Tracking, On, Off, BurstReload, OutOfAmmo, PreFire define a new[] for each
+                            new[] //Reloading, Firing, Tracking, Overheated, TurnOn, TurnOff, BurstReload, OutOfAmmo, PreFire, EmptyOnGameLoad, StopFiring, StopTracking
+								  //define a new[] for each animation section
                             {
                                 new RelMove
                                 {
@@ -396,7 +398,8 @@ namespace WeaponThread
                                 },
                             },
 						[Firing] =
-                            new[] //Firing, Reloading, Overheated, Tracking, On, Off, BurstReload, OutOfAmmo, PreFire define a new[] for each
+                            new[] //Reloading, Firing, Tracking, Overheated, TurnOn, TurnOff, BurstReload, OutOfAmmo, PreFire, EmptyOnGameLoad, StopFiring, StopTracking
+								  //define a new[] for each animation section
                             {
                                 
 								new RelMove
@@ -501,7 +504,8 @@ namespace WeaponThread
 							
 							
 						[Overheated] =
-                            new[] //Firing, Reloading, Overheated, Tracking, On, Off, BurstReload, OutOfAmmo, PreFire define a new[] for each
+                            new[] //Reloading, Firing, Tracking, Overheated, TurnOn, TurnOff, BurstReload, OutOfAmmo, PreFire, EmptyOnGameLoad, StopFiring, StopTracking
+								  //define a new[] for each animation section
                             {
                                 new RelMove
                                 {
@@ -617,7 +621,8 @@ namespace WeaponThread
                                 },
                             },
 						[Reloading] =
-                            new[] //Firing, Reloading, Overheated, Tracking, On, Off, BurstReload, OutOfAmmo, PreFire define a new[] for each
+                            new[] //Reloading, Firing, Tracking, Overheated, TurnOn, TurnOff, BurstReload, OutOfAmmo, PreFire, EmptyOnGameLoad, StopFiring, StopTracking
+								  //define a new[] for each animation section
                             {
                                 new RelMove
                                 {
@@ -735,7 +740,8 @@ namespace WeaponThread
 							
 							
 						[TurnOn] =
-                            new[] //Firing, Reloading, Overheated, Tracking, On, Off, BurstReload, OutOfAmmo, PreFire define a new[] for each
+                            new[] //Reloading, Firing, Tracking, Overheated, TurnOn, TurnOff, BurstReload, OutOfAmmo, PreFire, EmptyOnGameLoad, StopFiring, StopTracking
+								  //define a new[] for each animation section
                             {
                                 new RelMove
                                 {
@@ -754,7 +760,8 @@ namespace WeaponThread
                             },
 						
 						[StopFiring] =
-                            new[] //Firing, Reloading, Overheated, Tracking, On, Off, BurstReload, OutOfAmmo, PreFire define a new[] for each
+                            new[] //Reloading, Firing, Tracking, Overheated, TurnOn, TurnOff, BurstReload, OutOfAmmo, PreFire, EmptyOnGameLoad, StopFiring, StopTracking
+								  //define a new[] for each animation section
                             {
                                 new RelMove
                                 {
