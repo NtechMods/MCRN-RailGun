@@ -17,12 +17,13 @@
       <Components>
         <Component Subtype="SteelPlate" Count="300" />
         <Component Subtype="Construction" Count="100" />
-        <Component Subtype="LargeTube" Count="60" />
+        <Component Subtype="LargeTube" Count="80" />
 		<Component Subtype="MetalGrid" Count="45" />
-        <Component Subtype="Motor" Count="32" />
-        <Component Subtype="Computer" Count="300" />
+        <Component Subtype="Motor" Count="20" />
+        <Component Subtype="Superconductor" Count="100" />
+        <Component Subtype="Computer" Count="100" />
         <Component Subtype="Construction" Count="100" />
-        <Component Subtype="SteelPlate" Count="100" />
+        <Component Subtype="SteelPlate" Count="600" />
       </Components>
       <CriticalComponent Subtype="Computer" Index="0" />
       <MountPoints>
@@ -33,7 +34,7 @@
         <Model BuildPercentUpperBound="0.66" File="Models\Cubes\MCRNRailgunBase_Constr2.mwm" />
       </BuildProgressModels>
       <BlockPairName>MCRNRailGun</BlockPairName>
-      <Description>VX-12 Foehammer Turreted Ultra-Heavy railgun. This weapon has an azimuth of -90 to +90 and elevation of 0 to +70 with a max range of 5km. Will not target grids less than 20m in diameter. RoF of 3/min. Requires 500MW to fire.</Description>
+      <Description>VX-12 Foehammer Turreted Ultra-Heavy railgun. This weapon has an azimuth of -90 to +90 and elevation of 0 to +70 with a max range of 5km. Will not target grids less than 20m in diameter. RoF of 5/min. Requires 500MW to fire.</Description>
       <MirroringY>Z</MirroringY>
       <MirroringZ>Y</MirroringZ>
       <EdgeType>Light</EdgeType>
@@ -53,8 +54,65 @@
       <PCU>225</PCU>
     </Definition>
   </CubeBlocks>
-  <BlueprintClassEntries>
+ 
+ <BlueprintClassEntries>
    
     <Entry Class="LargeBlocks" BlueprintSubtypeId="MCRNRailGunLB" />
   </BlueprintClassEntries>
+     <BlockPositions>
+      <BlockPosition>
+      <Name>MCRNRailGun</Name>
+      <Position>
+        <X>9</X>
+        <Y>9</Y>
+      </Position>
+    </BlockPosition>
+ </BlockPositions>
+ <!--Begin BlockCategories -->
+<CategoryClasses>
+	<Category xsi:type="MyObjectBuilder_GuiBlockCategoryDefinition">
+      <Id>
+        <TypeId>GuiBlockCategoryDefinition</TypeId>
+        <SubtypeId/>
+      </Id>
+      <DisplayName>Ntech Mods</DisplayName>
+      <Name>Ntech</Name>
+      <ItemIds>
+			<string>MCRNRailGunLB</string>
+      </ItemIds>
+    </Category>
+ 
+    <Category xsi:type="MyObjectBuilder_GuiBlockCategoryDefinition">
+      <Id>
+        <TypeId>GuiBlockCategoryDefinition</TypeId>
+        <SubtypeId/>
+      </Id>
+      <DisplayName>DisplayName_Category_LargeBlocks</DisplayName>
+      <Name>LargeBlocks</Name>
+      <ItemIds>       
+        <string>LargeMissileTurret/MCRNRailGunLB</string>             
+      </ItemIds>
+    </Category>  
+    <Category xsi:type="MyObjectBuilder_GuiBlockCategoryDefinition">
+      <Id>
+        <TypeId>GuiBlockCategoryDefinition</TypeId>
+        <SubtypeId/>
+      </Id>
+      <DisplayName>DisplayName_Category_ShipWeapons</DisplayName>
+      <Name>Weapons</Name>
+      <ItemIds>
+        <string>LargeMissileTurret/MCRNRailGunLB</string>
+      </ItemIds>
+    </Category>
+</CategoryClasses>
+<!-- Research Blocks -->
+  <ResearchBlocks> 
+    <ResearchBlock xsi:type="ResearchBlock">
+      <Id Type="MyObjectBuilder_LargeMissileTurret" Subtype="MCRNRailGunLB" />
+      <UnlockedByGroups>
+        <GroupSubtype>4</GroupSubtype>
+      </UnlockedByGroups>
+    </ResearchBlock>
+   </ResearchBlocks>  
+  
 </Definitions>

@@ -27,7 +27,7 @@ namespace WeaponThread
         Block = AimControl(trackTargets: true, turretAttached: true, turretController: true, primaryTracking: true, rotateRate: 0.008f, elevateRate: 0.008f, minAzimuth: -90, maxAzimuth: 90, minElevation: 0, maxElevation: 75, offset: Vector(x: 0, y: 0, z: 0), fixedOffset: false, debug: false),
         DeviateShotAngle = 0f,
         AimingTolerance = 90f, // 0 - 180 firing angle
-        EnergyCost = 0.01f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
+        EnergyCost = 0.03f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
         RotateBarrelAxis = 0, // 0 = off, 1 = xAxis, 2 = yAxis, 3 = zAxis
         AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
         DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -36,19 +36,19 @@ namespace WeaponThread
 
         Loading = new AmmoLoading
         {
-            RateOfFire = 3,
+            RateOfFire = 5,
             BarrelsPerShot = 1,
             TrajectilesPerBarrel = 1, // Number of Projectiles per barrel per fire event.
             SkipBarrels = 0,
             ReloadTime = 240, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). ReloadTime = 180
             DelayUntilFire = 500, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). DelayUntilFire = 120
-            HeatPerShot = 6000, //heat generated per shot
+            HeatPerShot = 13000, //heat generated per shot
             MaxHeat = 18000, //max heat before weapon enters cooldown (70% of max heat)
-            Cooldown = .95f, //percent of max heat to be under to start firing again after overheat accepts .2-.95
+            Cooldown = .85f, //percent of max heat to be under to start firing again after overheat accepts .2-.95
             HeatSinkRate = 500, //amount of heat lost per second
             DegradeRof = true, // progressively lower rate of fire after 80% heat threshold (80% of max heat)
             ShotsInBurst = 1,
-            DelayAfterBurst = 500, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). DelayAfterBurst = 600
+            DelayAfterBurst = 300, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). DelayAfterBurst = 600
         },
     },
     Targeting = new TargetingDefinition
@@ -79,10 +79,10 @@ namespace WeaponThread
     },
     Ammo = new AmmoDefinition
     {
-        BaseDamage = 100000f,
+        BaseDamage = 120000f,
         Mass = 10.1f, // in kilograms
         Health = 150000, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
-        BackKickForce = 10f,
+        BackKickForce = 4f,
         Shape = Options(shape: Sphere, diameter: 2), //defines the collision shape of projectile, defaults line and visual Line Length if set to 0
         ObjectsHit = Options(maxObjectsHit: 100000, countBlocks: true), // 0 = disabled, value determines max objects (and/or blocks) penetrated per hit
         Shrapnel = Options(baseDamage: 0, fragments: 10, maxTrajectory: 100, noAudioVisual: true, noGuidance: true, shape: HalfMoon),
@@ -140,39 +140,39 @@ namespace WeaponThread
             Ammo = new Particle
             {
                 Name = "EnergyBubble",
-                Color = Color(red:0.4f, green: 0.0f, blue:0.8f, alpha: 1),
+                Color = Color(red:0.2f, green: 0.2f, blue:0.8f, alpha: 1),
                 Offset = Vector(x: 0, y: 0, z: 0),
                 Extras = Options(loop: true, restart: false, distance: 5000, duration: 1, scale: 3.0f)
             },
             Hit = new Particle
             {
                 Name = "RailgunEnergyParticle",
-                Color = Color(red:0.4f, green: 0.0f, blue:0.8f, alpha: 1),
+                Color = Color(red:0.2f, green: 0.2f, blue:0.8f, alpha: 1),
                 Offset = Vector(x: 0, y: 0, z: 0),
                 Extras = Options(loop: true, restart: false, distance: 5000, duration: 3, scale: 2.6f),
             },
             Barrel1 = new Particle
             {
                 Name = "", // Smoke_LargeGunShot
-                Color = Color(red:0.4f, green: 0.0f, blue:0.8f, alpha: 1),
+                Color = Color(red:0.2f, green: 0.2f, blue:0.8f, alpha: 1),
                 Offset = Vector(x: 0, y: -1, z: 0),
                 Extras = Options(loop: true, restart: false, distance: 200, duration: 1, scale: 1f),
             },
             Barrel2 = new Particle
             {
                 Name = "",//Muzzle_Flash_Large
-                Color = Color(red:0.4f, green: 0.0f, blue:0.8f, alpha: 1),
+                Color = Color(red:0.2f, green: 0.2f, blue:0.8f, alpha: 1),
                 Offset = Vector(x: 0, y: -1, z: 0),
                 Extras = Options(loop: true, restart: false, distance: 200, duration: 1, scale: 0.1f),
 			},
 		},
         Line = new LineDefinition
         {
-            Tracer = Base(enable: true, length: 240f, width: 0.55f, color: Color(red:0.4f, green: 0.0f, blue:0.8f, alpha: 1)),
+            Tracer = Base(enable: true, length: 240f, width: 0.55f, color: Color(red:0.2f, green: 0.2f, blue:0.8f, alpha: 1)),
             TracerMaterial = "WeaponLaser", // WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
             ColorVariance = Random(start: 0.75f, end: 4f), // multiply the color by random values within range.
             WidthVariance = Random(start: 0f, end: 0.25f), // adds random value to default width (negatives shrinks width)
-            Trail = Options(enable: true, material: "WeaponLaser", decayTime: 10, color: Color(red:0.4f, green: 0.0f, blue:0.8f, alpha: 1)),
+            Trail = Options(enable: true, material: "WeaponLaser", decayTime: 10, color: Color(red:0.2f, green: 0.2f, blue:0.8f, alpha: 1)),
             OffsetEffect = Options(maxOffset: 0, minLength: 2, maxLength: 2), // 0 offset value disables this effect
         },
     },
