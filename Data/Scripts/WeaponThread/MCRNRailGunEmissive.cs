@@ -397,7 +397,7 @@ namespace WeaponThread
                                     RotAroundCenter = Transformation(0, 0, 0), //degrees, rotates around CenterEmpty
                                 },
                             },
-						[Firing] =
+						[StopFiring] =
                             new[] //Reloading, Firing, Tracking, Overheated, TurnOn, TurnOff, BurstReload, OutOfAmmo, PreFire, EmptyOnGameLoad, StopFiring, StopTracking
 								  //define a new[] for each animation section
                             {
@@ -510,7 +510,7 @@ namespace WeaponThread
                                 new RelMove
                                 {
                                     CenterEmpty = "",//Specifiy an empty on the subpart to rotate around
-                                    TicksToMove = 30, //number of ticks to complete motion, 60 = 1 second
+                                    TicksToMove = 5, //number of ticks to complete motion, 60 = 1 second
 
                                     MovementType = Delay, // ExpoGrowth,  ExpoDecay, Linear, Delay, Show, Hide
                                     EmissiveName = "Emissive",//name of defined emissive 
@@ -524,7 +524,7 @@ namespace WeaponThread
 								new RelMove
                                 {
                                     CenterEmpty = "",//Specifiy an empty on the subpart to rotate around
-                                    TicksToMove = 30, //number of ticks to complete motion, 60 = 1 second
+                                    TicksToMove = 10, //number of ticks to complete motion, 60 = 1 second
 
                                     MovementType = Delay, // ExpoGrowth,  ExpoDecay, Linear, Delay, Show, Hide
                                     EmissiveName = "Emissive0",//name of defined emissive 
@@ -538,7 +538,7 @@ namespace WeaponThread
 								new RelMove
                                 {
                                     CenterEmpty = "",//Specifiy an empty on the subpart to rotate around
-                                    TicksToMove = 30, //number of ticks to complete motion, 60 = 1 second
+                                    TicksToMove = 10, //number of ticks to complete motion, 60 = 1 second
 
                                     MovementType = Delay, // ExpoGrowth,  ExpoDecay, Linear, Delay, Show, Hide
                                     EmissiveName = "Emissive1",//name of defined emissive 
@@ -552,7 +552,7 @@ namespace WeaponThread
 								new RelMove
                                 {
                                     CenterEmpty = "",//Specifiy an empty on the subpart to rotate around
-                                    TicksToMove = 30, //number of ticks to complete motion, 60 = 1 second
+                                    TicksToMove = 10, //number of ticks to complete motion, 60 = 1 second
 
                                     MovementType = Delay, // ExpoGrowth,  ExpoDecay, Linear, Delay, Show, Hide
                                     EmissiveName = "Emissive2",//name of defined emissive 
@@ -566,7 +566,7 @@ namespace WeaponThread
 								new RelMove
                                 {
                                     CenterEmpty = "",//Specifiy an empty on the subpart to rotate around
-                                    TicksToMove = 30, //number of ticks to complete motion, 60 = 1 second
+                                    TicksToMove = 10, //number of ticks to complete motion, 60 = 1 second
 
                                     MovementType = Delay, // ExpoGrowth,  ExpoDecay, Linear, Delay, Show, Hide
                                     EmissiveName = "Emissive3",//name of defined emissive 
@@ -580,7 +580,7 @@ namespace WeaponThread
 								new RelMove
                                 {
                                     CenterEmpty = "",//Specifiy an empty on the subpart to rotate around
-                                    TicksToMove = 30, //number of ticks to complete motion, 60 = 1 second
+                                    TicksToMove = 10, //number of ticks to complete motion, 60 = 1 second
 
                                     MovementType = Delay, // ExpoGrowth,  ExpoDecay, Linear, Delay, Show, Hide
                                     EmissiveName = "Emissive4",//name of defined emissive 
@@ -594,7 +594,7 @@ namespace WeaponThread
 								new RelMove
                                 {
                                     CenterEmpty = "",//Specifiy an empty on the subpart to rotate around
-                                    TicksToMove = 30, //number of ticks to complete motion, 60 = 1 second
+                                    TicksToMove = 10, //number of ticks to complete motion, 60 = 1 second
 
                                     MovementType = Delay, // ExpoGrowth,  ExpoDecay, Linear, Delay, Show, Hide
                                     EmissiveName = "Emissive5",//name of defined emissive 
@@ -608,7 +608,7 @@ namespace WeaponThread
 								new RelMove
                                 {
                                     CenterEmpty = "",//Specifiy an empty on the subpart to rotate around
-                                    TicksToMove = 30, //number of ticks to complete motion, 60 = 1 second
+                                    TicksToMove = 10, //number of ticks to complete motion, 60 = 1 second
 
                                     MovementType = Delay, // ExpoGrowth,  ExpoDecay, Linear, Delay, Show, Hide
                                     EmissiveName = "Emissive6",//name of defined emissive 
