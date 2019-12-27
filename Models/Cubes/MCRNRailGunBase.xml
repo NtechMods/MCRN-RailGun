@@ -9,10 +9,10 @@
 		<Parameter Name="NormalGlossTexture">Textures\Models\Cubes\EmissiveAtlas_ng.dds</Parameter>
 		<Parameter Name="AddMapsTexture">Textures\Models\Cubes\EmissiveAtlas0_add.dds</Parameter>
 	</Material>
-	<Material Name="Metal_Dull">
+	<Material Name="PaintedMetal_Yellow">
 		<Parameter Name="Technique">MESH</Parameter>
-		<Parameter Name="ColorMetalTexture">Textures\Models\Cubes\Aluminium_cm.dds</Parameter>
-		<Parameter Name="NormalGlossTexture">Textures\Models\Cubes\AluminiumDull_ng.dds</Parameter>
+		<Parameter Name="ColorMetalTexture">Textures\Models\Cubes\PaintedMetalYellow_cm.dds</Parameter>
+		<Parameter Name="NormalGlossTexture">Textures\Models\Cubes\PaintedMetalColorable_ng.dds</Parameter>
 		<!--material has no AddMapsTexture-->
 	</Material>
 	<Material Name="Conveyor">
@@ -28,11 +28,17 @@
 		<!--material has no AddMapsTexture-->
 		<Parameter Name="AlphamaskTexture">Textures\Models\Cubes\Decals_Atlas_A_01_alphamask.dds</Parameter>
 	</Material>
-	<Material Name="PaintedMetal_Yellow">
+	<Material Name="Metal_Dull">
 		<Parameter Name="Technique">MESH</Parameter>
-		<Parameter Name="ColorMetalTexture">Textures\Models\Cubes\PaintedMetalYellow_cm.dds</Parameter>
-		<Parameter Name="NormalGlossTexture">Textures\Models\Cubes\PaintedMetalColorable_ng.dds</Parameter>
+		<Parameter Name="ColorMetalTexture">Textures\Models\Cubes\Aluminium_cm.dds</Parameter>
+		<Parameter Name="NormalGlossTexture">Textures\Models\Cubes\AluminiumDull_ng.dds</Parameter>
 		<!--material has no AddMapsTexture-->
+	</Material>
+	<Material Name="PaintedMetal_Colorable">
+		<Parameter Name="Technique">MESH</Parameter>
+		<Parameter Name="ColorMetalTexture">Textures\Models\Cubes\PaintedMetalColorable_cm.dds</Parameter>
+		<Parameter Name="NormalGlossTexture">Textures\Models\Cubes\PaintedMetalColorable_ng.dds</Parameter>
+		<Parameter Name="AddMapsTexture">Textures\Models\Cubes\PaintedMetalColorable_add.dds</Parameter>
 	</Material>
 	<Material Name="PaintedMetal_Darker">
 		<Parameter Name="Technique">MESH</Parameter>
