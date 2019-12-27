@@ -24,8 +24,8 @@
         <TypeId>BlueprintDefinition</TypeId>
         <SubtypeId>RailgunAmmoMag</SubtypeId>
       </Id>
-      <DisplayName>Blank Ammo for RailGun</DisplayName>
-      <Icon>Textures\GUI\Icons\ammo\DeURounds.dds</Icon>
+      <DisplayName>Depleated Uranium Spike</DisplayName>
+      <Icon>Textures\GUI\Icons\ammo\RailSpike.dds</Icon>
       <Prerequisites>
         <Item Amount="1" TypeId="Ingot" SubtypeId="Magnesium" />
 		<Item Amount="1" TypeId="Ingot" SubtypeId="Nickel" />
@@ -42,8 +42,8 @@
         <TypeId>AmmoMagazine</TypeId>
         <SubtypeId>RailGunAmmoMag</SubtypeId>
       </Id>
-      <DisplayName>Rail Slug Charge</DisplayName>
-      <Icon>Textures\GUI\Icons\ammo\DeURounds.dds</Icon>
+      <DisplayName>Rail Spike</DisplayName>
+      <Icon>Textures\GUI\Icons\ammo\RailSpike.dds</Icon>
       <Size>
         <X>0.25</X>
         <Y>0.2</Y>
@@ -51,8 +51,8 @@
       </Size>
       <Mass>70.25</Mass>
       <Volume>32.33</Volume>
-      <Model>Models\Weapons\Torpedo_Ammo_1st.mwm</Model>
-      <Capacity>20</Capacity>
+      <Model>Models\Ammo\DeUrSpike.mwm</Model>
+      <Capacity>1</Capacity>
       <AmmoDefinitionId Subtype="Blank" />
     </AmmoMagazine>	
   </AmmoMagazines>

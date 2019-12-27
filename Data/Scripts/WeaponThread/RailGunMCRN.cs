@@ -23,11 +23,12 @@ namespace WeaponThread
     HardPoint = new HardPointDefinition
     {
         WeaponId = "MCRNRails", // name of weapon in terminal
-        AmmoMagazineId = "Blank",
-        Block = AimControl(trackTargets: true, turretAttached: true, turretController: true, primaryTracking: true, rotateRate: 0.008f, elevateRate: 0.008f, minAzimuth: -90, maxAzimuth: 90, minElevation: 0, maxElevation: 75, offset: Vector(x: 0, y: 0, z: 0), fixedOffset: false, debug: false),
+        AmmoMagazineId = "RailGunAmmoMag",
+        Block = AimControl(trackTargets: true, turretAttached: true, turretController: true, primaryTracking: true, rotateRate: 0.008f, elevateRate: 0.008f, minAzimuth: -90, maxAzimuth: 90, minElevation: 0, maxElevation: 75, offset: Vector(x: 0, y: 0, z: 0), fixedOffset: false, inventorySize: 1.14f, debug: false),
         DeviateShotAngle = 0f,
         AimingTolerance = 90f, // 0 - 180 firing angle
-        EnergyCost = 0.03f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
+        EnergyCost = 0.0003f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
+        Hybrid = true,
         RotateBarrelAxis = 0, // 0 = off, 1 = xAxis, 2 = yAxis, 3 = zAxis
         AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
         DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -36,19 +37,19 @@ namespace WeaponThread
 
         Loading = new AmmoLoading
         {
-            RateOfFire = 5,
+            RateOfFire = 3600,
             BarrelsPerShot = 1,
             TrajectilesPerBarrel = 1, // Number of Projectiles per barrel per fire event.
             SkipBarrels = 0,
-            ReloadTime = 240, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). ReloadTime = 180
-            DelayUntilFire = 500, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). DelayUntilFire = 120
-            HeatPerShot = 13000, //heat generated per shot
+            ReloadTime = 500, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). ReloadTime = 180
+            DelayUntilFire = 240, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). DelayUntilFire = 120
+            HeatPerShot = 18000, //heat generated per shot 
             MaxHeat = 18000, //max heat before weapon enters cooldown (70% of max heat)
             Cooldown = .85f, //percent of max heat to be under to start firing again after overheat accepts .2-.95
             HeatSinkRate = 500, //amount of heat lost per second
             DegradeRof = true, // progressively lower rate of fire after 80% heat threshold (80% of max heat)
-            ShotsInBurst = 1,
-            DelayAfterBurst = 300, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). DelayAfterBurst = 600
+            ShotsInBurst = 0,
+            DelayAfterBurst = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). DelayAfterBurst = 600
         },
     },
     Targeting = new TargetingDefinition
@@ -83,15 +84,15 @@ namespace WeaponThread
         Mass = 10.1f, // in kilograms
         Health = 150000, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
         BackKickForce = 4f,
-        Shape = Options(shape: Sphere, diameter: 2), //defines the collision shape of projectile, defaults line and visual Line Length if set to 0
+        Shape = Options(shape: Line, diameter: 1), //defines the collision shape of projectile, defaults line and visual Line Length if set to 0
         ObjectsHit = Options(maxObjectsHit: 100000, countBlocks: true), // 0 = disabled, value determines max objects (and/or blocks) penetrated per hit
         Shrapnel = Options(baseDamage: 0, fragments: 10, maxTrajectory: 100, noAudioVisual: true, noGuidance: true, shape: HalfMoon),
 
         AreaEffect = new AreaDamage
         {
-            AreaEffect = Disabled, // Disabled = do not use area effect at all, Explosive is keens, Radiant is not.
-            AreaEffectDamage = 100f, // 0 = use spillover from BaseDamage, otherwise use this value.
-            AreaEffectRadius = 100f,
+            AreaEffect = Radiant, // Disabled = do not use area effect at all, Explosive is keens, Radiant is not.
+            AreaEffectDamage = 0, // 0 = use spillover from BaseDamage, otherwise use this value.
+            AreaEffectRadius = 2.5f,
             Explosions = Options(noVisuals: false, noSound: false, scale: 1, customParticle: "", customSound: ""),
             Detonation = Options(detonateOnEnd: false, armOnlyOnHit: false, detonationDamage: 0, detonationRadius: 0),
             EwarFields = Options(duration: 600, stackDuration: true, depletable: true)
@@ -110,7 +111,7 @@ namespace WeaponThread
             TargetLossDegree = 50f,
             TargetLossTime = 120, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
             AccelPerSec = 10000f,
-            DesiredSpeed = 10000f,
+            DesiredSpeed = 1000f,
             MaxTrajectory = 10000f,
             FieldTime = 0, // 0 is disabled, a value causes the projectile to come to rest, spawn a field and remain for a time (Measured in game ticks, 60 = 1 second)
             SpeedVariance = Random(start: 0, end: 0), // subtracts value from DesiredSpeed
@@ -132,7 +133,7 @@ namespace WeaponThread
 	
     Graphics = new GraphicDefinition
     {
-        ModelName = "", // \\Models\\Ammo\\AmmoOrb.mwm
+        ModelName = "\\Models\\Ammo\\DeUrSpike.mwm", // \\Models\\Ammo\\AmmoOrb.mwm
         VisualProbability = 1f,
         ShieldHitDraw = true,
         Particles = new ParticleDefinition
