@@ -123,6 +123,7 @@ namespace WeaponThread
                     Reverse = Events(Reloading, Overheated),
                     Loop = Events(Reloading, Overheated),
                     TriggerOnce = Events(),
+					ResetEmissives = Events(Firing, Reloading),
                     EventMoveSets = new Dictionary<EventTriggers, RelMove[]>
                     {
                         
