@@ -18,7 +18,7 @@ namespace WeaponThread
             MountPoint(subTypeId: "MCRNRailGunLB", aimPartId: "MissileTurretBarrels", muzzlePartId: "MissileTurretBarrels"),
         },
         Barrels = Names("muzzle_missile_001"),
-        EnableSubPartPhysics = true
+        EnableSubPartPhysics = false
     },
     HardPoint = new HardPointDefinition
     {
@@ -73,7 +73,7 @@ namespace WeaponThread
         Characters = -1f,
         Grids = Options(largeGridModifier: -1f, smallGridModifier: -1f),
         Armor = Options(armor: -1f, light: -1f, heavy: -1f, nonArmor: -1f), 
-        Shields = Options(modifier: -1f, type: Bypass), // Types: Kinetic, Energy, Emp or Bypass
+        Shields = Options(modifier: 0.1f, type: Bypass), // Types: Kinetic, Energy, Emp or Bypass
 
         // ignoreOthers will cause projectiles to pass through all blocks that do not match the custom subtypeIds.
         Custom = SubTypeIds(false),
