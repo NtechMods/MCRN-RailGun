@@ -54,11 +54,7 @@
       <PCU>225</PCU>
     </Definition>
   </CubeBlocks>
- 
- <BlueprintClassEntries>
    
-    <Entry Class="LargeBlocks" BlueprintSubtypeId="MCRNRailGunLB" />
-  </BlueprintClassEntries>
      <BlockPositions>
       <BlockPosition>
       <Name>MCRNRailGun</Name>
@@ -68,43 +64,7 @@
       </Position>
     </BlockPosition>
  </BlockPositions>
- <!--Begin BlockCategories -->
-<CategoryClasses>
-	<Category xsi:type="MyObjectBuilder_GuiBlockCategoryDefinition">
-      <Id>
-        <TypeId>GuiBlockCategoryDefinition</TypeId>
-        <SubtypeId/>
-      </Id>
-      <DisplayName>Ntech Mods</DisplayName>
-      <Name>Ntech</Name>
-      <ItemIds>
-			<string>MCRNRailGunLB</string>
-      </ItemIds>
-    </Category>
- 
-    <Category xsi:type="MyObjectBuilder_GuiBlockCategoryDefinition">
-      <Id>
-        <TypeId>GuiBlockCategoryDefinition</TypeId>
-        <SubtypeId/>
-      </Id>
-      <DisplayName>DisplayName_Category_LargeBlocks</DisplayName>
-      <Name>LargeBlocks</Name>
-      <ItemIds>       
-        <string>LargeMissileTurret/MCRNRailGunLB</string>             
-      </ItemIds>
-    </Category>  
-    <Category xsi:type="MyObjectBuilder_GuiBlockCategoryDefinition">
-      <Id>
-        <TypeId>GuiBlockCategoryDefinition</TypeId>
-        <SubtypeId/>
-      </Id>
-      <DisplayName>DisplayName_Category_ShipWeapons</DisplayName>
-      <Name>Weapons</Name>
-      <ItemIds>
-        <string>LargeMissileTurret/MCRNRailGunLB</string>
-      </ItemIds>
-    </Category>
-</CategoryClasses>
+
 <!-- Research Blocks -->
   <ResearchBlocks> 
     <ResearchBlock xsi:type="ResearchBlock">

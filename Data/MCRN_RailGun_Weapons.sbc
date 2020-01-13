@@ -24,12 +24,13 @@
         <TypeId>BlueprintDefinition</TypeId>
         <SubtypeId>RailgunAmmoMag</SubtypeId>
       </Id>
-      <DisplayName>Depleated Uranium Spike</DisplayName>
+      <DisplayName>Depleated Uranium Spike
+	  Used in MCRN RailGun</DisplayName>
       <Icon>Textures\GUI\Icons\ammo\RailSpike.dds</Icon>
       <Prerequisites>
-        <Item Amount="1" TypeId="Ingot" SubtypeId="Magnesium" />
+        <Item Amount="40" TypeId="Ingot" SubtypeId="Iron" />
 		<Item Amount="1" TypeId="Ingot" SubtypeId="Nickel" />
-		<Item Amount="1" TypeId="Ingot" SubtypeId="Uranium" />
+		<Item Amount="1.5" TypeId="Ingot" SubtypeId="Uranium" />
       </Prerequisites>
       <Result Amount="1" TypeId="AmmoMagazine" SubtypeId="RailGunAmmoMag" />
       <BaseProductionTimeInSeconds>60</BaseProductionTimeInSeconds>
@@ -79,4 +80,54 @@
       </ProjectileProperties>
     </Ammo>
   </Ammos>
+  
+ <BlueprintClassEntries>
+   
+
+    <Entry Class="Ammo" BlueprintSubtypeId="RailgunAmmoMag" />
+    <Entry Class="Components" BlueprintSubtypeId="RailgunAmmoMag" />
+   
+   
+    <Entry Class="LargeBlocks" BlueprintSubtypeId="MCRNRailGunLB" />
+  </BlueprintClassEntries>
+ <!--Begin BlockCategories -->
+<CategoryClasses>
+	<Category xsi:type="MyObjectBuilder_GuiBlockCategoryDefinition">
+      <Id>
+        <TypeId>GuiBlockCategoryDefinition</TypeId>
+        <SubtypeId/>
+      </Id>
+      <DisplayName>Ntech Mods</DisplayName>
+      <Name>Ntech</Name>
+      <ItemIds>
+			<string>MCRNRailGunLB</string>
+      </ItemIds>
+    </Category>
+ 
+    <Category xsi:type="MyObjectBuilder_GuiBlockCategoryDefinition">
+      <Id>
+        <TypeId>GuiBlockCategoryDefinition</TypeId>
+        <SubtypeId/>
+      </Id>
+      <DisplayName>DisplayName_Category_LargeBlocks</DisplayName>
+      <Name>LargeBlocks</Name>
+      <ItemIds>       
+        <string>LargeMissileTurret/MCRNRailGunLB</string>             
+      </ItemIds>
+    </Category>  
+    <Category xsi:type="MyObjectBuilder_GuiBlockCategoryDefinition">
+      <Id>
+        <TypeId>GuiBlockCategoryDefinition</TypeId>
+        <SubtypeId/>
+      </Id>
+      <DisplayName>DisplayName_Category_ShipWeapons</DisplayName>
+      <Name>Weapons</Name>
+      <ItemIds>
+        <string>LargeMissileTurret/MCRNRailGunLB</string>
+      </ItemIds>
+    </Category>
+</CategoryClasses> 
+ 
+  
+  
 </Definitions>
