@@ -24,7 +24,7 @@ namespace WeaponThread
     {
         WeaponId = "MCRNRails", // name of weapon in terminal
         AmmoMagazineId = "RailGunAmmoMag",
-        Block = AimControl(trackTargets: true, turretAttached: true, turretController: true, primaryTracking: true, rotateRate: 0.008f, elevateRate: 0.008f, minAzimuth: -90, maxAzimuth: 90, minElevation: 0, maxElevation: 75, offset: Vector(x: 0, y: 0, z: 0), fixedOffset: false, inventorySize: 1.14f, debug: false),
+        Block = AimControl(trackTargets: true, turretAttached: true, turretController: true, primaryTracking: true, rotateRate: 0.008f, elevateRate: 0.008f, minAzimuth: -90, maxAzimuth: 90, minElevation: 0, maxElevation: 75, offset: Vector(x: 0, y: 0, z: 0), fixedOffset: false, inventorySize: 1.14f, debug: true),
         DeviateShotAngle = 0f,
         AimingTolerance = 90f, // 0 - 180 firing angle
         EnergyCost = 0.0003f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
@@ -43,7 +43,7 @@ namespace WeaponThread
             SkipBarrels = 0,
             ReloadTime = 500, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). ReloadTime = 180
             DelayUntilFire = 240, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). DelayUntilFire = 120
-            HeatPerShot = 19000, //heat generated per shot 
+            HeatPerShot = 9000, //heat generated per shot 
             MaxHeat = 18000, //max heat before weapon enters cooldown (70% of max heat)
             Cooldown = .10f, //percent of max heat to be under to start firing again after overheat accepts .2-.95
             HeatSinkRate = 3600, //amount of heat lost per second
@@ -73,7 +73,7 @@ namespace WeaponThread
         Characters = -1f,
         Grids = Options(largeGridModifier: -1f, smallGridModifier: -1f),
         Armor = Options(armor: -1f, light: -1f, heavy: -1f, nonArmor: -1f), 
-        Shields = Options(modifier: 0.1f, type: Bypass), // Types: Kinetic, Energy, Emp or Bypass
+        Shields = Options(modifier: 1f, type: Bypass, bypassModifier: 0.5f), // Types: Kinetic, Energy, Emp or Bypass
 
         // ignoreOthers will cause projectiles to pass through all blocks that do not match the custom subtypeIds.
         Custom = SubTypeIds(false),
