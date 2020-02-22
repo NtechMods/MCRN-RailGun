@@ -24,7 +24,7 @@ namespace WeaponThread
     {
         WeaponId = "MCRNRails", // name of weapon in terminal
         AmmoMagazineId = "RailGunAmmoMag",
-        Block = AimControl(trackTargets: true, turretAttached: true, turretController: true, primaryTracking: true, rotateRate: 0.008f, elevateRate: 0.008f, minAzimuth: -90, maxAzimuth: 90, minElevation: 0, maxElevation: 75, offset: Vector(x: 0, y: 0, z: 0), fixedOffset: false, inventorySize: 1.14f, debug: true),
+        Block = AimControl(trackTargets: true, turretAttached: true, turretController: true, primaryTracking: true, rotateRate: 0.008f, elevateRate: 0.008f, minAzimuth: -90, maxAzimuth: 90, minElevation: 0, maxElevation: 75, offset: Vector(x: 0, y: 0, z: 0), fixedOffset: false, inventorySize: 1.14f, debug: false),
         DeviateShotAngle = 0f,
         AimingTolerance = 90f, // 0 - 180 firing angle
         EnergyCost = 0.0003f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
