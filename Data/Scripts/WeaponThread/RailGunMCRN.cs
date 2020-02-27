@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using static WeaponThread.WeaponStructure.ShieldDefinition.ShieldType;
+﻿using static WeaponThread.WeaponStructure.ShieldDefinition.ShieldType;
 using static WeaponThread.WeaponStructure.AmmoTrajectory.GuidanceType;
 using static WeaponThread.WeaponStructure.HardPointDefinition.Prediction;
 using static WeaponThread.WeaponStructure.AreaDamage.AreaEffectType;
