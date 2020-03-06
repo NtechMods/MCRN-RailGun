@@ -13,13 +13,13 @@ namespace WeaponThread
 { // Don't edit above this line
     partial class Weapons
     {
-        private AmmoDef[] RailgunSpikeAmmo => new []
+        private AmmoDef[] RailSpikeAmmo => new []
         {
             // AmmoType1
             new AmmoDef
             {
                 AmmoMagazine = "RailgunAmmoMag",
-                AmmoRound = "RailgunSpikeAmmo",
+                AmmoRound = "RailSpikeAmmo",
                 HybridRound = true, //AmmoMagazine based weapon with energy cost
                 EnergyCost = 0.00000000001f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
                 BaseDamage = 120000f,
