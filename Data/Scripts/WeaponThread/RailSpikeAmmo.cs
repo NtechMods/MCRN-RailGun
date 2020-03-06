@@ -13,11 +13,9 @@ namespace WeaponThread
 { // Don't edit above this line
     partial class Weapons
     {
-        private AmmoDef[] RailSpikeAmmo => new []
+        private AmmoDef RailSpikeAmmo => new AmmoDef
         {
-            // AmmoType1
-            new AmmoDef
-            {
+            
                 AmmoMagazine = "RailgunAmmoMag",
                 AmmoRound = "RailSpikeAmmo",
                 HybridRound = true, //AmmoMagazine based weapon with energy cost
@@ -238,7 +236,7 @@ namespace WeaponThread
                     HitPlayChance = 1f,
                     HitPlayShield = true,
                 }, // Don't edit below this line
-            },
+            
 
         };
     }
