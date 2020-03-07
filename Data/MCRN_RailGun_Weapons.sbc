@@ -54,7 +54,7 @@
       <Volume>32.33</Volume>
       <Model>Models\Ammo\DeUrSpike.mwm</Model>
       <Capacity>1</Capacity>
-      <AmmoDefinitionId Subtype="Blank" />
+      <AmmoDefinitionId Subtype="Energy" />
     </AmmoMagazine>	
   </AmmoMagazines>
   
@@ -62,7 +62,7 @@
     <Ammo xsi:type="MyObjectBuilder_ProjectileAmmoDefinition">
       <Id>
         <TypeId>AmmoDefinition</TypeId>
-        <SubtypeId>Blank</SubtypeId>
+        <SubtypeId>Energy</SubtypeId>
       </Id>
       <BasicProperties>
         <DesiredSpeed>0</DesiredSpeed>

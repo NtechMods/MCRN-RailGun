@@ -154,7 +154,7 @@ namespace WeaponThread
 			Ammos = new [] {
                 RailSpikeAmmo
             },
-            //Animations = MCRNRailGunEmissive,
+            Animations = MCRNRailGunEmissive,
             // Don't edit below this line
         };
     }

@@ -16,9 +16,9 @@ namespace WeaponThread
         private AmmoDef RailSpikeAmmo => new AmmoDef
         {
             
-                AmmoMagazine = "RailgunAmmoMag",
+                AmmoMagazine = "RailGunAmmoMag",
                 AmmoRound = "RailSpikeAmmo",
-                HybridRound = true, //AmmoMagazine based weapon with energy cost
+                HybridRound = false, //AmmoMagazine based weapon with energy cost
                 EnergyCost = 0.00000000001f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
                 BaseDamage = 120000f,
                 Mass = 10f, // in kilograms
