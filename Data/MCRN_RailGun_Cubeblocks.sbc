@@ -1,5 +1,24 @@
 <?xml version="1.0"?>
 <Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--Block Groups -->
+    <BlockVariantGroups>
+
+        <!-- MCRN Weapons -->
+
+        <BlockVariantGroup>
+            <Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="MCRNGroup" />
+            <Icon>Textures\GUI\Icons\Cubes\MCRNRailgun.dds</Icon>
+            <DisplayName>DisplayName_BlockGroup_MCRNWeapons</DisplayName>
+            <Description>MCRN Weaponry.</Description>
+            <Blocks>
+                <Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="MCRNRailGunLB" />
+            </Blocks>
+        </BlockVariantGroup>
+       
+  </BlockVariantGroups>
+
+
+
 	<CubeBlocks>
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>

@@ -22,7 +22,7 @@
    <Blueprint>
       <Id>
         <TypeId>BlueprintDefinition</TypeId>
-        <SubtypeId>RailgunAmmoMag</SubtypeId>
+        <SubtypeId>RailGunAmmoMag</SubtypeId>
       </Id>
       <DisplayName>Depleated Uranium Spike
 	  Used in MCRN RailGun</DisplayName>
@@ -30,7 +30,7 @@
       <Prerequisites>
         <Item Amount="40" TypeId="Ingot" SubtypeId="Iron" />
 		<Item Amount="1" TypeId="Ingot" SubtypeId="Nickel" />
-		<Item Amount="1.5" TypeId="Ingot" SubtypeId="Uranium" />
+		<Item Amount="0.5" TypeId="Ingot" SubtypeId="Uranium" />
       </Prerequisites>
       <Result Amount="1" TypeId="AmmoMagazine" SubtypeId="RailGunAmmoMag" />
       <BaseProductionTimeInSeconds>60</BaseProductionTimeInSeconds>
@@ -43,15 +43,15 @@
         <TypeId>AmmoMagazine</TypeId>
         <SubtypeId>RailGunAmmoMag</SubtypeId>
       </Id>
-      <DisplayName>Rail Spike</DisplayName>
+      <DisplayName>MCRN Railgun Spike</DisplayName>
       <Icon>Textures\GUI\Icons\ammo\RailSpike.dds</Icon>
       <Size>
-        <X>0.25</X>
-        <Y>0.2</Y>
-        <Z>0.2</Z>
+        <X>0.15</X>
+        <Y>0.1</Y>
+        <Z>0.1</Z>
       </Size>
-      <Mass>70.25</Mass>
-      <Volume>32.33</Volume>
+      <Mass>10.25</Mass>
+      <Volume>10.33</Volume>
       <Model>Models\Ammo\DeUrSpike.mwm</Model>
       <Capacity>1</Capacity>
       <AmmoDefinitionId Subtype="Energy" />
@@ -84,8 +84,8 @@
  <BlueprintClassEntries>
    
 
-    <Entry Class="Ammo" BlueprintSubtypeId="RailgunAmmoMag" />
-    <Entry Class="Components" BlueprintSubtypeId="RailgunAmmoMag" />
+    <Entry Class="Ammo" BlueprintSubtypeId="RailGunAmmoMag" />
+    <Entry Class="Components" BlueprintSubtypeId="RailGunAmmoMag" />
    
    
     <Entry Class="LargeBlocks" BlueprintSubtypeId="MCRNRailGunLB" />
