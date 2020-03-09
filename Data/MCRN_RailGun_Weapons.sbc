@@ -50,8 +50,8 @@
         <Y>0.1</Y>
         <Z>0.1</Z>
       </Size>
-      <Mass>10.25</Mass>
-      <Volume>10.33</Volume>
+      <Mass>10</Mass>
+      <Volume>10</Volume>
       <Model>Models\Ammo\DeUrSpike.mwm</Model>
       <Capacity>1</Capacity>
       <AmmoDefinitionId Subtype="Energy" />

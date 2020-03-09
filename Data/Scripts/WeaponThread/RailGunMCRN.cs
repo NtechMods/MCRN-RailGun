@@ -79,7 +79,7 @@ namespace WeaponThread
                     MinElevation = -2,
                     MaxElevation = 75,
                     FixedOffset = false,
-                    InventorySize = 0.34f,
+                    InventorySize = 0.011f,
                     Offset = Vector(x: 0, y: 0, z: 0),
                 },
                 Other = new OtherDef
@@ -110,7 +110,7 @@ namespace WeaponThread
                 },
                 Audio = new HardPointAudioDef
                 {
-                    PreFiringSound = "",
+                    PreFiringSound = "DroneBayHum",
                     FiringSound = "RailCharge", // subtype name from sbc
                     FiringSoundPerShot = true,
                     ReloadSound = "",
