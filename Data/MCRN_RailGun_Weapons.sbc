@@ -24,7 +24,7 @@
         <TypeId>BlueprintDefinition</TypeId>
         <SubtypeId>RailGunAmmoMag</SubtypeId>
       </Id>
-      <DisplayName>Depleated Uranium Spike
+      <DisplayName>Depleted Uranium Spike
 	  Used in MCRN RailGun</DisplayName>
       <Icon>Textures\GUI\Icons\ammo\RailSpike.dds</Icon>
       <Prerequisites>
@@ -87,6 +87,7 @@
     <Entry Class="Ammo" BlueprintSubtypeId="RailGunAmmoMag" />
     <Entry Class="Components" BlueprintSubtypeId="RailGunAmmoMag" />
    
+	<Entry Class="AmmoMagazine" BlueprintSubtypeId="RailGunAmmoMag" />
    
     <Entry Class="LargeBlocks" BlueprintSubtypeId="MCRNRailGunLB" />
   </BlueprintClassEntries>

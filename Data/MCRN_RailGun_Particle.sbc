@@ -885,9 +885,9 @@
       <ParticleId>5412</ParticleId> <!-- Must be unique if custom effect -->
       <Length>6</Length> <!-- Length of the effect -->
       <DurationMin>1</DurationMin> <!-- minimum duration of effect -->
-      <DurationMax>3</DurationMax> <!-- maximum duration of effect -->
+      <DurationMax>30</DurationMax> <!-- maximum duration of effect -->
       <DistanceMax>20000</DistanceMax>
-      <Loop>true</Loop> <!-- Loops effect in world true = repeats / false = plays once per initiation -->
+      <Loop>false</Loop> <!-- Loops effect in world true = repeats / false = plays once per initiation -->
       <ParticleGenerations>
 	  
 	    <ParticleGeneration Name="TorusEffectParticles" Version="0">
@@ -1092,7 +1092,7 @@
               </Keys>
             </Property>
             <Property Name="Life" Type="Float" AnimationType="Const"> <!-- lifespan of each particle -->
-              <ValueFloat>0.6</ValueFloat>
+              <ValueFloat>5.6</ValueFloat>
             </Property>
             <Property Name="Soft particle distance scale" Type="Float" AnimationType="Const">
               <ValueFloat>1</ValueFloat>
