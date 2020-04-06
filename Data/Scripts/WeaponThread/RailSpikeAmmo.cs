@@ -214,8 +214,8 @@ namespace WeaponThread
                         {
                             Enable = true,
                             Material = "WeaponLaser",
-                            DecayTime = 10,
-                            Color = Color(red:0.2f, green: 0.2f, blue:0.8f, alpha: 1),
+                            DecayTime = 30,
+                            Color = Color(red:0.2f, green: 0.2f, blue:0.8f, alpha: 3),
                             Back = true,
                             CustomWidth = 0,
                             UseWidthVariance = false,
