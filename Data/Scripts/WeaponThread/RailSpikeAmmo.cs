@@ -135,7 +135,7 @@ namespace WeaponThread
                     TargetLossDegree = 50f,
                     TargetLossTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     MaxLifeTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                    AccelPerSec = 10000f,
+                    AccelPerSec = 0f,
                     DesiredSpeed = 1000f,
                     MaxTrajectory = 10000f,
                     FieldTime = 0, // 0 is disabled, a value causes the projectile to come to rest, spawn a field and remain for a time (Measured in game ticks, 60 = 1 second)
@@ -185,7 +185,7 @@ namespace WeaponThread
                             Name = "RailgunEnergyParticle",
                             ApplyToShield = true,
                             ShrinkByDistance = true,
-                            Color = Color(red: 0.2f, green: 0.2f, blue: 0.8f, alpha: 1),
+                            Color = Color(red: 22f, green: 22f, blue: 88f, alpha: 1),
                             Offset = Vector(x: 0, y: 0, z: 0),
                             Extras = new ParticleOptionDef
                             {
@@ -193,8 +193,8 @@ namespace WeaponThread
                                 Restart = false,
                                 MaxDistance = 5000,
                                 MaxDuration = 1,
-                                Scale = 2.6f,
-                                HitPlayChance = 0.1f,
+                                Scale = 0.8f,
+                                HitPlayChance = 1f,
                             },
                         },
                     },
