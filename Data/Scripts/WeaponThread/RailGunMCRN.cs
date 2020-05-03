@@ -52,7 +52,7 @@ namespace WeaponThread
                 WeaponName = "MCRNRails", // name of weapon in terminal
                 DeviateShotAngle = 0f,
                 AimingTolerance = 90f, // 0 - 180 firing angle
-                AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
+                AimLeadingPrediction = Accurate, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
 
                 Ui = new UiDef
@@ -84,7 +84,7 @@ namespace WeaponThread
                 },
                 Other = new OtherDef
                 {
-                    GridWeaponCap = 4,
+                    GridWeaponCap = 0,
                     RotateBarrelAxis = 0,
                     EnergyPriority = 0,
                     MuzzleCheck = false,

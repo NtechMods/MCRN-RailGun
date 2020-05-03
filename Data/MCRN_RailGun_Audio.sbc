@@ -8,20 +8,16 @@
       </Id>
       <Category>WEP_TURR</Category>
       <MaxDistance>200</MaxDistance>
-      <PitchVariation>50</PitchVariation>
+      <PitchVariation>0</PitchVariation>
       <VolumeVariation>0</VolumeVariation>
-      <Volume>2.9</Volume>
+      <Volume>0.9</Volume>
 	  <Loopable>false</Loopable>
       <Waves>
         <Wave Type="D2">
           <Start>Audio\WEP\RailCharging_S.wav</Start>
-          <Loop>Audio\WEP\RailCharging_S.wav</Loop>
-          <End>Audio\WEP\RailCharging_S.wav</End>
         </Wave>
         <Wave Type="D3">
           <Start>Audio\WEP\RailCharging_M.wav</Start>
-          <Loop>Audio\WEP\RailCharging_M.wav</Loop>
-          <End>Audio\WEP\RailCharging_M.wav</End>
         </Wave>
       </Waves>
     </Sound>
@@ -40,13 +36,9 @@
       <Waves>
         <Wave Type="D2">
           <Start>Audio\WEP\ChargeFire_S.wav</Start>
-          <Loop>Audio\WEP\ChargeFire_S.wav</Loop>
-          <End>Audio\WEP\ChargeFire_S.wav</End>
         </Wave>
         <Wave Type="D3">
           <Start>Audio\WEP\ChargeFire_M.wav</Start>
-          <Loop>Audio\WEP\ChargeFire_M.wav</Loop>
-          <End>Audio\WEP\ChargeFire_M.wav</End>
         </Wave>
       </Waves>
     </Sound>
