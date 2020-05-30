@@ -1,8 +1,8 @@
-﻿using VRageMath;
-using static WeaponThread.WeaponStructure;
+﻿using static WeaponThread.WeaponStructure;
 using static WeaponThread.WeaponStructure.WeaponDefinition;
-using static WeaponThread.WeaponStructure.WeaponDefinition.ModelAssignmentsDef;
 using static WeaponThread.WeaponStructure.WeaponDefinition.HardPointDef;
+using static WeaponThread.WeaponStructure.WeaponDefinition.ModelAssignmentsDef;
+using static WeaponThread.WeaponStructure.WeaponDefinition.HardPointDef.HardwareDef.ArmorState;
 using static WeaponThread.WeaponStructure.WeaponDefinition.HardPointDef.Prediction;
 using static WeaponThread.WeaponStructure.WeaponDefinition.TargetingDef.BlockTypes;
 using static WeaponThread.WeaponStructure.WeaponDefinition.TargetingDef.Threat;
@@ -22,6 +22,8 @@ namespace WeaponThread
                         SubtypeId = "MCRNRailGunLB",
                         AimPartId = "MissileTurretBarrels",
                         MuzzlePartId = "MissileTurretBarrels",
+                        DurabilityMod = 0.8f,
+                        IconName = "filter_nato.dds" 
                     },
 
                 },
@@ -41,8 +43,12 @@ namespace WeaponThread
                     Thrust, Utility, Offense, Power, Production, Any, // subsystems the gun targets
                 },
                 ClosestFirst = false, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
+                IgnoreDumbProjectiles = false, // Don't fire at non-smart projectiles.
+                LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
                 MinimumDiameter = 4, // 0 = unlimited, Minimum radius of threat to engage.
                 MaximumDiameter = 0, // 0 = unlimited, Maximum radius of threat to engage.
+                MaxTargetDistance = 0, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
+                MinTargetDistance = 0, // 0 = unlimited, Min target distance that targets will be automatically shot at.
                 TopTargets = 4, // 0 = unlimited, max number of top targets to randomize between.
                 TopBlocks = 4, // 0 = unlimited, max number of blocks to randomize between
                 StopTrackingSpeed = 30, // do not track target threats traveling faster than this speed
@@ -54,6 +60,7 @@ namespace WeaponThread
                 AimingTolerance = 90f, // 0 - 180 firing angle
                 AimLeadingPrediction = Accurate, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                AddToleranceToTracking = false,
 
                 Ui = new UiDef
                 {
@@ -81,6 +88,7 @@ namespace WeaponThread
                     FixedOffset = false,
                     InventorySize = 0.011f,
                     Offset = Vector(x: 0, y: 0, z: 0),
+                    Armor = IsWeapon, // IsWeapon, Passive, Active
                 },
                 Other = new OtherDef
                 {
@@ -107,6 +115,7 @@ namespace WeaponThread
                     ShotsInBurst = 0,
                     DelayAfterBurst = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     FireFullBurst = false,
+                    GiveUpAfterBurst = false,
                 },
                 Audio = new HardPointAudioDef
                 {
@@ -117,6 +126,7 @@ namespace WeaponThread
                     NoAmmoSound = "ArcWepShipGatlingNoAmmo",
                     HardPointRotationSound = "WepTurretGatlingRotate",
                     BarrelRotationSound = "",
+                    FireSoundEndDelay = 120, // Measured in game ticks(6 = 100ms, 60 = 1 seconds, etc..).
                 },
                 Graphics = new HardPointParticleDef
                 {
