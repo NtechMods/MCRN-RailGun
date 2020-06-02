@@ -29,8 +29,8 @@
       <Icon>Textures\GUI\Icons\ammo\RailSpike.dds</Icon>
       <Prerequisites>
         <Item Amount="40" TypeId="Ingot" SubtypeId="Iron" />
-		<Item Amount="1" TypeId="Ingot" SubtypeId="Nickel" />
-		<Item Amount="0.5" TypeId="Ingot" SubtypeId="Uranium" />
+		<Item Amount="6" TypeId="Ingot" SubtypeId="Nickel" />
+		<Item Amount="6" TypeId="Ingot" SubtypeId="Uranium" />
       </Prerequisites>
       <Result Amount="1" TypeId="AmmoMagazine" SubtypeId="RailGunAmmoMag" />
       <BaseProductionTimeInSeconds>60</BaseProductionTimeInSeconds>
