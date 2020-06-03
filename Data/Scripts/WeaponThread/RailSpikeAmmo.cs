@@ -20,7 +20,7 @@ namespace WeaponThread
             
                 AmmoMagazine = "RailGunAmmoMag",
                 AmmoRound = "RailSpikeAmmo",
-                HybridRound = true, //AmmoMagazine based weapon with energy cost
+                HybridRound = false, //AmmoMagazine based weapon with energy cost
                 EnergyCost = 0.02f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
                 BaseDamage = 120000f,
                 Mass = 10f, // in kilograms
@@ -170,7 +170,7 @@ namespace WeaponThread
                     TargetLossTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     MaxLifeTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     AccelPerSec = 0f,
-                    DesiredSpeed = 1000f,
+                    DesiredSpeed = 10f,
                     MaxTrajectory = 10000f,
                     FieldTime = 0, // 0 is disabled, a value causes the projectile to come to rest, spawn a field and remain for a time (Measured in game ticks, 60 = 1 second)
                     SpeedVariance = Random(start: 0, end: 0), // subtracts value from DesiredSpeed
@@ -251,14 +251,14 @@ namespace WeaponThread
 							VisualFadeStart = 0, // Number of ticks the weapon has been firing before projectiles begin to fade their color
 							VisualFadeEnd = 0, // How many ticks after fade began before it will be invisible.
 							Textures = new[] {// WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
-								"WeaponLaser",
+								"ProjectileTrailLine",
 							},
 							TextureMode = Normal, // Normal, Cycle, Chaos, Wave
 							Segmentation = new SegmentDef
 							{
 								Enable = true, // If true Tracer TextureMode is ignored
 								Textures = new[] {
-									"WeaponLaser",
+									"ProjectileTrailLine",
 								},
 								SegmentLength = 30f, // Uses the values below.
 								SegmentGap = 0f, // Uses Tracer textures and values

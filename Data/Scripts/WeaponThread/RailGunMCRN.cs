@@ -23,7 +23,7 @@ namespace WeaponThread
                         AimPartId = "MissileTurretBarrels",
                         MuzzlePartId = "MissileTurretBarrels",
                         DurabilityMod = 0.8f,
-                        IconName = "filter_nato.dds" 
+                        IconName = "railspike_empty.dds" 
                     },
 
                 },
