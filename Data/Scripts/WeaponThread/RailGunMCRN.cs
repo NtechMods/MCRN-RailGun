@@ -43,7 +43,7 @@ namespace WeaponThread
                     Thrust, Utility, Offense, Power, Production, Any, // subsystems the gun targets
                 },
                 ClosestFirst = false, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
-                IgnoreDumbProjectiles = false, // Don't fire at non-smart projectiles.
+                IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
                 LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
                 MinimumDiameter = 4, // 0 = unlimited, Minimum radius of threat to engage.
                 MaximumDiameter = 0, // 0 = unlimited, Maximum radius of threat to engage.
@@ -88,7 +88,7 @@ namespace WeaponThread
                     FixedOffset = false,
                     InventorySize = 0.011f,
                     Offset = Vector(x: 0, y: 0, z: 0),
-                    Armor = IsWeapon, // IsWeapon, Passive, Active
+                   
                 },
                 Other = new OtherDef
                 {
