@@ -884,7 +884,7 @@
       <Version>0</Version>
       <ParticleId>5412</ParticleId> <!-- Must be unique if custom effect -->
       <Length>6</Length> <!-- Length of the effect -->
-      <DurationMin>1</DurationMin> <!-- minimum duration of effect -->
+      <DurationMin>5</DurationMin> <!-- minimum duration of effect -->
       <DurationMax>30</DurationMax> <!-- maximum duration of effect -->
       <DistanceMax>20000</DistanceMax>
       <Loop>false</Loop> <!-- Loops effect in world true = repeats / false = plays once per initiation -->
