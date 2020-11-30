@@ -30,7 +30,7 @@ namespace WeaponThread
                 Shape = new ShapeDef //defines the collision shape of projectile, defaults line and visual Line Length if set to 0
                 {
                     Shape = LineShape,
-                    Diameter = 2,
+                    Diameter = 1,
                 },
                 ObjectsHit = new ObjectsHitDef
                 {
@@ -60,7 +60,7 @@ namespace WeaponThread
                 DamageScales = new DamageScaleDef
                 {
                     MaxIntegrity = 0f, // 0 = disabled, 1000 = any blocks with currently integrity above 1000 will be immune to damage.
-                    DamageVoxels = false, // true = voxels are vulnerable to this weapon
+                    DamageVoxels = true, // true = voxels are vulnerable to this weapon
                     SelfDamage = false, // true = allow self damage.
 
                     // modifier values: -1 = disabled (higher performance), 0 = no damage, 0.01 = 1% damage, 2 = 200% damage.
