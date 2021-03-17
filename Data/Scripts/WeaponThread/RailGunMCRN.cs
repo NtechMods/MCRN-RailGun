@@ -57,7 +57,7 @@ namespace WeaponThread
             {
                 WeaponName = "MCRNRails", // name of weapon in terminal
                 DeviateShotAngle = 0f,
-                AimingTolerance = 90f, // 0 - 180 firing angle
+                AimingTolerance = 4f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AddToleranceToTracking = false,

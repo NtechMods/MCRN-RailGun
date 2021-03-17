@@ -20,7 +20,7 @@ namespace WeaponThread
             AmmoMagazine = "RailGunAmmoMag",
             AmmoRound = "RailSpikeAmmo",
                 HybridRound = false, //AmmoMagazine based weapon with energy cost
-                EnergyCost = 0.01f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
+                EnergyCost = 0.10f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
                 BaseDamage = 120000.5f,
                 Mass = 1f, // in kilograms
                 Health = 0, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
