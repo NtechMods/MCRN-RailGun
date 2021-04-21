@@ -19,11 +19,11 @@ namespace WeaponThread
         {
             AmmoMagazine = "RailGunAmmoMag",
             AmmoRound = "RailSpikeAmmo",
-                HybridRound = false, //AmmoMagazine based weapon with energy cost
-                EnergyCost = 0.10f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
+                HybridRound = true, //AmmoMagazine based weapon with energy cost
+                EnergyCost = 0.035f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
                 BaseDamage = 120000.5f,
                 Mass = 1f, // in kilograms
-                Health = 0, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
+                Health = 10, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
                 BackKickForce = 3.2f,
 				HardPointUsable = true, // set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
 
@@ -60,7 +60,7 @@ namespace WeaponThread
                 DamageScales = new DamageScaleDef
                 {
                     MaxIntegrity = 0f, // 0 = disabled, 1000 = any blocks with currently integrity above 1000 will be immune to damage.
-                    DamageVoxels = true, // true = voxels are vulnerable to this weapon
+                    DamageVoxels = false, // true = voxels are vulnerable to this weapon
                     SelfDamage = false, // true = allow self damage.
 
                     // modifier values: -1 = disabled (higher performance), 0 = no damage, 0.01 = 1% damage, 2 = 200% damage.
@@ -84,9 +84,9 @@ namespace WeaponThread
                     },
                     Shields = new ShieldDef
                     {
-                        Modifier = -1f,
+                        Modifier = 5f,
                         Type = Kinetic,
-                        BypassModifier = 0.2f,
+                        BypassModifier = -1f,
                     },
                     // first true/false (ignoreOthers) will cause projectiles to pass through all blocks that do not match the custom subtypeIds.
                     Custom = new CustomScalesDef
@@ -176,17 +176,17 @@ namespace WeaponThread
                     AccelPerSec = 0f,
                     DesiredSpeed = 1800,
                     MaxTrajectory = 3000f,
-                FieldTime = 0, // 0 is disabled, a value causes the projectile to come to rest, spawn a field and remain for a time (Measured in game ticks, 60 = 1 second)
-                GravityMultiplier = 0f, // Gravity multiplier, influences the trajectory of the projectile, value greater than 0 to enable.
-                SpeedVariance = Random(start: 0, end: 0), // subtracts value from DesiredSpeed
-                RangeVariance = Random(start: 0, end: 0), // subtracts value from MaxTrajectory
-                MaxTrajectoryTime = 0, // How long the weapon must fire before it reaches MaxTrajectory.
+                    FieldTime = 0, // 0 is disabled, a value causes the projectile to come to rest, spawn a field and remain for a time (Measured in game ticks, 60 = 1 second)
+                    GravityMultiplier = 0f, // Gravity multiplier, influences the trajectory of the projectile, value greater than 0 to enable.
+                    SpeedVariance = Random(start: 0, end: 0), // subtracts value from DesiredSpeed
+                    RangeVariance = Random(start: 0, end: 0), // subtracts value from MaxTrajectory
+                    MaxTrajectoryTime = 0, // How long the weapon must fire before it reaches MaxTrajectory.
                     Smarts = new SmartsDef
                     {
                     Inaccuracy = 0f, // 0 is perfect, hit accuracy will be a random num of meters between 0 and this value.
                     Aggressiveness = 1f, // controls how responsive tracking is.
                     MaxLateralThrust = 0.5, // controls how sharp the trajectile may turn
-                    TrackingDelay = 1, // Measured in Shape diameter units traveled.
+                    TrackingDelay = 30, // Measured in Shape diameter units traveled.
                     MaxChaseTime = 1800, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     OverideTarget = true, // when set to true ammo picks its own target, does not use hardpoint's.
                     MaxTargets = 0, // Number of targets allowed before ending, 0 = unlimited
@@ -204,7 +204,7 @@ namespace WeaponThread
                 },
                 AmmoGraphics = new GraphicDef
                 {
-                    ModelName = "\\Models\\Ammo\\DeUrSpike.mwm",
+                    ModelName = "", //\\Models\\Ammo\\DeUrSpike.mwm
                     VisualProbability = 1f,
                     ShieldHitDraw = true,
                     Particles = new AmmoParticleDef
@@ -244,15 +244,15 @@ namespace WeaponThread
                     },
                     Lines = new LineDef
                     {
-                        TracerMaterial = "ProjectileTrailLine", // WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
-                        ColorVariance = Random(start: 5f, end: 10f), // multiply the color by random values within range.
+                        TracerMaterial = "RailBolt", // WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
+                        ColorVariance = Random(start: 1f, end: 5f), // multiply the color by random values within range.
                         WidthVariance = Random(start: 0f, end: 0.045f), // adds random value to default width (negatives shrinks width)
                         Tracer = new TracerBaseDef
                         {
 							Enable = true,
-							Length = 1f,
-							Width = 0.1f,
-							Color = Color(red: 2, green: 2, blue: 8f, alpha: 1),
+							Length = 16f,
+							Width = 0.8f,
+							Color = Color(red: 5.0f, green: 10, blue: 18.5f, alpha: 1f),
 							VisualFadeStart = 0, // Number of ticks the weapon has been firing before projectiles begin to fade their color
 							VisualFadeEnd = 0, // How many ticks after fade began before it will be invisible.
 							Segmentation = new SegmentDef
@@ -261,7 +261,7 @@ namespace WeaponThread
 								SegmentLength = 5f,
 								SegmentGap = 3f,
 								Speed = 15f,
-								Color = Color(red: 2, green: 2, blue: 8f, alpha: 1),
+								Color = Color(red: 5.0f, green: 10, blue: 18.5f, alpha: 1f),
 								WidthMultiplier = 1f,
 								Reverse = false,
 								UseLineVariance = false,
@@ -273,10 +273,10 @@ namespace WeaponThread
                         {
                             Enable = true,
                             Material = "WeaponLaser",
-                            DecayTime = 80,
-                            Color = Color(red: 2f, green: 2f, blue: 8f, alpha: 1f),
+                            DecayTime = 40,
+                            Color = Color(red: 5.0f, green: 10, blue: 18.5f, alpha: 1f),
                             Back = true,
-                            CustomWidth = 1.0f,
+                            CustomWidth = 0.3f,
                             UseWidthVariance = true,
                             UseColorFade = true,
                         },

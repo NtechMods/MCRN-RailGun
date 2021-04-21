@@ -106,27 +106,27 @@ namespace WeaponThread
                     TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
                     SkipBarrels = 0,
                     ReloadTime = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                    DelayUntilFire = 240, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    DelayUntilFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     HeatPerShot = 1200, //heat generated per shot
                     MaxHeat = 20000, //max heat before weapon enters cooldown (70% of max heat)
                     Cooldown = .35f, //percent of max heat to be under to start firing again after overheat accepts .2-.95
-                    HeatSinkRate = 1000, //amount of heat lost per second
+                    HeatSinkRate = 600, //amount of heat lost per second
                     DegradeRof = false, // progressively lower rate of fire after 80% heat threshold (80% of max heat)
                     ShotsInBurst = 0,
                     DelayAfterBurst = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     FireFullBurst = false,
-                    GiveUpAfterBurst = false,
+                    GiveUpAfterBurst = true,
                 },
                 Audio = new HardPointAudioDef
                 {
                     PreFiringSound = "RailCharge",
                     FiringSound = "RailFire", // subtype name from sbc
                     FiringSoundPerShot = true,
-                    ReloadSound = "",
+                    ReloadSound = "RailCharge",
                     NoAmmoSound = "ArcWepShipGatlingNoAmmo",
                     HardPointRotationSound = "WepTurretGatlingRotate",
                     BarrelRotationSound = "",
-                    FireSoundEndDelay = 120, // Measured in game ticks(6 = 100ms, 60 = 1 seconds, etc..).
+                    FireSoundEndDelay = 0, // Measured in game ticks(6 = 100ms, 60 = 1 seconds, etc..).
                 },
                 Graphics = new HardPointParticleDef
                 {
