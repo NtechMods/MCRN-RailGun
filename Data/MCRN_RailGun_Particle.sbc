@@ -883,11 +883,11 @@
             <Version>0</Version>
             <ParticleId>5412</ParticleId>
             <!-- Must be unique if custom effect -->
-            <Length>6</Length>
+            <Length>3</Length>
             <!-- Length of the effect -->
-            <DurationMin>5</DurationMin>
+            <DurationMin>3</DurationMin>
             <!-- minimum duration of effect -->
-            <DurationMax>30</DurationMax>
+            <DurationMax>3</DurationMax>
             <!-- maximum duration of effect -->
             <DistanceMax>20000</DistanceMax>
             <Loop>false</Loop>
@@ -984,16 +984,16 @@
                             </Keys>
                         </Property>
                         <Property Name="Bounciness" Type="Float" AnimationType="Const">
-                            <ValueFloat>0.5</ValueFloat>
+                            <ValueFloat>10.5</ValueFloat>
                         </Property>
                         <Property Name="Emitter size" Type="Vector3" AnimationType="Animated">
                             <Keys>
                                 <Key>
                                     <Time>0</Time>
                                     <ValueVector3>
-                                        <X>0</X>
-                                        <Y>0</Y>
-                                        <Z>0</Z>
+                                        <X>1</X>
+                                        <Y>1</Y>
+                                        <Z>1</Z>
                                     </ValueVector3>
                                 </Key>
                             </Keys>
@@ -1002,6 +1002,10 @@
                             <Keys>
                                 <Key>
                                     <Time>0</Time>
+                                    <ValueFloat>0</ValueFloat>
+                                </Key>
+                                <Key>
+                                    <Time>1</Time>
                                     <ValueFloat>0</ValueFloat>
                                 </Key>
                             </Keys>
@@ -1017,7 +1021,19 @@
                             <Keys>
                                 <Key>
                                     <Time>0</Time>
-                                    <ValueFloat>10</ValueFloat>
+                                    <ValueFloat>5</ValueFloat>
+                                </Key>
+                                <Key>
+                                    <Time>0.25</Time>
+                                    <ValueFloat>5</ValueFloat>
+                                </Key>
+                                <Key>
+                                    <Time>0.5</Time>
+                                    <ValueFloat>5</ValueFloat>
+                                </Key>
+                                <Key>
+                                    <Time>1</Time>
+                                    <ValueFloat>0.01</ValueFloat>
                                 </Key>
                             </Keys>
                         </Property>
@@ -1025,7 +1041,7 @@
                             <Keys>
                                 <Key>
                                     <Time>0</Time>
-                                    <ValueFloat>10</ValueFloat>
+                                    <ValueFloat>1</ValueFloat>
                                 </Key>
                             </Keys>
                         </Property>
@@ -1094,11 +1110,11 @@
                                             </Key>
                                             <Key>
                                                 <Time>0.004769476</Time>
-                                                <ValueFloat>0.3</ValueFloat>
+                                                <ValueFloat>0.1</ValueFloat>
                                             </Key>
                                             <Key>
                                                 <Time>0.9962904</Time>
-                                                <ValueFloat>0.3</ValueFloat>
+                                                <ValueFloat>0.1</ValueFloat>
                                             </Key>
                                             <Key>
                                                 <Time>1</Time>
@@ -1110,13 +1126,13 @@
                             </Keys>
                         </Property>
                         <Property Name="Life" Type="Float" AnimationType="Const">
-                            <ValueFloat>3</ValueFloat>
+                            <ValueFloat>1</ValueFloat>
                         </Property>
                         <Property Name="Soft particle distance scale" Type="Float" AnimationType="Const">
                             <ValueFloat>1</ValueFloat>
                         </Property>
                         <Property Name="Streak multiplier" Type="Float" AnimationType="Const">
-                            <ValueFloat>1</ValueFloat>
+                            <ValueFloat>2</ValueFloat>
                         </Property>
                         <Property Name="Animation frame time" Type="Float" AnimationType="Const">
                             <ValueFloat>0.03</ValueFloat>
@@ -1168,7 +1184,7 @@
                             <ValueBool>true</ValueBool>
                         </Property>
                         <Property Name="Motion inheritance" Type="Float" AnimationType="Const">
-                            <ValueFloat>0.86</ValueFloat>
+                            <ValueFloat>0.9</ValueFloat>
                         </Property>
                         <Property Name="Life var" Type="Float" AnimationType="Const">
                             <ValueFloat>0.5</ValueFloat>
@@ -1255,19 +1271,19 @@
                                         <Keys>
                                             <Key>
                                                 <Time>0</Time>
-                                                <ValueFloat>0</ValueFloat>
+                                                <ValueFloat>100</ValueFloat>
                                             </Key>
                                             <Key>
                                                 <Time>0.33</Time>
-                                                <ValueFloat>0</ValueFloat>
+                                                <ValueFloat>100</ValueFloat>
                                             </Key>
                                             <Key>
                                                 <Time>0.66</Time>
-                                                <ValueFloat>0</ValueFloat>
+                                                <ValueFloat>100</ValueFloat>
                                             </Key>
                                             <Key>
                                                 <Time>1</Time>
-                                                <ValueFloat>0</ValueFloat>
+                                                <ValueFloat>100</ValueFloat>
                                             </Key>
                                         </Keys>
                                     </Value2D>

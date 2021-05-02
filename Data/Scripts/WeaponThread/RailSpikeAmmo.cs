@@ -34,7 +34,7 @@ namespace WeaponThread
                 },
                 ObjectsHit = new ObjectsHitDef
                 {
-                    MaxObjectsHit = 100000, // 0 = disabled
+                    MaxObjectsHit = 10000, // 0 = disabled
                     CountBlocks = false, // counts gridBlocks and not just entities hit
                 },
                 Shrapnel = new ShrapnelDef
@@ -60,7 +60,7 @@ namespace WeaponThread
                 DamageScales = new DamageScaleDef
                 {
                     MaxIntegrity = 0f, // 0 = disabled, 1000 = any blocks with currently integrity above 1000 will be immune to damage.
-                    DamageVoxels = false, // true = voxels are vulnerable to this weapon
+                    DamageVoxels = true, // true = voxels are vulnerable to this weapon
                     SelfDamage = false, // true = allow self damage.
 
                     // modifier values: -1 = disabled (higher performance), 0 = no damage, 0.01 = 1% damage, 2 = 200% damage.
@@ -84,7 +84,7 @@ namespace WeaponThread
                     },
                     Shields = new ShieldDef
                     {
-                        Modifier = 5f,
+                        Modifier = 1f,
                         Type = Kinetic,
                         BypassModifier = -1f,
                     },
@@ -109,7 +109,7 @@ namespace WeaponThread
                 },
                 AreaEffect = new AreaDamageDef																																	  
                 {
-                    AreaEffect = Disabled, // Disabled = do not use area effect at all, Explosive, Radiant, AntiSmart, JumpNullField, JumpNullField, EnergySinkField, AnchorField, EmpField, OffenseField, NavField, DotField.
+                    AreaEffect = Radiant, // Disabled = do not use area effect at all, Explosive, Radiant, AntiSmart, JumpNullField, JumpNullField, EnergySinkField, AnchorField, EmpField, OffenseField, NavField, DotField.
                     AreaEffectDamage = 500f, // 0 = use spillover from BaseDamage, otherwise use this value.
                     AreaEffectRadius = 70f,
                     Pulse = new PulseDef // interval measured in game ticks (60 == 1 second), pulseChance chance (0 - 100) that an entity in field will be hit
@@ -152,7 +152,7 @@ namespace WeaponThread
                     },
                     EwarFields = new EwarFieldsDef
                     {
-                        Duration = 60,
+                        Duration = 360,
                         StackDuration = true,
                         Depletable = false,
                         MaxStacks = 10,
@@ -236,7 +236,7 @@ namespace WeaponThread
                                 Loop = false,
                                 Restart = false,
                                 MaxDistance = 1500,
-                                MaxDuration = 5,
+                                MaxDuration = 0,
                                 Scale = 1,
                                 HitPlayChance = 1f,
                             },
@@ -291,7 +291,7 @@ namespace WeaponThread
                 AmmoAudio = new AmmoAudioDef
                 {
                     TravelSound = "",
-                    HitSound = "ArcImpMetalMetalCat0",
+                    HitSound = "ArcImpMetalRockCat0", //ArcImpMetalMetalCat0
 					ShieldHitSound = "",
 					PlayerHitSound = "",
 					VoxelHitSound = "",

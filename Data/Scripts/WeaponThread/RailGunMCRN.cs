@@ -106,7 +106,7 @@ namespace WeaponThread
                     TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
                     SkipBarrels = 0,
                     ReloadTime = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                    DelayUntilFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    DelayUntilFire = 120, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     HeatPerShot = 1200, //heat generated per shot
                     MaxHeat = 20000, //max heat before weapon enters cooldown (70% of max heat)
                     Cooldown = .35f, //percent of max heat to be under to start firing again after overheat accepts .2-.95
@@ -122,7 +122,7 @@ namespace WeaponThread
                     PreFiringSound = "RailCharge",
                     FiringSound = "RailFire", // subtype name from sbc
                     FiringSoundPerShot = true,
-                    ReloadSound = "RailCharge",
+                    ReloadSound = "",
                     NoAmmoSound = "ArcWepShipGatlingNoAmmo",
                     HardPointRotationSound = "WepTurretGatlingRotate",
                     BarrelRotationSound = "",
