@@ -103,7 +103,7 @@ namespace WeaponThread
                     RateOfFire = 60,
                     BarrelSpinRate = 0, // visual only, 0 disables and uses RateOfFire
                     BarrelsPerShot = 1,
-                    TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
+                    TrajectilesPerBarrel = 4, // Number of Trajectiles per barrel per fire event.
                     SkipBarrels = 0,
                     ReloadTime = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     DelayUntilFire = 120, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
