@@ -1025,15 +1025,15 @@
                                 </Key>
                                 <Key>
                                     <Time>0.25</Time>
-                                    <ValueFloat>5</ValueFloat>
+                                    <ValueFloat>50</ValueFloat>
                                 </Key>
                                 <Key>
                                     <Time>0.5</Time>
-                                    <ValueFloat>5</ValueFloat>
+                                    <ValueFloat>500</ValueFloat>
                                 </Key>
                                 <Key>
                                     <Time>1</Time>
-                                    <ValueFloat>0.01</ValueFloat>
+                                    <ValueFloat>1000</ValueFloat>
                                 </Key>
                             </Keys>
                         </Property>
