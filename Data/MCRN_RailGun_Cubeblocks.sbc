@@ -72,6 +72,9 @@
 			<EmissiveColorPreset>Default</EmissiveColorPreset>
 			<MaxRangeMeters>800</MaxRangeMeters>
 			<PCU>225</PCU>
+            <TargetingGroups>
+                <string>Weapons</string>
+            </TargetingGroups>
 		</Definition>
 	</CubeBlocks>
 
