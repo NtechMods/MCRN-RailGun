@@ -2,12 +2,206 @@
 using ProtoBuf;
 using VRageMath;
 
-namespace WeaponThread
+namespace Scripts
 {
-    public class WeaponStructure
+    public class Structure
     {
         [ProtoContract]
-        public struct WeaponDefinition
+        public class ContainerDefinition
+        {
+            [ProtoMember(1)] internal WeaponDefinition[] WeaponDefs;
+            [ProtoMember(2)] internal ArmorDefinition[] ArmorDefs;
+            [ProtoMember(3)] internal UpgradeDefinition[] UpgradeDefs;
+            [ProtoMember(4)] internal SupportDefinition[] SupportDefs;
+        }
+
+        [ProtoContract]
+        public class ConsumeableDef
+        {
+            [ProtoMember(1)] internal string ItemName;
+            [ProtoMember(2)] internal string InventoryItem;
+            [ProtoMember(3)] internal int ItemsNeeded;
+            [ProtoMember(4)] internal bool Hybrid;
+            [ProtoMember(5)] internal float EnergyCost;
+            [ProtoMember(6)] internal float Strength;
+        }
+
+        [ProtoContract]
+        public class UpgradeDefinition
+        {
+            [ProtoMember(1)] internal ModelAssignmentsDef Assignments;
+            [ProtoMember(2)] internal HardPointDef HardPoint;
+            [ProtoMember(3)] internal WeaponDefinition.AnimationDef Animations;
+            [ProtoMember(4)] internal string ModPath;
+            [ProtoMember(5)] internal ConsumeableDef[] Consumable;
+
+            [ProtoContract]
+            public struct ModelAssignmentsDef
+            {
+                [ProtoMember(1)] internal MountPointDef[] MountPoints;
+
+                [ProtoContract]
+                public struct MountPointDef
+                {
+                    [ProtoMember(1)] internal string SubtypeId;
+                    [ProtoMember(2)] internal float DurabilityMod;
+                    [ProtoMember(3)] internal string IconName;
+                }
+            }
+
+            [ProtoContract]
+            public struct HardPointDef
+            {
+                [ProtoMember(1)] internal string PartName;
+                [ProtoMember(2)] internal HardwareDef HardWare;
+                [ProtoMember(3)] internal UiDef Ui;
+                [ProtoMember(4)] internal OtherDef Other;
+
+
+                [ProtoContract]
+                public struct UiDef
+                {
+                    [ProtoMember(1)] internal bool StrengthModifier;
+                }
+
+                [ProtoContract]
+                public struct HardwareDef
+                {
+                    public enum HardwareType
+                    {
+                        Default,
+                    }
+
+                    [ProtoMember(1)] internal float InventorySize;
+                    [ProtoMember(2)] internal HardwareType Type;
+                    [ProtoMember(3)] internal int BlockDistance;
+                    [ProtoMember(4)] internal float IdlePower;
+                }
+
+                [ProtoContract]
+                public struct OtherDef
+                {
+                    [ProtoMember(1)] internal int ConstructPartCap;
+                    [ProtoMember(2)] internal int EnergyPriority;
+                    [ProtoMember(3)] internal bool Debug;
+                    [ProtoMember(4)] internal double RestrictionRadius;
+                    [ProtoMember(5)] internal bool CheckInflatedBox;
+                    [ProtoMember(6)] internal bool CheckForAnySupport;
+                    [ProtoMember(7)] internal bool StayCharged;
+                }
+            }
+
+        }
+
+        [ProtoContract]
+        public class SupportDefinition
+        {
+            [ProtoMember(1)] internal ModelAssignmentsDef Assignments;
+            [ProtoMember(2)] internal HardPointDef HardPoint;
+            [ProtoMember(3)] internal WeaponDefinition.AnimationDef Animations;
+            [ProtoMember(4)] internal string ModPath;
+            [ProtoMember(5)] internal ConsumeableDef[] Consumable;
+            [ProtoMember(6)] internal SupportEffect Effect;
+
+            [ProtoContract]
+            public struct ModelAssignmentsDef
+            {
+                [ProtoMember(1)] internal MountPointDef[] MountPoints;
+
+                [ProtoContract]
+                public struct MountPointDef
+                {
+                    [ProtoMember(1)] internal string SubtypeId;
+                    [ProtoMember(2)] internal float DurabilityMod;
+                    [ProtoMember(3)] internal string IconName;
+                }
+            }
+            [ProtoContract]
+            public struct HardPointDef
+            {
+                [ProtoMember(1)] internal string PartName;
+                [ProtoMember(2)] internal HardwareDef HardWare;
+                [ProtoMember(3)] internal UiDef Ui;
+                [ProtoMember(4)] internal OtherDef Other;
+
+                [ProtoContract]
+                public struct UiDef
+                {
+                    [ProtoMember(1)] internal bool ProtectionControl;
+                }
+
+                [ProtoContract]
+                public struct HardwareDef
+                {
+                    [ProtoMember(1)] internal float InventorySize;
+                    [ProtoMember(2)] internal float IdlePower;
+                }
+
+                [ProtoContract]
+                public struct OtherDef
+                {
+                    [ProtoMember(1)] internal int ConstructPartCap;
+                    [ProtoMember(2)] internal int EnergyPriority;
+                    [ProtoMember(3)] internal bool Debug;
+                    [ProtoMember(4)] internal double RestrictionRadius;
+                    [ProtoMember(5)] internal bool CheckInflatedBox;
+                    [ProtoMember(6)] internal bool CheckForAnySupport;
+                    [ProtoMember(7)] internal bool StayCharged;
+                }
+            }
+
+            [ProtoContract]
+            public struct SupportEffect
+            {
+                public enum AffectedBlocks
+                {
+                    Armor,
+                    ArmorPlus,
+                    PlusFunctional,
+                    All,
+                }
+
+                public enum Protections
+                {
+                    KineticProt,
+                    EnergeticProt,
+                    GenericProt,
+                    Regenerate,
+                    Structural,
+                }
+
+                [ProtoMember(1)] internal Protections Protection;
+                [ProtoMember(2)] internal AffectedBlocks Affected;
+                [ProtoMember(3)] internal int BlockRange;
+                [ProtoMember(4)] internal int MaxPoints;
+                [ProtoMember(5)] internal int PointsPerCharge;
+                [ProtoMember(6)] internal int UsablePerSecond;
+                [ProtoMember(7)] internal int UsablePerMinute;
+                [ProtoMember(8)] internal float Overflow;
+                [ProtoMember(9)] internal float Effectiveness;
+                [ProtoMember(10)] internal float ProtectionMin;
+                [ProtoMember(11)] internal float ProtectionMax;
+            }
+        }
+
+        [ProtoContract]
+        public class ArmorDefinition
+        {
+            internal enum ArmorType
+            {
+                Light,
+                Heavy,
+                NonArmor,
+            }
+
+            [ProtoMember(1)] internal string[] SubtypeIds;
+            [ProtoMember(2)] internal ArmorType Kind;
+            [ProtoMember(3)] internal double KineticResistance;
+            [ProtoMember(4)] internal double EnergeticResistance;
+        }
+
+        [ProtoContract]
+        public class WeaponDefinition
         {
             [ProtoMember(1)] internal ModelAssignmentsDef Assignments;
             [ProtoMember(2)] internal TargetingDef Targeting;
@@ -15,23 +209,27 @@ namespace WeaponThread
             [ProtoMember(4)] internal HardPointDef HardPoint;
             [ProtoMember(5)] internal AmmoDef[] Ammos;
             [ProtoMember(6)] internal string ModPath;
+            [ProtoMember(7)] internal Dictionary<string, UpgradeValues[]> Upgrades;
 
             [ProtoContract]
             public struct ModelAssignmentsDef
             {
                 [ProtoMember(1)] internal MountPointDef[] MountPoints;
-                [ProtoMember(2)] internal string[] Barrels;
+                [ProtoMember(2)] internal string[] Muzzles;
+                [ProtoMember(3)] internal string Ejector;
+                [ProtoMember(4)] internal string Scope;
 
                 [ProtoContract]
                 public struct MountPointDef
                 {
                     [ProtoMember(1)] internal string SubtypeId;
-                    [ProtoMember(2)] internal string AimPartId;
+                    [ProtoMember(2)] internal string SpinPartId;
                     [ProtoMember(3)] internal string MuzzlePartId;
                     [ProtoMember(4)] internal string AzimuthPartId;
                     [ProtoMember(5)] internal string ElevationPartId;
                     [ProtoMember(6)] internal float DurabilityMod;
                     [ProtoMember(7)] internal string IconName;
+                    [ProtoMember(8)] internal string PhantomModel;
                 }
             }
 
@@ -78,8 +276,8 @@ namespace WeaponThread
             [ProtoContract]
             public struct AnimationDef
             {
-                [ProtoMember(1)] internal PartAnimationSetDef[] WeaponAnimationSets;
-                [ProtoMember(2)] internal WeaponEmissive[] Emissives;
+                [ProtoMember(1)] internal PartAnimationSetDef[] AnimationSets;
+                [ProtoMember(2)] internal PartEmissive[] Emissives;
                 [ProtoMember(3)] internal string[] HeatingEmissiveParts;
                 [ProtoMember(4)] internal Dictionary<PartAnimationSetDef.EventTriggers, EventParticle[]> EventParticles;
 
@@ -95,11 +293,13 @@ namespace WeaponThread
                         TurnOn,
                         TurnOff,
                         BurstReload,
-                        OutOfAmmo,
+                        NoMagsToLoad,
                         PreFire,
                         EmptyOnGameLoad,
                         StopFiring,
-                        StopTracking
+                        StopTracking,
+                        LockDelay,
+                        Init,
                     }
 
 
@@ -116,7 +316,7 @@ namespace WeaponThread
                 }
 
                 [ProtoContract]
-                public struct WeaponEmissive
+                public struct PartEmissive
                 {
                     [ProtoMember(1)] internal string EmissiveName;
                     [ProtoMember(2)] internal string[] EmissivePartNames;
@@ -125,7 +325,6 @@ namespace WeaponThread
                     [ProtoMember(5)] internal Vector4[] Colors;
                     [ProtoMember(6)] internal float[] IntensityRange;
                 }
-
                 [ProtoContract]
                 public struct EventParticle
                 {
@@ -136,7 +335,6 @@ namespace WeaponThread
                     [ProtoMember(5)] internal uint LoopDelay;
                     [ProtoMember(6)] internal bool ForceStop;
                 }
-
                 [ProtoContract]
                 internal struct RelMove
                 {
@@ -170,6 +368,28 @@ namespace WeaponThread
             }
 
             [ProtoContract]
+            public struct UpgradeValues
+            {
+                [ProtoMember(1)] internal string[] Ammo;
+                [ProtoMember(2)] internal Dependency[] Dependencies;
+                [ProtoMember(3)] internal int RateOfFireMod;
+                [ProtoMember(4)] internal int BarrelsPerShotMod;
+                [ProtoMember(5)] internal int ReloadMod;
+                [ProtoMember(6)] internal int MaxHeatMod;
+                [ProtoMember(7)] internal int HeatSinkRateMod;
+                [ProtoMember(8)] internal int ShotsInBurstMod;
+                [ProtoMember(9)] internal int DelayAfterBurstMod;
+                [ProtoMember(10)] internal int AmmoPriority;
+
+                [ProtoContract]
+                public struct Dependency
+                {
+                    internal string SubtypeId;
+                    internal int Quanity;
+                }
+            }
+
+            [ProtoContract]
             public struct HardPointDef
             {
                 public enum Prediction
@@ -180,7 +400,7 @@ namespace WeaponThread
                     Advanced,
                 }
 
-                [ProtoMember(1)] internal string WeaponName;
+                [ProtoMember(1)] internal string PartName;
                 [ProtoMember(2)] internal int DelayCeaseFire;
                 [ProtoMember(3)] internal float DeviateShotAngle;
                 [ProtoMember(4)] internal double AimingTolerance;
@@ -193,6 +413,7 @@ namespace WeaponThread
                 [ProtoMember(11)] internal HardPointParticleDef Graphics;
                 [ProtoMember(12)] internal OtherDef Other;
                 [ProtoMember(13)] internal bool AddToleranceToTracking;
+                [ProtoMember(14)] internal bool CanShootSubmerged;
 
                 [ProtoContract]
                 public struct LoadingDef
@@ -211,8 +432,12 @@ namespace WeaponThread
                     [ProtoMember(12)] internal int DelayAfterBurst;
                     [ProtoMember(13)] internal bool DegradeRof;
                     [ProtoMember(14)] internal int BarrelSpinRate;
-                    [ProtoMember(15)] internal bool FireFullBurst;
-                    [ProtoMember(16)] internal bool GiveUpAfterBurst;
+                    [ProtoMember(15)] internal bool FireFull;
+                    [ProtoMember(16)] internal bool GiveUpAfter;
+                    [ProtoMember(17)] internal bool DeterministicSpin;
+                    [ProtoMember(18)] internal bool SpinFree;
+                    [ProtoMember(19)] internal bool StayCharged;
+                    [ProtoMember(20)] internal int MagsToLoad;
                 }
 
 
@@ -234,16 +459,18 @@ namespace WeaponThread
                     [ProtoMember(3)] internal bool TurretController;
                     [ProtoMember(4)] internal bool PrimaryTracking;
                     [ProtoMember(5)] internal bool LockOnFocus;
+                    [ProtoMember(6)] internal bool SuppressFire;
+                    [ProtoMember(7)] internal bool OverrideLeads;
                 }
 
                 [ProtoContract]
                 public struct HardwareDef
                 {
-                    public enum ArmorState
+                    public enum HardwareType
                     {
-                        IsWeapon,
-                        Passive,
-                        Active,
+                        BlockWeapon = 0,
+                        HandWeapon = 1,
+                        Phantom = 6,
                     }
 
                     [ProtoMember(1)] internal float RotateRate;
@@ -255,7 +482,21 @@ namespace WeaponThread
                     [ProtoMember(7)] internal int MaxElevation;
                     [ProtoMember(8)] internal int MinElevation;
                     [ProtoMember(9)] internal float InventorySize;
-                    [ProtoMember(10)] internal ArmorState Armor;
+                    [ProtoMember(10)] internal HardwareType Type;
+                    [ProtoMember(11)] internal int HomeAzimuth;
+                    [ProtoMember(12)] internal int HomeElevation;
+                    [ProtoMember(13)] internal CriticalDef CriticalReaction;
+                    [ProtoMember(14)] internal float IdlePower;
+
+                    [ProtoContract]
+                    public struct CriticalDef
+                    {
+                        [ProtoMember(1)] internal bool Enable;
+                        [ProtoMember(2)] internal int DefaultArmedTimer;
+                        [ProtoMember(3)] internal bool PreArmed;
+                        [ProtoMember(4)] internal bool TerminalControls;
+                        [ProtoMember(5)] internal string AmmoRound;
+                    }
                 }
 
                 [ProtoContract]
@@ -269,23 +510,27 @@ namespace WeaponThread
                     [ProtoMember(6)] internal bool FiringSoundPerShot;
                     [ProtoMember(7)] internal string PreFiringSound;
                     [ProtoMember(8)] internal uint FireSoundEndDelay;
+                    [ProtoMember(9)] internal bool FireSoundNoBurst;
                 }
 
                 [ProtoContract]
                 public struct OtherDef
                 {
-                    [ProtoMember(1)] internal int GridWeaponCap;
+                    [ProtoMember(1)] internal int ConstructPartCap;
                     [ProtoMember(2)] internal int EnergyPriority;
                     [ProtoMember(3)] internal int RotateBarrelAxis;
                     [ProtoMember(4)] internal bool MuzzleCheck;
                     [ProtoMember(5)] internal bool Debug;
+                    [ProtoMember(6)] internal double RestrictionRadius;
+                    [ProtoMember(7)] internal bool CheckInflatedBox;
+                    [ProtoMember(8)] internal bool CheckForAnyWeapon;
                 }
 
                 [ProtoContract]
                 public struct HardPointParticleDef
                 {
-                    [ProtoMember(1)] internal ParticleDef Barrel1;
-                    [ProtoMember(2)] internal ParticleDef Barrel2;
+                    [ProtoMember(1)] internal ParticleDef Effect1;
+                    [ProtoMember(2)] internal ParticleDef Effect2;
                 }
             }
 
@@ -306,12 +551,20 @@ namespace WeaponThread
                 [ProtoMember(12)] internal TrajectoryDef Trajectory;
                 [ProtoMember(13)] internal AreaDamageDef AreaEffect;
                 [ProtoMember(14)] internal BeamDef Beams;
-                [ProtoMember(15)] internal ShrapnelDef Shrapnel;
+                [ProtoMember(15)] internal FragmentDef Fragment;
                 [ProtoMember(16)] internal GraphicDef AmmoGraphics;
                 [ProtoMember(17)] internal AmmoAudioDef AmmoAudio;
                 [ProtoMember(18)] internal bool HardPointUsable;
-                [ProtoMember(19)] internal AmmoPatternDef Pattern;
+                [ProtoMember(19)] internal PatternDef Pattern;
                 [ProtoMember(20)] internal int EnergyMagazineSize;
+                [ProtoMember(21)] internal float DecayPerShot;
+                [ProtoMember(22)] internal EjectionDef Ejection;
+                [ProtoMember(23)] internal bool IgnoreWater;
+                [ProtoMember(24)] internal AreaOfDamageDef AreaOfDamage;
+                [ProtoMember(25)] internal EwarDef Ewar;
+                [ProtoMember(26)] internal bool IgnoreVoxels;
+                [ProtoMember(27)] internal bool Synchronize;
+                [ProtoMember(28)] internal double HeatModifier;
 
                 [ProtoContract]
                 public struct DamageScaleDef
@@ -326,6 +579,9 @@ namespace WeaponThread
                     [ProtoMember(7)] internal CustomScalesDef Custom;
                     [ProtoMember(8)] internal ShieldDef Shields;
                     [ProtoMember(9)] internal FallOffDef FallOff;
+                    [ProtoMember(10)] internal double HealthHitModifier;
+                    [ProtoMember(11)] internal double VoxelHitModifier;
+                    [ProtoMember(12)] internal DamageTypes DamageType;
 
                     [ProtoContract]
                     public struct FallOffDef
@@ -353,8 +609,32 @@ namespace WeaponThread
                     [ProtoContract]
                     public struct CustomScalesDef
                     {
+                        internal enum SkipMode
+                        {
+                            NoSkip,
+                            Inclusive,
+                            Exclusive,
+                        }
+
                         [ProtoMember(1)] internal CustomBlocksDef[] Types;
                         [ProtoMember(2)] internal bool IgnoreAllOthers;
+                        [ProtoMember(3)] internal SkipMode SkipOthers;
+                    }
+
+                    [ProtoContract]
+                    public struct DamageTypes
+                    {
+                        internal enum Damage
+                        {
+                            Energy,
+                            Kinetic,
+                            ShieldDefault,
+                        }
+
+                        [ProtoMember(1)] internal Damage Base;
+                        [ProtoMember(2)] internal Damage AreaEffect;
+                        [ProtoMember(3)] internal Damage Detonation;
+                        [ProtoMember(4)] internal Damage Shield;
                     }
 
                     [ProtoContract]
@@ -362,11 +642,10 @@ namespace WeaponThread
                     {
                         internal enum ShieldType
                         {
+                            Default,
                             Heal,
                             Bypass,
-                            Emp,
-                            Energy,
-                            Kinetic
+                            EmpRetired,
                         }
 
                         [ProtoMember(1)] internal float Modifier;
@@ -417,6 +696,7 @@ namespace WeaponThread
                     {
                         [ProtoMember(1)] internal ParticleDef Ammo;
                         [ProtoMember(2)] internal ParticleDef Hit;
+                        [ProtoMember(3)] internal ParticleDef Eject;
                     }
 
                     [ProtoContract]
@@ -505,28 +785,215 @@ namespace WeaponThread
                 }
 
                 [ProtoContract]
-                public struct ShrapnelDef
+                public struct FragmentDef
                 {
                     [ProtoMember(1)] internal string AmmoRound;
                     [ProtoMember(2)] internal int Fragments;
-                    [ProtoMember(3)] internal float ForwardDegrees;
+                    [ProtoMember(3)] internal float Radial;
                     [ProtoMember(4)] internal float BackwardDegrees;
                     [ProtoMember(5)] internal float Degrees;
                     [ProtoMember(6)] internal bool Reverse;
-                    [ProtoMember(7)] internal bool RandomizeDir;
+                    [ProtoMember(7)] internal bool IgnoreArming;
+                    [ProtoMember(8)] internal bool DropVelocity;
+                    [ProtoMember(9)] internal float Offset;
+                    [ProtoMember(10)] internal int MaxChildren;
+                    [ProtoMember(11)] internal TimedSpawnDef TimedSpawns;
+                    [ProtoMember(12)] internal bool FireSound; // not used, can remove
+                    [ProtoMember(13)] internal Vector3D AdvOffset;
+
+                    [ProtoContract]
+                    public struct TimedSpawnDef
+                    {
+                        public enum PointTypes
+                        {
+                            Direct,
+                            Lead,
+                            Predict,
+                        }
+
+                        [ProtoMember(1)] internal bool Enable;
+                        [ProtoMember(2)] internal int Interval;
+                        [ProtoMember(3)] internal int StartTime;
+                        [ProtoMember(4)] internal int MaxSpawns;
+                        [ProtoMember(5)] internal double Proximity;
+                        [ProtoMember(6)] internal bool ParentDies;
+                        [ProtoMember(7)] internal bool PointAtTarget;
+                        [ProtoMember(8)] internal int GroupSize;
+                        [ProtoMember(9)] internal int GroupDelay;
+                        [ProtoMember(10)] internal PointTypes PointType;
+                    }
                 }
 
                 [ProtoContract]
-                public struct AmmoPatternDef
+                public struct PatternDef
                 {
-                    [ProtoMember(1)] internal string[] Ammos;
+                    public enum PatternModes
+                    {
+                        Never,
+                        Weapon,
+                        Fragment,
+                        Both,
+                    }
+
+                    [ProtoMember(1)] internal string[] Patterns;
                     [ProtoMember(2)] internal bool Enable;
                     [ProtoMember(3)] internal float TriggerChance;
                     [ProtoMember(4)] internal bool SkipParent;
                     [ProtoMember(5)] internal bool Random;
                     [ProtoMember(6)] internal int RandomMin;
                     [ProtoMember(7)] internal int RandomMax;
+                    [ProtoMember(8)] internal int PatternSteps;
+                    [ProtoMember(9)] internal PatternModes Mode;
                 }
+
+                [ProtoContract]
+                public struct EjectionDef
+                {
+                    public enum SpawnType
+                    {
+                        Item,
+                        Particle,
+                    }
+                    [ProtoMember(1)] internal float Speed;
+                    [ProtoMember(2)] internal float SpawnChance;
+                    [ProtoMember(3)] internal SpawnType Type;
+                    [ProtoMember(4)] internal ComponentDef CompDef;
+
+                    [ProtoContract]
+                    public struct ComponentDef
+                    {
+                        [ProtoMember(1)] internal string ItemName;
+                        [ProtoMember(2)] internal int ItemLifeTime;
+                        [ProtoMember(3)] internal int Delay;
+                    }
+                }
+
+                [ProtoContract]
+                public struct AreaOfDamageDef
+                {
+                    public enum Falloff
+                    {
+                        Legacy,
+                        NoFalloff,
+                        Linear,
+                        Curve,
+                        InvCurve,
+                        Squeeze,
+                        Pooled,
+                        Exponential,
+                    }
+                    public enum AoeShape
+                    {
+                        Round,
+                        Diamond,
+                    }
+
+                    [ProtoMember(1)] internal ByBlockHitDef ByBlockHit;
+                    [ProtoMember(2)] internal EndOfLifeDef EndOfLife;
+
+                    [ProtoContract]
+                    public struct ByBlockHitDef
+                    {
+                        [ProtoMember(1)] internal bool Enable;
+                        [ProtoMember(2)] internal double Radius;
+                        [ProtoMember(3)] internal float Damage;
+                        [ProtoMember(4)] internal float Depth;
+                        [ProtoMember(5)] internal float MaxAbsorb;
+                        [ProtoMember(6)] internal Falloff Falloff;
+                        [ProtoMember(7)] internal AoeShape Shape;
+                    }
+
+                    [ProtoContract]
+                    public struct EndOfLifeDef
+                    {
+                        [ProtoMember(1)] internal bool Enable;
+                        [ProtoMember(2)] internal double Radius;
+                        [ProtoMember(3)] internal float Damage;
+                        [ProtoMember(4)] internal float Depth;
+                        [ProtoMember(5)] internal float MaxAbsorb;
+                        [ProtoMember(6)] internal Falloff Falloff;
+                        [ProtoMember(7)] internal bool ArmOnlyOnHit;
+                        [ProtoMember(8)] internal int MinArmingTime;
+                        [ProtoMember(9)] internal bool NoVisuals;
+                        [ProtoMember(10)] internal bool NoSound;
+                        [ProtoMember(11)] internal float ParticleScale;
+                        [ProtoMember(12)] internal string CustomParticle;
+                        [ProtoMember(13)] internal string CustomSound;
+                        [ProtoMember(14)] internal AoeShape Shape;
+                    }
+                }
+
+                [ProtoContract]
+                public struct EwarDef
+                {
+                    public enum EwarType
+                    {
+                        AntiSmart,
+                        JumpNull,
+                        EnergySink,
+                        Anchor,
+                        Emp,
+                        Offense,
+                        Nav,
+                        Dot,
+                        Push,
+                        Pull,
+                        Tractor,
+                    }
+
+                    public enum EwarMode
+                    {
+                        Effect,
+                        Field,
+                    }
+
+                    [ProtoMember(1)] internal bool Enable;
+                    [ProtoMember(2)] internal EwarType Type;
+                    [ProtoMember(3)] internal EwarMode Mode;
+                    [ProtoMember(4)] internal float Strength;
+                    [ProtoMember(5)] internal double Radius;
+                    [ProtoMember(6)] internal int Duration;
+                    [ProtoMember(7)] internal bool StackDuration;
+                    [ProtoMember(8)] internal bool Depletable;
+                    [ProtoMember(9)] internal int MaxStacks;
+                    [ProtoMember(10)] internal bool NoHitParticle;
+                    [ProtoMember(11)] internal PushPullDef Force;
+                    [ProtoMember(12)] internal FieldDef Field;
+
+
+                    [ProtoContract]
+                    public struct FieldDef
+                    {
+                        [ProtoMember(1)] internal int Interval;
+                        [ProtoMember(2)] internal int PulseChance;
+                        [ProtoMember(3)] internal int GrowTime;
+                        [ProtoMember(4)] internal bool HideModel;
+                        [ProtoMember(5)] internal bool ShowParticle;
+                        [ProtoMember(6)] internal double TriggerRange;
+                        [ProtoMember(7)] internal ParticleDef Particle;
+                    }
+
+                    [ProtoContract]
+                    public struct PushPullDef
+                    {
+                        public enum Force
+                        {
+                            ProjectileLastPosition,
+                            ProjectileOrigin,
+                            HitPosition,
+                            TargetCenter,
+                            TargetCenterOfMass,
+                        }
+
+                        [ProtoMember(1)] internal Force ForceFrom;
+                        [ProtoMember(2)] internal Force ForceTo;
+                        [ProtoMember(3)] internal Force Position;
+                        [ProtoMember(4)] internal bool DisableRelativeMass;
+                        [ProtoMember(5)] internal double TractorRange;
+                        [ProtoMember(6)] internal bool ShooterFeelsForce;
+                    }
+                }
+
 
                 [ProtoContract]
                 public struct AreaDamageDef
@@ -546,6 +1013,7 @@ namespace WeaponThread
                         DotField,
                         PushField,
                         PullField,
+                        TractorField,
                     }
 
                     [ProtoMember(1)] internal double AreaEffectRadius;
@@ -555,7 +1023,14 @@ namespace WeaponThread
                     [ProtoMember(5)] internal DetonateDef Detonation;
                     [ProtoMember(6)] internal ExplosionDef Explosions;
                     [ProtoMember(7)] internal EwarFieldsDef EwarFields;
+                    [ProtoMember(8)] internal AreaInfluence Base;
 
+                    [ProtoContract]
+                    public struct AreaInfluence
+                    {
+                        [ProtoMember(1)] internal double Radius;
+                        [ProtoMember(2)] internal float EffectStrength;
+                    }
 
 
                     [ProtoContract]
@@ -577,6 +1052,28 @@ namespace WeaponThread
                         [ProtoMember(3)] internal bool Depletable;
                         [ProtoMember(4)] internal double TriggerRange;
                         [ProtoMember(5)] internal int MaxStacks;
+                        [ProtoMember(6)] internal PushPullDef Force;
+                        [ProtoMember(7)] internal bool DisableParticleEffect;
+
+                        [ProtoContract]
+                        public struct PushPullDef
+                        {
+                            public enum Force
+                            {
+                                ProjectileLastPosition,
+                                ProjectileOrigin,
+                                HitPosition,
+                                TargetCenter,
+                                TargetCenterOfMass,
+                            }
+
+                            [ProtoMember(1)] internal Force ForceFrom;
+                            [ProtoMember(2)] internal Force ForceTo;
+                            [ProtoMember(3)] internal Force Position;
+                            [ProtoMember(4)] internal bool DisableRelativeMass;
+                            [ProtoMember(5)] internal double TractorRange;
+                            [ProtoMember(6)] internal bool ShooterFeelsForce;
+                        }
                     }
 
                     [ProtoContract]
@@ -586,6 +1083,7 @@ namespace WeaponThread
                         [ProtoMember(2)] internal bool ArmOnlyOnHit;
                         [ProtoMember(3)] internal float DetonationRadius;
                         [ProtoMember(4)] internal float DetonationDamage;
+                        [ProtoMember(5)] internal int MinArmingTime;
                     }
 
                     [ProtoContract]
@@ -596,9 +1094,9 @@ namespace WeaponThread
                         [ProtoMember(3)] internal float Scale;
                         [ProtoMember(4)] internal string CustomParticle;
                         [ProtoMember(5)] internal string CustomSound;
+                        [ProtoMember(6)] internal bool NoShrapnel;
+                        [ProtoMember(7)] internal bool NoDeformation;
                     }
-
-
                 }
 
                 [ProtoContract]
@@ -612,6 +1110,7 @@ namespace WeaponThread
                     [ProtoMember(6)] internal string PlayerHitSound;
                     [ProtoMember(7)] internal string FloatingHitSound;
                     [ProtoMember(8)] internal string ShieldHitSound;
+                    [ProtoMember(9)] internal string ShotSound;
                 }
 
                 [ProtoContract]
@@ -626,6 +1125,7 @@ namespace WeaponThread
                         DetectTravelTo,
                         DetectSmart,
                         DetectFixed,
+                        DroneAdvanced,
                     }
 
                     [ProtoMember(1)] internal float MaxTrajectory;
@@ -634,7 +1134,7 @@ namespace WeaponThread
                     [ProtoMember(4)] internal float TargetLossDegree;
                     [ProtoMember(5)] internal int TargetLossTime;
                     [ProtoMember(6)] internal int MaxLifeTime;
-                    [ProtoMember(7)] internal int FieldTime;
+                    [ProtoMember(7)] internal int DeaccelTime;
                     [ProtoMember(8)] internal Randomize SpeedVariance;
                     [ProtoMember(9)] internal Randomize RangeVariance;
                     [ProtoMember(10)] internal GuidanceType Guidance;
@@ -655,6 +1155,9 @@ namespace WeaponThread
                         [ProtoMember(7)] internal int MaxTargets;
                         [ProtoMember(8)] internal bool NoTargetExpire;
                         [ProtoMember(9)] internal bool Roam;
+                        [ProtoMember(10)] internal bool KeepAliveAfterTargetLoss;
+                        [ProtoMember(11)] internal float OffsetRatio;
+                        [ProtoMember(12)] internal int OffsetTime;
                     }
 
                     [ProtoContract]
@@ -701,4 +1204,3 @@ namespace WeaponThread
         }
     }
 }
-
